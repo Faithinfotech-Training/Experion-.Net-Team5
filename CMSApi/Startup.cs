@@ -30,6 +30,7 @@ namespace CMSApi
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         //git comment
+        //testing
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
