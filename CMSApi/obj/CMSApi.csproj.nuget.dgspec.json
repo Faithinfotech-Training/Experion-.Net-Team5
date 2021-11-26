@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project Team 5\\CMSApi\\CMSApi.csproj": {}
+    "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {}
   },
   "projects": {
-    "D:\\Project Team 5\\CMSApi\\CMSApi.csproj": {
+    "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Team 5\\CMSApi\\CMSApi.csproj",
+        "projectUniqueName": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
         "projectName": "CMSApi",
-        "projectPath": "D:\\Project Team 5\\CMSApi\\CMSApi.csproj",
+        "projectPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
         "packagesPath": "C:\\Users\\rohit.deepak\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Team 5\\CMSApi\\obj\\",
+        "outputPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rohit.deepak\\AppData\\Roaming\\NuGet\\NuGet.Config",
