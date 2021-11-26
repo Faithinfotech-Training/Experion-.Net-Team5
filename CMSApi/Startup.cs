@@ -32,6 +32,7 @@ namespace CMSApi
         //git comment
         //testing
         //testing again
+        //amelin
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
