@@ -27,7 +27,6 @@ D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.run
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.runtimeconfig.dev.json
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.dll
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.pdb
-D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.csproj.AssemblyReference.cache
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.GeneratedMSBuildEditorConfig.editorconfig
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.AssemblyInfoInputs.cache
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.AssemblyInfo.cs
@@ -124,3 +123,4 @@ D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\runtimes\w
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.csproj.CopyComplete
