@@ -15,7 +15,7 @@ namespace CMSApi
         {
             CreateHostBuilder(args).Build().Run();
         }
-
+        //host builder
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
