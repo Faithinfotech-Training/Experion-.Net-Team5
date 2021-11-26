@@ -25,7 +25,7 @@ namespace CMSApi.Models
         public virtual DbSet<Prescriptions> Prescriptions { get; set; }
         public virtual DbSet<Reports> Reports { get; set; }
         public virtual DbSet<Results> Results { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
+       
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<TestBills> TestBills { get; set; }
@@ -218,13 +218,7 @@ namespace CMSApi.Models
                     .HasConstraintName("FK__Results__TestId__4F7CD00D");
             });
 
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.Property(e => e.RoleName)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-            });
+            
 
             modelBuilder.Entity<Roles>(entity =>
             {

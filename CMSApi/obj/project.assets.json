@@ -6497,25 +6497,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shallet.eldho\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\amelin.thomas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CMSFINAL\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
+      "projectUniqueName": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
       "projectName": "CMSApi",
-      "projectPath": "E:\\CMSFINAL\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
-      "packagesPath": "C:\\Users\\shallet.eldho\\.nuget\\packages\\",
-      "outputPath": "E:\\CMSFINAL\\backend\\Experion-.Net-Team5\\CMSApi\\obj\\",
+      "projectPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
+      "packagesPath": "C:\\Users\\amelin.thomas\\.nuget\\packages\\",
+      "outputPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\shallet.eldho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\amelin.thomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
