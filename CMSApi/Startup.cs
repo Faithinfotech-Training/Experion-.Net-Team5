@@ -35,6 +35,7 @@ namespace CMSApi
             services.AddControllers();
             
             services.AddScoped<ILogin, Login>();
+            services.AddScoped<IStaff, Staff>();
             services.AddDbContext<DBClinicContext>(item =>
            item.UseSqlServer(Configuration.GetConnectionString("ClinicDBConnection")));
 

@@ -6497,7 +6497,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amelin.thomas\\.nuget\\packages\\": {}
+    "C:\\Users\\rohit.deepak\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -6505,11 +6505,11 @@
       "projectUniqueName": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
       "projectName": "CMSApi",
       "projectPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
-      "packagesPath": "C:\\Users\\amelin.thomas\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\rohit.deepak\\.nuget\\packages\\",
       "outputPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\amelin.thomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rohit.deepak\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
