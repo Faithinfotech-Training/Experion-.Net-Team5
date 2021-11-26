@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {}
+    "D:\\GitNewRepo\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {}
   },
   "projects": {
-    "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {
+    "D:\\GitNewRepo\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
+        "projectUniqueName": "D:\\GitNewRepo\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
         "projectName": "CMSApi",
-        "projectPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
-        "packagesPath": "C:\\Users\\amelin.thomas\\.nuget\\packages\\",
-        "outputPath": "D:\\GitRepo\\RestApi\\Experion-.Net-Team5\\CMSApi\\obj\\",
+        "projectPath": "D:\\GitNewRepo\\backend\\Experion-.Net-Team5\\CMSApi\\CMSApi.csproj",
+        "packagesPath": "C:\\Users\\rithwik.menon\\.nuget\\packages\\",
+        "outputPath": "D:\\GitNewRepo\\backend\\Experion-.Net-Team5\\CMSApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\amelin.thomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rithwik.menon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
