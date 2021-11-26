@@ -364,4 +364,4 @@ FodyWeavers.xsd
 
 #appsettings.json
 .git/info/exclude
-appsettings.json
+CMSApi/appsettings.json
