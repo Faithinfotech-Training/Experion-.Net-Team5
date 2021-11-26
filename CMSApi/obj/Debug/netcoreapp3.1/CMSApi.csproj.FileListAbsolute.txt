@@ -19,3 +19,24 @@ D:\Project Team 5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.RazorTargetAssemblyInfo.
 D:\Project Team 5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.dll
 D:\Project Team 5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.pdb
 D:\Project Team 5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.genruntimeconfig.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\appsettings.json
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.exe
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.deps.json
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.runtimeconfig.json
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.runtimeconfig.dev.json
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.dll
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\bin\Debug\netcoreapp3.1\CMSApi.pdb
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.csproj.AssemblyReference.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.AssemblyInfoInputs.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.AssemblyInfo.cs
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.csproj.CoreCompileInputs.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.MvcApplicationPartsAssemblyInfo.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\staticwebassets\CMSApi.StaticWebAssets.Manifest.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\staticwebassets\CMSApi.StaticWebAssets.xml
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\CMSApi.styles.css
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.RazorTargetAssemblyInfo.cache
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.dll
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.pdb
+D:\GitRepo\RestApi\Experion-.Net-Team5\CMSApi\obj\Debug\netcoreapp3.1\CMSApi.genruntimeconfig.cache
