@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CMSApi.Models
 {
@@ -15,5 +16,10 @@ namespace CMSApi.Models
 
         public virtual Departments Department { get; set; }
         public virtual Designations Designation { get; set; }
+
+        internal static Task GetStaff()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
