@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            Staff Details
+        </h5>
+        <!--Search 
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search here .."
+            [(ngModel)]="filter"/>
+
+        </div>-->
+    </div>
+    <a [routerLink]="['Staff']" class="btn btn-primary">Add Staff</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    Designation
+                </th>
+                <th>
+                    Join Date
+                </th>
+                <!--<th>
+                        Department
+                    </th>
+                    <th>
+                        Status
+                    </th>-->
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let emp of this.empService.employees|filter :filter| paginate:{itemsPerPage: 3,currentPage: page}">
+                <td (click)="populateForm(staff)">{{Staff.StaffId}}</td>
+                <td (click)="populateForm(staff)">{{Staff.StaffName}}</td>
+                <td (click)="populateForm(staff)">{{staff.Designation}}</td>
+                <td (click)="populateForm(staff)">{{staff.JoiningDate|date:'dd-MM-yyyy'}}</td>
+                <!--<td>{{emp.DepartmentId}}</td>
+                    <td >{{emp.IsActive}}</td>-->
+                <td>
+                    <!-- <button class="btn btn-sm btn-outline-danger" (click)="deleteEmployee(emp.EmployeeId)">Delete</button>&nbsp;-->
+                    <button class="btn btn-sm btn-info" style="margin-left:10px"
+                        (click)="updateEmployee(emp.EmployeeId)">Edit</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+</div>

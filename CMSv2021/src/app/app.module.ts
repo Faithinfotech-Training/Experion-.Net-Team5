@@ -9,6 +9,7 @@ import { PatientsComponent } from './patients/patients.component';
 import { PatientComponent } from './patients/patient/patient.component';
 import { PatientListComponent } from './patients/patient-list/patient-list.component';
 import { StaffsComponent } from './staffs/staffs.component';
+import { StaffListComponent } from './staffs/staff-list/staff-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StaffsComponent } from './staffs/staffs.component';
     PatientsComponent,
     PatientComponent,
     PatientListComponent,
-    StaffsComponent
+    StaffsComponent,
+    StaffListComponent
   ],
   imports: [
     BrowserModule,
