@@ -82,14 +82,14 @@ namespace CMSApi.Controllers
 
         [HttpPut]
         [Route("UpdatePatients")]
-        public async Task<IActionResult> UpdatePatients(Patients patient)
+        public async Task<IActionResult> UpdatePatients(Patients model)
         {
             //Check the validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await patient.UpdatePatients(patient);
+                    await patient.UpdatePatients(model);
                     return Ok(patient);
                 }
                 catch (Exception)
