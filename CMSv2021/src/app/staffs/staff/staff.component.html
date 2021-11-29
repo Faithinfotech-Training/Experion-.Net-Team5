@@ -1,6 +1,6 @@
-<p>staff works!</p><form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
     <!--staff id-->
-    <input type="hidden" name="EmployeeId" [ngModel]="staffService.formData.StaffId" />
+    <input type="hidden" name="StaffId" [ngModel]="staffService.formData.StaffId" />
 
     <!--staff name-->
     <div class="form-group">
@@ -56,7 +56,7 @@
         <div class="form-check">
             <label class="form-check-label">Is active </label>
             <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel"
-                [(ngModel)]="empService.formData.IsActive" class="form-check-input">
+                [(ngModel)]="staffService.formData.IsActive" class="form-check-input">
         </div>
     </div>
 
