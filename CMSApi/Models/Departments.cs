@@ -7,6 +7,7 @@ namespace CMSApi.Models
     {
         public Departments()
         {
+            Doctors = new HashSet<Doctors>();
             Staffs = new HashSet<Staffs>();
         }
 
@@ -14,6 +15,7 @@ namespace CMSApi.Models
         public string DepartmentName { get; set; }
         public bool IsActive { get; set; }
 
+        public virtual ICollection<Doctors> Doctors { get; set; }
         public virtual ICollection<Staffs> Staffs { get; set; }
     }
 }

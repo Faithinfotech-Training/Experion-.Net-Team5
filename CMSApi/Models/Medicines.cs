@@ -16,6 +16,7 @@ namespace CMSApi.Models
         public decimal? UnitPrice { get; set; }
         public decimal? Amount { get; set; }
         public bool IsActive { get; set; }
+        public string MedicineName { get; set; }
 
         public virtual Prescriptions Prescription { get; set; }
         public virtual ICollection<Bills> Bills { get; set; }

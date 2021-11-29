@@ -1,4 +1,5 @@
 ﻿using CMSApi.Models;
+using CMSApi.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -61,8 +62,66 @@ namespace CMSApi.Repository
 
         #endregion
 
-        
+        #region GetPatient
+        public async Task<PatientViewModel> GetPatient(int id)
+        {
+            if (db != null)
+            {
+                return await (from p in db.Patients
+                              join c in db.Consultings
+                              on p.PatientId equals c.PatientId
+                              join d in db.Doctors
+                              on c.DoctorId equals d.DoctorId
+                              where d.DoctorId == id
+                              select new PatientViewModel
+                              {
+                                  PatientId = p.PatientId,
+                                  PatientName = p.PatientName,
+                                  DoctorId = d.DoctorId,
+                                  ConsultingDate = c.ConsultingDate,
+                                  DoctorName = d.DoctorName
+                              }).FirstOrDefaultAsync();
+            }
+            return null;
+        }
+        #endregion
 
-        
+        #region GetPatientDetails
+        public async Task<TestViewModel> GetPatientDetails(int id)
+        {
+            if (db != null)
+            {
+                return await (from p in db.Patients
+                              join c in db.Consultings
+                              on p.PatientId equals c.PatientId
+                              join pr in db.Prescriptions
+                              on c.ConsultingId equals pr.ConsultingId
+                              join m in db.Medicines
+                              on pr.PrescriptionId equals m.PrescriptionId
+                              join t in db.Tests
+                              on pr.TestId equals t.TestId
+                              join r in db.Results
+                              on t.TestId equals r.TestId
+                              where p.PatientId == id
+                              select new TestViewModel
+                              {
+                                  PatientId = p.PatientId,
+                                  PatientName = p.PatientName,
+                                  ConsultingDate = c.ConsultingDate,
+                                  DoctorNotes = pr.DoctorNotes,
+                                  MedicineName = m.MedicineName,
+                                  Quantity = m.Quantity,
+                                  TestNames = t.TestNames,
+                                  Result = r.Result
+
+
+                              }).FirstOrDefaultAsync();
+
+
+            }
+            return null;
+        }
+        #endregion
     }
 }
+

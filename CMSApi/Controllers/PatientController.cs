@@ -82,15 +82,15 @@ namespace CMSApi.Controllers
 
         [HttpPut]
         [Route("UpdatePatients")]
-        public async Task<IActionResult> UpdatePatients(Patients patient)
+        public async Task<IActionResult> UpdatePatients([FromBody]  Patients model)
         {
             //Check the validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await patient.UpdatePatients(patient);
-                    return Ok(patient);
+                    await patient.UpdatePatients(model);
+                    return Ok(model);
                 }
                 catch (Exception)
                 {
@@ -99,6 +99,49 @@ namespace CMSApi.Controllers
             }
             return BadRequest();
         }
+        #endregion
+
+        #region GetPatient
+        [HttpGet]
+        [Route("GetPatient")]
+        public async Task<IActionResult> GetPatient(int id)
+        {
+            try
+            {
+                var pat = await patient.GetPatient(id);
+                if (pat != null)
+                {
+                    return Ok(pat);
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        #endregion
+        #region GetPatientDetails
+        [HttpGet]
+        [Route("GetPatientDetails")]
+        public async Task<IActionResult> GetPatientDetails(int id)
+        {
+            try
+            {
+                var pat = await patient.GetPatientDetails(id);
+                if (pat != null)
+                {
+                    return Ok(pat);
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         #endregion
     }
 }

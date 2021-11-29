@@ -25,7 +25,7 @@ namespace CMSApi.Models
         public virtual DbSet<Prescriptions> Prescriptions { get; set; }
         public virtual DbSet<Reports> Reports { get; set; }
         public virtual DbSet<Results> Results { get; set; }
-       
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<TestBills> TestBills { get; set; }
@@ -113,15 +113,30 @@ namespace CMSApi.Models
                 entity.HasKey(e => e.DoctorId)
                     .HasName("PK__Doctors__2DC00EBF308F4C74");
 
+                entity.Property(e => e.Contact)
+                    .HasMaxLength(10)
+                    .IsFixedLength();
+
                 entity.Property(e => e.DoctorName)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Experience)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.JoiningDate).HasColumnType("date");
+
                 entity.Property(e => e.Specialization)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Department)
+                    .WithMany(p => p.Doctors)
+                    .HasForeignKey(d => d.DepartmentId)
+                    .HasConstraintName("FK__Doctors__Departm__6B24EA82");
             });
 
             modelBuilder.Entity<Medicines>(entity =>
@@ -130,6 +145,10 @@ namespace CMSApi.Models
                     .HasName("PK__Medicine__4F2128906AE176FD");
 
                 entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.MedicineName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.UnitPrice).HasColumnType("decimal(18, 0)");
 
@@ -218,7 +237,13 @@ namespace CMSApi.Models
                     .HasConstraintName("FK__Results__TestId__4F7CD00D");
             });
 
-            
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.Property(e => e.RoleName)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
 
             modelBuilder.Entity<Roles>(entity =>
             {

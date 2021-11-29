@@ -1,4 +1,5 @@
 ﻿using CMSApi.Models;
+using CMSApi.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,15 @@ namespace CMSApi.Repository
 
         //update patient
         Task<Patients> UpdatePatients(Patients patient);
+        //get patient list by doctor by Id
+        Task<PatientViewModel> GetPatient(int id);
 
-        
+        //get patientdetails
+        Task<TestViewModel> GetPatientDetails(int id);
+
+
+
+
 
     }
 }
