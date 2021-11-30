@@ -1,4 +1,5 @@
 ﻿using CMSApi.Models;
+using CMSApi.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,9 @@ namespace CMSApi.Repository
 
         //update doctor
         Task UpdateDoctor(Doctors doc);
+
+        //get all doctors
+        Task<List<DoctorViewModel>> GetAllDoctors();
+        Task<List<Departments>> GetDepartments();
     }
 }

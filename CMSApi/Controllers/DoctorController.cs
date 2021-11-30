@@ -23,7 +23,7 @@ namespace CMSApi.Controllers
         }
 
         #region
-        //Get all doctors
+        //Get  doctors
         [HttpGet]
         [Route("GetDoctors")]
         public async Task<ActionResult<IEnumerable<Doctors>>> GetDoctors()
@@ -32,15 +32,41 @@ namespace CMSApi.Controllers
 
             try
             {
-                // var categories = await context.Category.Include(c => c.Post).Where(c=>c.Post!=null).ToList();
+
                 var doctors = await doctorRepository.GetDoctors();
-                // var categories = await context.Category.Include(d => d.Post).ToList();
-                //.Include(d => d.Category).Tolist(GetCategories);
+
                 if (doctors == null)
                 {
                     return NotFound();
                 }
                 return Ok(doctors);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+        }
+        #endregion
+        #region
+        //Get all departments
+        [HttpGet]
+        [Route("GetDepartments")]
+        public async Task<ActionResult<IEnumerable<Departments>>> GetDepartments()
+        {
+
+
+            try
+            {
+
+                var dept = await doctorRepository.GetDepartments();
+
+                if (dept == null)
+                {
+                    return NotFound();
+                }
+                return Ok(dept);
             }
             catch (Exception)
             {
@@ -100,6 +126,28 @@ namespace CMSApi.Controllers
             }
             return BadRequest();
         }
+        #endregion
+
+        #region View all doctors
+        [HttpGet]
+        [Route("GetAllDoctors")]
+        public async Task<IActionResult> GetAllDoctors()
+        {
+            try
+            {
+                var doctor = await doctorRepository.GetAllDoctors();
+                if (doctor == null)
+                {
+                    return NotFound();
+                }
+                return Ok(doctor);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         #endregion
     }
 }
