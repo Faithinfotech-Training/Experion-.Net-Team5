@@ -16,6 +16,9 @@ import { StaffService } from './shared/staff.service';
 import { AuthService } from './shared/auth.service';
 import {AuthGuard} from './shared/auth.guard';
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { PatientService } from './shared/patient.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

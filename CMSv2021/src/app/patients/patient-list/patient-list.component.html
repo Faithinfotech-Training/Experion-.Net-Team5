@@ -1,1 +1,67 @@
-<p>patient-list works!</p>
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            Patient Details
+        </h5>
+        <!--search functionality-->
+        <div class="form-control">
+            <input class="form-control" type="text"
+            placeholder ="Search here...."
+            [(ngModel)]="filter">
+
+        </div>
+        <a [routerLink]="['../patient']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Patient</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    FULL NAME
+                </th>
+                <th>
+                    ADDRESS
+                </th>
+                <th>
+                    CONTACT
+                </th>
+                <th>
+                    GENDER
+                </th>
+                <!--<th>
+                        Department
+                    </th>
+                    <th>
+                        Status
+                    </th>-->
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pat of this.patientService.patients" >
+                <td (click)="populateForm(pat)">{{pat.PatientId}}</td>
+                <td (click)="populateForm(pat)">{{pat.PatientName}}</td>
+                <td (click)="populateForm(pat)">{{pat.Address}}</td>
+                <td (click)="populateForm(pat)">{{pat.Contact}}</td>
+                <td (click)="populateForm(pat)">{{pat.Gender}}</td>
+                <!--<td>{{emp.DepartmentId}}</td>
+                    <td >{{emp.IsActive}}</td>-->
+                <td>
+                    <button class="btn btn-sm btn-outline-danger"
+                    (click)="deleteEmployee(pat.PatientId)">Delete</button>&nbsp;
+                    <button (click)="updatePatient(pat.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+    
+</div>

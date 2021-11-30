@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CMSv2021"
+    }
+  },
+  "defaultProject": "CMSv2021",
+  "cli": {
+    "analytics": false
+  }
 }
