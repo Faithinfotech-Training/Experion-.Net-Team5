@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Staff } from 'src/app/shared/staff';
 import { StaffService } from 'src/app/shared/staff.service';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -23,16 +23,32 @@ export class StaffComponent implements OnInit {
     this.staffId = this.route.snapshot.params['staffId'];
     this.staffService.bindCmdDepartment();
     this.staffService.bindCmdDesignation();
-    this.resetform();
+    if (this.staffId != 0 || this.staffId != null) {
+      //get employee
+      this.staffService.getStaffById(this.staffId).subscribe(
+        data => {
+          console.log(data);
+          //date format
+          var datePipe = new DatePipe("en-UK");
+          let formatedDate: any = datePipe.transform(data.JoiningDate, 'yyyy-MM-dd');
+          data.JoiningDate = formatedDate;
+          this.staffService.formData = Object.assign({}, data);
+          this.staffService.formData = data;
+        },
+        error =>
+          console.log(error)
+      );
+    }
+    //this.resetform();
 
-    
+
   }
-  onSubmit(form:NgForm){
-    
+  onSubmit(form: NgForm) {
+
     this.staffId = this.route.snapshot.params['staffId']
     console.log(form.value);
     let addId = this.staffService.formData.StaffId;
-    
+
     //insert
 
     if (addId == 0 || addId == null) {
@@ -51,38 +67,36 @@ export class StaffComponent implements OnInit {
   }
   //clear all content at initialisation
 
-resetform(form?: NgForm) {
-  if (form != null) {
-    form.resetForm();
+  resetform(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
+
   }
+  //insert Staff
+  insertStaff(form?: NgForm) {
 
-}
-//insert Staff
-insertStaff(form?: NgForm) {
+    console.log("inserting Staff...")
+    this.staffService.insertStaff(form.value).subscribe(
+      (result) => {
+        console.log("result" + result);
+        this.resetform(form);
+      }
+    );
+  }
+  //update Staff
 
-  console.log("inserting Staff...")
-  this.staffService.insertStaff(form.value).subscribe(
-    (result) => {
-      console.log("result" + result);
-      this.resetform(form);
-      //window.location.reload();
-    }
-  );
- // window.location.reload();
-}
-//update employee
+  updateStaffRecord(form?: NgForm) {
 
-updateStaffRecord(form?: NgForm) {
+    console.log("updating employee...")
+    this.staffService.updateStaff(form.value).subscribe(
+      (result) => {
+        console.log("result" + result);
+        this.resetform(form);
+        this.staffService.bindStaff();
 
-  console.log("updating employee...")
-  this.staffService.updateStaff(form.value).subscribe(
-    (result) => {
-      console.log("result" + result);
-      this.resetform(form);
-      this.staffService.bindStaff();
-      
-    }
-  );
-  window.location.reload();
-}
+      }
+    );
+    window.location.reload();
+  }
 }

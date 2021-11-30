@@ -1,4 +1,5 @@
-<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" method="post">
+    <h2 class="text-center">Staff Registration</h2>
     <!--staff id-->
     <input type="hidden" name="StaffId" [ngModel]="staffService.formData.StaffId" />
 
@@ -35,7 +36,7 @@
 
         <label>Experience</label>
         <input name="Experience" #Experience="ngModel" [ngModel]="staffService.formData.Experience" class="form-control"
-             minlength="1" maxlength="2" required placeholder="Add Years"
+            minlength="1" maxlength="2" required placeholder="Add Years"
             [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
 
     </div>
@@ -67,27 +68,27 @@
         </div>
     </div>
 
-<!--Department-->
-<div class="form-group">
+    <!--Department-->
+    <div class="form-group">
 
-    <label class="col-md-4">Department</label>
+        <label class="col-md-4">Department</label>
 
-    <select name="DepartmentId" id="DepartmentId" class="form-control" #DepartmentId="ngModel" required
-        [(ngModel)]="staffService.formData.DepartmentId"
-        [ngClass]="{'is-invalid':DepartmentId.touched && DepartmentId.invalid}">
+        <select name="DepartmentId" id="DepartmentId" class="form-control" #DepartmentId="ngModel" required
+            [(ngModel)]="staffService.formData.DepartmentId"
+            [ngClass]="{'is-invalid':DepartmentId.touched && DepartmentId.invalid}">
 
-        <option value=0 disabled>Choose Department</option>
-        <option *ngFor="let dept of staffService.departments" value="{{dept.DepartmentId}}">{{dept.DepartmentName}}
-        </option>
+            <option value=0 disabled>Choose Department</option>
+            <option *ngFor="let dept of staffService.departments" value="{{dept.DepartmentId}}">{{dept.DepartmentName}}
+            </option>
 
 
-    </select>
-    <div class="validation-error" *ngIf="DepartmentId.touched && DepartmentId.invalid">
+        </select>
+        <div class="validation-error" *ngIf="DepartmentId.touched && DepartmentId.invalid">
 
-        <div *ngIf="Department.errors.required">
-            Department is required</div>
+            <div *ngIf="Department.errors.required">
+                Department is required</div>
+        </div>
     </div>
-</div>
 
     <!--Is Active-->
     <div class="form-group">
