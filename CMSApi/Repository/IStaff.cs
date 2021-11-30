@@ -25,7 +25,7 @@ namespace CMSApi.Repository
         Task<Staffs> UpdateStaff(Staffs staff);
         //GetallStaffs
 
-        Task<StaffViewModel> GetStaffbyId(int id);
+        Task<StaffViewModel> GetStaffbyId();
 
 
     }
