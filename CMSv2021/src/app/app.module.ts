@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { PatientService } from './shared/patient.service';
+import { StaffListComponent } from './staffs/staff-list/staff-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PatientService } from './shared/patient.service';
     StaffsComponent,
     LoginComponent,
     HomeComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    StaffListComponent
     
   ],
   imports: [

@@ -1,60 +1,27 @@
 <div class="container">
     <div class="header">
-        <h5 class="text-center">
-            StaffName Details
-        </h5>
+        <h2 class="text-center">Staff Info</h2>
     </div>
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    FULL NAME
-                </th>
-                <th>
-                   Department
-                </th>
-                <th>
-                    Designation
-                </th>
-                <th>
-                    GENDER
-                </th>
-                <!--<th>
-                        Department
-                    </th>
-                    <th>
-                        Status
-                    </th>-->
-                <th>
-                    Action
-                </th>
-
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Date Of Join</th>
+                <th>Experience(Years)</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let staff of this.staffService.staff">
+
+            <tr *ngFor="let staff of staffService.staff">
                 <td>{{staff.StaffId}}</td>
                 <td>{{staff.StaffName}}</td>
-                <td>{{staff.Designation}}</td>
-
-                <!--<td>{{emp.DepartmentId}}</td>
-                    <td >{{emp.IsActive}}</td>-->
+                <td>{{staff.JoiningDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{staff.Experience}}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-danger"
-                        (click)="deleteEmployee(staff.StaffId)">Delete</button>&nbsp;
-                    <button (click)="updatePatient(staff.StaffId)" class="btn btn-sm btn-info"
-                        style="margin-left:10px">Edit</button>
+                    <button class="btn btn-sm btn-info" (click)="updateStaffRecord(staff.StaffId)">Edit</button>
                 </td>
-
             </tr>
         </tbody>
-
-
-
     </table>
-
 </div>

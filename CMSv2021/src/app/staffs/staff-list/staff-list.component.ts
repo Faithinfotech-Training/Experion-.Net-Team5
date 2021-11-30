@@ -10,13 +10,18 @@ import { StaffService } from 'src/app/shared/staff.service';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent implements OnInit {
+  //assign default page
 
-  constructor(public staffService: StaffService ,private router: Router) { }
+  page: number = 1;
+
+  filter: string;
+  constructor(public staffService: StaffService, private router: Router) { }
 
   ngOnInit(): void {
     this.staffService.bindStaff();
   }
   //populate form by clicking the coloum
+
 
   populateForm(staff: Staff) {
     console.log(staff);
@@ -29,20 +34,22 @@ export class StaffListComponent implements OnInit {
   }
 
 
-  
+  //update staff
 
-  
-//update staff
+  updateStaffRecord(staffId: number) {
 
-updateStaff(StaffId: number) {
+    console.log(staffId);
 
-  console.log(StaffId);
+    this.router.navigate(['staff', staffId]);
 
-  this.router.navigate(['Staff', StaffId]);
-
+  }
 
 }
 
-}
+
+
+
+
+
 
 

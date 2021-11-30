@@ -30,7 +30,7 @@ export class StaffService {
   }
 
   bindStaff() {
-    this.httpClient.get(environment.apiUrl + "/api/staff/getstaffByid")
+    this.httpClient.get(environment.apiUrl + "/api/staff/getstaff")
       .toPromise().then(response =>
         this.staff = response as Staff[])
 
@@ -45,10 +45,10 @@ export class StaffService {
     return this.httpClient.put(environment.apiUrl + "/api/staff/UpdateStaff", staff);
 
   }
-  //get employee by id
-//getStaffById(staffId:number):Observable<any>
-//{
-  //return this.httpClient.get(environment.apiUrl+"/api/staff/GetstaffById?id="+staffId);
+    //get employee by id
+  getStaffById(staffId:number):Observable<any>
+{
+  return this.httpClient.get(environment.apiUrl+"/api/staff/GetstaffById?id="+staffId);
 
-//}
+}
 }
