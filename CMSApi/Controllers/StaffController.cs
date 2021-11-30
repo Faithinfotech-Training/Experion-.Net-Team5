@@ -23,20 +23,20 @@ namespace CMSApi.Controllers
 
 
         //get staff
-        #region get staff
+        #region get All staff
 
         [HttpGet]
-        [Route("GetStaff")]
-        public async Task<IActionResult> GetStaff()
+        [Route("GetStaffbyId")]
+        public async Task<IActionResult> GetStaffbyId(int id)
         {
             try
             {
-                var products = await postRepository.GetStaff();
-                if (products == null)
+                var staff = await postRepository.GetStaffbyId(id);
+                if (staff == null)
                 {
                     return NotFound();
                 }
-                return Ok(products);
+                return Ok(staff);
             }
             catch (Exception)
             {
@@ -46,6 +46,74 @@ namespace CMSApi.Controllers
 
 
         }
+
+        [HttpGet]
+        [Route("GetStaff")]
+        public async Task<IActionResult> GetStaff()
+        {
+            try
+            {
+                var staff = await postRepository.GetStaff();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+
+        }
+        //get department
+        [HttpGet]
+        [Route("GetDepartment")]
+        public async Task<IActionResult> GetDepartment()
+        {
+            try
+            {
+                var staff = await postRepository.GetDepartment();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+
+        }
+
+        //get designation
+        [HttpGet]
+        [Route("GetDesignation")]
+        public async Task<IActionResult> GetDesignation()
+        {
+            try
+            {
+                var staff = await postRepository.GetDesignation();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+
+        }
+
 
 
         #endregion
