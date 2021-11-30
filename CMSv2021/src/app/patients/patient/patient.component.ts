@@ -72,7 +72,7 @@ export class PatientComponent implements OnInit {
     {
       console.log(result);
       this.resetform(form);
-      //this.toastrService.success('Course record has been inserted','CRM appv2021');
+     
      
     }
     );

@@ -29,7 +29,9 @@ import { PatientService } from './shared/patient.service';
     PatientComponent,
     PatientListComponent,
     StaffsComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    AppointmentComponent
     
   ],
   imports: [
@@ -43,7 +45,7 @@ import { PatientService } from './shared/patient.service';
 
   ],
   providers: [
-    StaffService,AuthService,AuthGuard
+    StaffService,AuthService,AuthGuard,PatientService
   ],
   bootstrap: [AppComponent]
 })
