@@ -12,6 +12,10 @@ import { PatientListComponent } from './patients/patient-list/patient-list.compo
 import { StaffsComponent } from './staffs/staffs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StaffService } from './shared/staff.service';
+import { AuthService } from './shared/auth.service';
+import {AuthGuard} from './shared/auth.guard';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,15 +27,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PatientListComponent,
     StaffsComponent,
     LoginComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
+
   ],
-  providers: [],
+  providers: [
+    StaffService,AuthService,AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

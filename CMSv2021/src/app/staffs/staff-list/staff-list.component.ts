@@ -18,20 +18,23 @@ export class StaffListComponent implements OnInit {
   }
   //populate form by clicking the coloum
 
-  populateForm(emp: Staff) {
-    console.log(emp);
+  populateForm(staff: Staff) {
+    console.log(staff);
 
     //date format
     var datePipe = new DatePipe("en-uk");
-    let formatedDate: any = datePipe.transform(emp.JoiningDate, 'yyy-MM-dd');
-    emp.JoiningDate = formatedDate
-    this.staffService.formData = Object.assign({}, emp);
-
+    let formatedDate: any = datePipe.transform(staff.JoiningDate, 'yyy-MM-dd');
+    staff.JoiningDate = formatedDate
+    this.staffService.formData = Object.assign({}, staff);
   }
 
-//update employee
 
-updateEmployee(StaffId: number) {
+  
+
+  
+//update staff
+
+updateStaff(StaffId: number) {
 
   console.log(StaffId);
 

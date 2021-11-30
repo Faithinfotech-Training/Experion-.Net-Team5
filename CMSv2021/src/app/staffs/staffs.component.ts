@@ -10,21 +10,11 @@ import { Staff } from '../shared/staff';
 })
 export class StaffsComponent implements OnInit {
 
-  constructor(public staffService: StaffService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.staffService.bindStaff();
-  }
-  //populate form by clicking the coloum
-
-  populateForm(staff: Staff) {
-    console.log(staff);
-
-    //date format
-    var datePipe = new DatePipe("en-uk");
-    let formatedDate: any = datePipe.transform(staff.JoiningDate, 'yyy-MM-dd');
-    staff.JoiningDate = formatedDate
-    this.staffService.formData = Object.assign({}, staff);
+   
+ 
 
 }
 

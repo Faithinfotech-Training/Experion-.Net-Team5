@@ -1,16 +1,10 @@
 <div class="container">
     <div class="header">
         <h5 class="text-center">
-            Staff Details
+            StaffName Details
         </h5>
-        <!--Search 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search here .."
-            [(ngModel)]="filter"/>
-
-        </div>-->
     </div>
-    <!--<a [routerLink]="['Staff']" class="btn btn-primary">Add Staff</a>-->
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -18,13 +12,16 @@
                     ID
                 </th>
                 <th>
-                    Full Name
+                    FULL NAME
+                </th>
+                <th>
+                   Department
                 </th>
                 <th>
                     Designation
                 </th>
                 <th>
-                    Join Date
+                    GENDER
                 </th>
                 <!--<th>
                         Department
@@ -39,18 +36,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr
-                *ngFor="let emp of this.empService.employees|filter :filter| paginate:{itemsPerPage: 3,currentPage: page}">
-                <td (click)="populateForm(staff)">{{Staff.StaffId}}</td>
-                <td (click)="populateForm(staff)">{{Staff.StaffName}}</td>
-                <td (click)="populateForm(staff)">{{staff.Designation}}</td>
-                <td (click)="populateForm(staff)">{{staff.JoiningDate|date:'dd-MM-yyyy'}}</td>
+            <tr *ngFor="let staff of this.staffService.staff">
+                <td>{{staff.StaffId}}</td>
+                <td>{{staff.StaffName}}</td>
+                <td>{{staff.Designation}}</td>
+
                 <!--<td>{{emp.DepartmentId}}</td>
                     <td >{{emp.IsActive}}</td>-->
                 <td>
-                    <!-- <button class="btn btn-sm btn-outline-danger" (click)="deleteEmployee(emp.EmployeeId)">Delete</button>&nbsp;-->
-                    <button class="btn btn-sm btn-info" style="margin-left:10px"
-                        (click)="updateEmployee(emp.EmployeeId)">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger"
+                        (click)="deleteEmployee(staff.StaffId)">Delete</button>&nbsp;
+                    <button (click)="updatePatient(staff.StaffId)" class="btn btn-sm btn-info"
+                        style="margin-left:10px">Edit</button>
                 </td>
 
             </tr>
@@ -59,4 +56,5 @@
 
 
     </table>
+
 </div>
