@@ -12,6 +12,10 @@ import { PatientListComponent } from './patients/patient-list/patient-list.compo
 import { StaffsComponent } from './staffs/staffs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { PatientService } from './shared/patient.service';
 
 @NgModule({
   declarations: [
@@ -22,16 +26,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PatientComponent,
     PatientListComponent,
     StaffsComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

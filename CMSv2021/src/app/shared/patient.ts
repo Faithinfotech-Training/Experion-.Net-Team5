@@ -1,7 +1,7 @@
 export class Patient {
-    PatientId : number=0;
+    PatientId : number=1;
     PatientName: string='';
-    Contact : number=0;
+    Contact : number;
     Address : string='';
     Gender : string ='';
     IsActive:boolean=false;

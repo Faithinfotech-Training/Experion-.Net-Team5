@@ -2,10 +2,12 @@
     <!--patient id-->
     <input type="hidden" name="PatientId" [ngModel]="patientService.formData.PatientId" />
 
+    <h1 align="center"><b> REGISTER HERE</b></h1>
+
     <!--patient name-->
     <div class="form-group">
 
-        <label>Full Name</label>
+        <label><b>Full Name</b></label>
         <input name="PatientName" #PatientName="ngModel" [ngModel]="patientService.formData.PatientName"
             class="form-control" placeholder="Enter full name" minlength="10" maxlength="25" required
             [ngClass]="{'is-invalid':PatientName.touched && PatientName.invalid}" />
@@ -15,10 +17,11 @@
                 Full Name is required</div>
         </div>
     </div>
+    <br>
     <!--contact-->
     <div class="form-group">
 
-        <label>Contact</label>
+        <label><b>Contact</b></label>
         <input name="Contact" #Contact="ngModel" [ngModel]="patientService.formData.Contact"
             class="form-control" placeholder="Enter Contact" minlength="10" maxlength="25" required
             [ngClass]="{'is-invalid':Contact.touched && Contact.invalid}" />
@@ -28,10 +31,11 @@
                 Contact is required</div>
         </div>
     </div>
+    <br>
     <!--Address-->
     <div class="form-group">
 
-        <label>Address</label>
+        <label><b>Address</b></label>
         <input name="Address" #Address="ngModel" [ngModel]="patientService.formData.Address"
             class="form-control" placeholder="Enter Address" minlength="10" maxlength="25" required
             [ngClass]="{'is-invalid':Address.touched && Address.invalid}" />
@@ -41,28 +45,29 @@
                 Address is required</div>
         </div>
     </div>
-    
+    <br>
     <!--Gender-->
     <div class="form-group">
-        <label>Gender</label>
+        <label><b>Gender</b></label>
         <input type="radio" value="male" name="Gender" required #Gender="ngModel" [ngModel]="patientService.formData.Gender" class="form-check-input"> Male
         <input type="radio" value="female" name="Gender"required #Gender="ngModel" [ngModel]="patientService.formData.Gender" class="form-check-input"> Female
-        <div *ngIf="gender.invalid"> 
+        <div *ngIf="Gender.invalid"> 
             Gender is required. 
         </div>  
     </div>
+    <br>
     <!--Is Active-->
     <div class="form-group">
         <div class="form-check">
-            <label class="form-check-label">Is active </label>
+            <label class="form-check-label"><b>Is active</b> </label>
             <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel"
                 [(ngModel)]="patientService.formData.IsActive" class="form-check-input">
         </div>
     </div>
-
+    <br>
     <!--submit button-->
     <br>
-    <div class="form-group">
+    <div class="form-group" >
         <button type="submit" [disabled]="!(form.valid && form.dirty)"
             class="btn btn-lg btn-primary form-control">Submit</button>
     </div>
