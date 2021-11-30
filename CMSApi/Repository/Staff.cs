@@ -1,4 +1,5 @@
 ﻿using CMSApi.Models;
+using CMSApi.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace CMSApi.Repository
 {
     public class Staff : IStaff
     {
-        DBClinicContext _db;
+        private DBClinicContext _db;
         public Staff(DBClinicContext db)
         {
             _db = db;
@@ -27,7 +28,7 @@ namespace CMSApi.Repository
 
         }
         //add Staff
-        #region
+        #region Add Staff
         public async Task<Staffs> Addstaff(Staffs staff)
         {
             //--- member function to add department ---//
@@ -62,7 +63,61 @@ namespace CMSApi.Repository
         //--- member function to add values to room table ---//
 
 
-       
+
+        #region GetAllStaff
+        public async Task<StaffViewModel> GetStaffbyId(int id)
+        {
+            if (_db != null)
+            {
+                return await (from c in _db.Departments
+                              join s in _db.Staffs
+                              on c.DepartmentId equals s.DepartmentId
+                              join d in _db.Designations
+                              on s.DesignationId equals d.DesignationId
+                              where d.DesignationId == id
+                              select new StaffViewModel
+                              {
+                                  StaffId = s.StaffId,
+                                  StaffName = s.StaffName,
+                                  DepartmentId = c.DepartmentId,
+                                  JoiningDate = s.JoiningDate,
+                                  Experience = s.Experience,
+                                  IsActive=s.IsActive,
+                                  Designation = d.Designation,
+                                  DepartmentName = c.DepartmentName,
+                                  DesignationId=d.DesignationId
+                                  
+                              }).FirstOrDefaultAsync();
+            }
+            return null;
+        }
+        #endregion
+
+        //get Department
+        public async Task<List<Departments>> GetDepartment()
+        {
+            if (_db != null)
+            {
+                return await _db.Departments.ToListAsync();
+            }
+            return null;
+
+
+
+        }
+
+        //get Designation
+        public async Task<List<Designations>> GetDesignation()
+        {
+            if (_db != null)
+            {
+                return await _db.Designations.ToListAsync();
+            }
+            return null;
+
+
+
+        }
 
 
 
