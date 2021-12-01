@@ -1,4 +1,5 @@
 ﻿using CMSApi.Models;
+using CMSApi.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,18 @@ namespace CMSApi.Repository
         }
         #endregion
 
+        #region
+        public async Task<List<Departments>> GetDepartments()
+        {
+
+            if (db != null)
+            {
+                return await db.Departments.ToListAsync();
+            }
+            return null;
+        }
+        #endregion
+
         #region Add Doctors
         public async Task<int> AddDoctor(Doctors doc)
         {
@@ -54,6 +67,55 @@ namespace CMSApi.Repository
 
             }
 
+        }
+        #endregion
+        public async Task<List<DoctorViewModel>> GetAllDoctors()
+        {
+            if (db != null)
+            {
+                //linq
+                //join doctors and department
+                return await (from p in db.Doctors
+                              from c in db.Departments
+                              where p.DepartmentId == c.DepartmentId
+                              select new DoctorViewModel
+                              {
+                                  DoctorId = p.DoctorId,
+                                  DoctorName = p.DoctorName,
+                                  Specialization = p.Specialization,
+                                  Contact = p.Contact,
+                                  Experience = p.Experience,
+                                  JoiningDate = p.JoiningDate,
+                                  IsActive = p.IsActive,
+                                  DepartmentName = c.DepartmentName
+                              }
+                ).ToListAsync();
+            }
+            return null;
+        }
+        #region GetEmployeeByID
+        public async Task<DoctorViewModel> GetDoctor(int id)
+        {
+            if (db != null)
+            {
+                //LINQ
+                return await (from p in db.Doctors
+                              from c in db.Departments
+                              where p.DoctorId == id
+                              select new DoctorViewModel
+                              {
+                                  DoctorId = p.DoctorId,
+                                  DoctorName = p.DoctorName,
+                                  Specialization = p.Specialization,
+                                  Contact = p.Contact,
+                                  Experience = p.Experience,
+                                  JoiningDate = p.JoiningDate,
+                                  IsActive = p.IsActive,
+                                  DepartmentId = c.DepartmentId,
+
+                              }).FirstOrDefaultAsync();
+            }
+            return null;
         }
         #endregion
     }

@@ -23,7 +23,7 @@ namespace CMSApi.Controllers
         }
 
         #region
-        //Get all doctors
+        //Get  doctors
         [HttpGet]
         [Route("GetDoctors")]
         public async Task<ActionResult<IEnumerable<Doctors>>> GetDoctors()
@@ -32,10 +32,9 @@ namespace CMSApi.Controllers
 
             try
             {
-                // var categories = await context.Category.Include(c => c.Post).Where(c=>c.Post!=null).ToList();
+
                 var doctors = await doctorRepository.GetDoctors();
-                // var categories = await context.Category.Include(d => d.Post).ToList();
-                //.Include(d => d.Category).Tolist(GetCategories);
+
                 if (doctors == null)
                 {
                     return NotFound();
@@ -50,8 +49,35 @@ namespace CMSApi.Controllers
 
         }
         #endregion
+        #region
+        //Get all departments
+        [HttpGet]
+        [Route("GetDepartments")]
+        public async Task<ActionResult<IEnumerable<Departments>>> GetDepartments()
+        {
 
-        #region Add a new post
+
+            try
+            {
+
+                var dept = await doctorRepository.GetDepartments();
+
+                if (dept == null)
+                {
+                    return NotFound();
+                }
+                return Ok(dept);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+        }
+        #endregion
+
+        #region Add a new doctor
         [HttpPost]
         [Route("AddDoctor")]
         public async Task<IActionResult> AddDoctor([FromBody] Doctors model)
@@ -101,5 +127,54 @@ namespace CMSApi.Controllers
             return BadRequest();
         }
         #endregion
+
+        #region View all doctors
+        [HttpGet]
+        [Route("GetAllDoctors")]
+        public async Task<IActionResult> GetAllDoctors()
+        {
+            try
+            {
+                var doctor = await doctorRepository.GetAllDoctors();
+                if (doctor == null)
+                {
+                    return NotFound();
+                }
+                return Ok(doctor);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        #endregion
+
+        #region
+
+        // [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetDoctorById")]
+        public async Task<IActionResult> GetDoctor(int id)
+        {
+            try
+            {
+                var doctor = await doctorRepository.GetDoctor(id);
+                if (doctor != null)
+                {
+                    return Ok(doctor);
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+#endregion
+
     }
 }
