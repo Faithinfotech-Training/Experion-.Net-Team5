@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StaffComponent } from './staffs/staff/staff.component';
@@ -15,10 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffService } from './shared/staff.service';
 import { AuthService } from './shared/auth.service';
 import {AuthGuard} from './shared/auth.guard';
-import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { PatientService } from './shared/patient.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StaffListComponent } from './staffs/staff-list/staff-list.component';
 
 @NgModule({
@@ -36,12 +38,14 @@ import { StaffListComponent } from './staffs/staff-list/staff-list.component';
   ],
   imports: [
     BrowserModule,
-    CommonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
 
   ],
   providers: [

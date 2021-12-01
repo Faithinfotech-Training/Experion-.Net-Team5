@@ -12,9 +12,9 @@ import { StaffService } from 'src/app/shared/staff.service';
 export class StaffListComponent implements OnInit {
   //assign default page
 
-  page: number = 1;
-
+  page: number = 0;
   filter: string;
+  
   constructor(public staffService: StaffService, private router: Router) { }
 
   ngOnInit(): void {
