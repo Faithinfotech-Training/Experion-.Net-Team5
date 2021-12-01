@@ -22,6 +22,7 @@ export class StaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.staffId = this.route.snapshot.params['staffId'];
+    this.resetform();
     this.staffService.bindCmdDepartment();
     this.staffService.bindCmdDesignation();
     if (this.staffId != 0 || this.staffId != null) {
