@@ -14,6 +14,7 @@ namespace CMSApi.ViewModel
         public string Contact { get; set; }
         public string Experience { get; set; }
         public DateTime JoiningDate { get; set; }
+        public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
     }
 }

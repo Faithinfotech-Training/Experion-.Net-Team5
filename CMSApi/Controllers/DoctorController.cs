@@ -77,7 +77,7 @@ namespace CMSApi.Controllers
         }
         #endregion
 
-        #region Add a new post
+        #region Add a new doctor
         [HttpPost]
         [Route("AddDoctor")]
         public async Task<IActionResult> AddDoctor([FromBody] Doctors model)
@@ -149,5 +149,32 @@ namespace CMSApi.Controllers
         }
 
         #endregion
+
+        #region
+
+        // [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetDoctorById")]
+        public async Task<IActionResult> GetDoctor(int id)
+        {
+            try
+            {
+                var doctor = await doctorRepository.GetDoctor(id);
+                if (doctor != null)
+                {
+                    return Ok(doctor);
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+#endregion
+
     }
 }

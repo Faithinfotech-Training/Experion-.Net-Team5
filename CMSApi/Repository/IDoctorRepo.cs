@@ -11,6 +11,7 @@ namespace CMSApi.Repository
     {
         //Asynchronous operation
         Task<List<Doctors>> GetDoctors();
+       // Task<DoctorViewModel> GetDoctor(int id);
 
         //add doctor
         Task<int> AddDoctor(Doctors doc);
@@ -21,5 +22,7 @@ namespace CMSApi.Repository
         //get all doctors
         Task<List<DoctorViewModel>> GetAllDoctors();
         Task<List<Departments>> GetDepartments();
+
+        Task<DoctorViewModel> GetDoctor(int id);
     }
 }
