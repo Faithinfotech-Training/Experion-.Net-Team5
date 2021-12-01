@@ -8,10 +8,8 @@ namespace CMSApi.Models
         public int PrescribedTestId { get; set; }
         public string PrescribedTestName { get; set; }
         public bool? IsActive { get; set; }
-        public int? TestId { get; set; }
-        public int? PatientId { get; set; }
+        public int? PrescriptionId { get; set; }
 
-        public virtual Patients Patient { get; set; }
-        public virtual Tests Test { get; set; }
+        public virtual TblPrescription Prescription { get; set; }
     }
 }
