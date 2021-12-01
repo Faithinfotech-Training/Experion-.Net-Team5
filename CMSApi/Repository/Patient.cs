@@ -87,7 +87,7 @@ namespace CMSApi.Repository
         }
         #endregion
 
-        #region GetPatientDetails
+        /*#region GetPatientDetails
         public async Task<TestViewModel> GetPatientDetails(int id)
         {
             if (db != null)
@@ -122,7 +122,7 @@ namespace CMSApi.Repository
             }
             return null;
         }
-        #endregion
+        #endregion*/
 
         #region Get Patient By ID        
         public async Task<ActionResult<Patients>> GetPatientById(int patientId)

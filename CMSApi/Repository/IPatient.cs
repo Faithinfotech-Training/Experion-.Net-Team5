@@ -25,7 +25,7 @@ namespace CMSApi.Repository
         Task<PatientViewModel> GetPatient(int id);
 
         //get patientdetails
-        Task<TestViewModel> GetPatientDetails(int id);
+        //Task<TestViewModel> GetPatientDetails(int id);
 
         Task<ActionResult<Patients>> GetPatientById(int patientId);
 
