@@ -65,7 +65,7 @@ namespace CMSApi.Repository
 
 
         #region GetAllStaff
-        public async Task<StaffViewModel> GetStaffbyId()
+        public async Task<StaffViewModel> GetStaffbyId(int id)
         {
             if (_db != null)
             {
@@ -74,7 +74,7 @@ namespace CMSApi.Repository
                               on c.DepartmentId equals s.DepartmentId
                               join d in _db.Designations
                               on s.DesignationId equals d.DesignationId
-                              
+                              where s.StaffId == id
                               select new StaffViewModel
                               {
                                   StaffId = s.StaffId,

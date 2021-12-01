@@ -27,11 +27,11 @@ namespace CMSApi.Controllers
 
         [HttpGet]
         [Route("GetStaffbyId")]
-        public async Task<IActionResult> GetStaffbyId()
+        public async Task<IActionResult> GetStaffbyId(int id)
         {
             try
             {
-                var staff = await postRepository.GetStaffbyId();
+                var staff = await postRepository.GetStaffbyId(id);
                 if (staff == null)
                 {
                     return NotFound();
