@@ -74,7 +74,7 @@ namespace CMSApi.Repository
                               on c.DepartmentId equals s.DepartmentId
                               join d in _db.Designations
                               on s.DesignationId equals d.DesignationId
-                              where d.DesignationId == id
+                              where s.StaffId == id
                               select new StaffViewModel
                               {
                                   StaffId = s.StaffId,
