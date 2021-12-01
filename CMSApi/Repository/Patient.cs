@@ -1,5 +1,6 @@
 ﻿using CMSApi.Models;
 using CMSApi.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,6 @@ namespace CMSApi.Repository
         #endregion
 
         #region AddPatients
-
         //add patients
         public async Task<Patients> AddPatients(Patients patient)
         {
@@ -43,6 +43,7 @@ namespace CMSApi.Repository
             }
             return null;
         }
+
 
         #endregion
 
@@ -67,12 +68,12 @@ namespace CMSApi.Repository
         {
             if (db != null)
             {
-                return await (from p in db.Patients
+                return await (from d in db.Doctors
                               join c in db.Consultings
-                              on p.PatientId equals c.PatientId
-                              join d in db.Doctors
-                              on c.DoctorId equals d.DoctorId
-                              where d.DoctorId == id
+                              on d.DoctorId equals c.DoctorId
+                              join p in db.Patients
+                              on c.PatientId equals p.PatientId
+                              where p.PatientId == id
                               select new PatientViewModel
                               {
                                   PatientId = p.PatientId,
@@ -122,6 +123,19 @@ namespace CMSApi.Repository
             return null;
         }
         #endregion
+
+        #region Get Patient By ID        
+        public async Task<ActionResult<Patients>> GetPatientById(int patientId)
+        {
+            if (db != null)
+            {
+                Patients test = await db.Patients.FirstOrDefaultAsync(em => em.PatientId == patientId);
+                return test;
+            }
+            return null;
+        }
+        #endregion
+
     }
 }
 

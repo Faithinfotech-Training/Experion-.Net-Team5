@@ -1,5 +1,6 @@
 ﻿using CMSApi.Models;
 using CMSApi.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace CMSApi.Repository
 
         //get patientdetails
         Task<TestViewModel> GetPatientDetails(int id);
+
+        Task<ActionResult<Patients>> GetPatientById(int patientId);
 
 
 

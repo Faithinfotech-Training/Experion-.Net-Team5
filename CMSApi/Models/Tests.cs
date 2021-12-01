@@ -8,8 +8,6 @@ namespace CMSApi.Models
         public Tests()
         {
             Prescriptions = new HashSet<Prescriptions>();
-            Reports = new HashSet<Reports>();
-            Results = new HashSet<Results>();
             TestBills = new HashSet<TestBills>();
         }
 
@@ -19,12 +17,12 @@ namespace CMSApi.Models
         public DateTime? TestDate { get; set; }
         public string TestNames { get; set; }
         public bool IsActive { get; set; }
+        public int? NormalRange { get; set; }
+        public int? TestResult { get; set; }
 
         public virtual Consultings Consulting { get; set; }
         public virtual Patients Patient { get; set; }
         public virtual ICollection<Prescriptions> Prescriptions { get; set; }
-        public virtual ICollection<Reports> Reports { get; set; }
-        public virtual ICollection<Results> Results { get; set; }
         public virtual ICollection<TestBills> TestBills { get; set; }
     }
 }
