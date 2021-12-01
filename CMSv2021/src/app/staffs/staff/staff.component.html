@@ -1,1 +1,112 @@
-<p>staff works!</p>
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" >
+    <h2 class="text-center">Staff Registration</h2>
+    <!--staff id-->
+    <input type="hidden" name="StaffId" [ngModel]="staffService.formData.StaffId" />
+
+    <!--staff name-->
+    <div class="form-group">
+
+        <label>Full Name</label>
+        <input name="StaffName" #StaffName="ngModel" [ngModel]="staffService.formData.StaffName" class="form-control"
+            placeholder="Enter full name" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid':StaffName.touched && StaffName.invalid}" />
+
+    </div>
+    <div class="validation-error" *ngIf="StaffName.touched && StaffName.invalid">
+
+        <div *ngIf="StaffName.errors.required">
+            First Name is required</div>
+    </div>
+
+    <!--DateOfJoining-->
+    <div class="form-group">
+
+        <label>Date Of Joining</label>
+        <input type="date" name="JoiningDate" id="JoiningDate" #JoiningDate="ngModel"
+            [ngModel]="staffService.formData.JoiningDate" class="form-control" required
+            [ngClass]="{'is-invalid':JoiningDate.touched && JoiningDate.invalid}" />
+        <div class="validation-error" *ngIf="JoiningDate.touched && JoiningDate.invalid">
+
+            <div *ngIf="JoiningDate.errors.required">
+                Date Of Joining is required</div>
+        </div>
+    </div>
+    <!--Experience-->
+    <div class="form-group">
+
+        <label>Experience</label>
+        <input name="Experience" #Experience="ngModel" [ngModel]="staffService.formData.Experience" class="form-control"
+            minlength="1" maxlength="2" required placeholder="Add Years"
+            [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
+
+    </div>
+    <div class="validation-error" *ngIf="Experience.touched && Experience.invalid">
+
+        <div *ngIf="Experience.errors.required">
+            Experience is required</div>
+    </div>
+
+    <!--Designation-->
+    <div class="form-group">
+
+        <label class="col-md-4">Designation</label>
+
+        <select name="DesignationId" id="DesignationId" class="form-control" #DesignationId="ngModel" required
+            [(ngModel)]="staffService.formData.DesignationId"
+            [ngClass]="{'is-invalid':DesignationId.touched && DesignationId.invalid}">
+
+            <option value=0 disabled>Choose Designation</option>
+            <option *ngFor="let des of staffService.designation" value="{{des.DesignationId}}">{{des.Designation}}
+            </option>
+
+
+        </select>
+        <div class="validation-error" *ngIf="DesignationId.touched && DesignationId.invalid">
+
+            <div *ngIf="Designation.errors.required">
+                Designation is required</div>
+        </div>
+    </div>
+
+    <!--Department-->
+    <div class="form-group">
+
+        <label class="col-md-4">Department</label>
+
+        <select name="DepartmentId" id="DepartmentId" class="form-control" #DepartmentId="ngModel" required
+            [(ngModel)]="staffService.formData.DepartmentId"
+            [ngClass]="{'is-invalid':DepartmentId.touched && DepartmentId.invalid}">
+
+            <option value=0 disabled>Choose Department</option>
+            <option *ngFor="let dept of staffService.departments" value="{{dept.DepartmentId}}">{{dept.DepartmentName}}
+            </option>
+
+
+        </select>
+        <div class="validation-error" *ngIf="DepartmentId.touched && DepartmentId.invalid">
+
+            <div *ngIf="Department.errors.required">
+                Department is required</div>
+        </div>
+    </div>
+
+    <!--Is Active-->
+    <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">Is active </label>
+            <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
+                [(ngModel)]="staffService.formData.IsActive" class="form-check-input">
+        </div>
+    </div>
+
+    <!--submit button-->
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">Submit</button>
+    </div>
+
+
+
+
+</form>

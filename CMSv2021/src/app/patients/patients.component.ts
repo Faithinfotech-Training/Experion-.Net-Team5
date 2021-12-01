@@ -11,5 +11,6 @@ export class PatientsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
