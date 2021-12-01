@@ -1,15 +1,29 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  //CREATE A CONSTRUCTOR
+  constructor(private authService:AuthService,
+    private router:Router){}
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    next: ActivatedRouteSnapshot): boolean  {
+      //expected role anad current role
+      //excepted role from routes & current role from login
+      const expectedRole = next.data.role;
+      const currentRole=localStorage.getItem('ACCESS_ROLE');
+
+      //check the condition
+      if(currentRole!== expectedRole){
+        this.router.navigateByUrl('login');
+        return false;
+      }
     return true;
-  }
+    }
+    
   
 }

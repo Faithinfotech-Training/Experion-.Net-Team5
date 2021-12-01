@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StaffComponent } from './staffs/staff/staff.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { PatientsComponent } from './patients/patients.component';
 import { PatientComponent } from './patients/patient/patient.component';
@@ -12,6 +12,15 @@ import { PatientListComponent } from './patients/patient-list/patient-list.compo
 import { StaffsComponent } from './staffs/staffs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor/doctor.component';
+import { DoctorListComponent } from './doctors/doctor-list/doctor-list.component';
+import { DoctorService } from './shared/doctor.service';
+import { AuthService } from './shared/auth.service';
+import { AuthGuard } from './shared/auth.guard';
+import{AuthInterceptor} from './shared/auth.interceptor';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -22,16 +31,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PatientComponent,
     PatientListComponent,
     StaffsComponent,
-    LoginComponent
+    LoginComponent,
+    DoctorsComponent,
+    DoctorComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [DoctorService,AuthService,AuthGuard,{
+
+    provide:HTTP_INTERCEPTORS,
+
+    useClass:AuthInterceptor,
+
+    multi:true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

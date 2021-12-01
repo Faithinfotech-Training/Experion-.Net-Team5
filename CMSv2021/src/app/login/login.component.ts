@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { Users} from '../shared/Users';
+import { Jwtresponse} from '../shared/jwtresponse';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ loginForm:FormGroup;
 isSubmitted=false;
 loginUser:Users=new Users();
 error="";
-
+jwtResponse: any =new Jwtresponse();
 
   constructor(private formBuilder:FormBuilder,
     private router:Router,private authService:AuthService) { }
@@ -48,39 +49,58 @@ if(this.loginForm.invalid)
 
   //valid
   if(this.loginForm.valid){
-    //calling method from Authservice-Authorization
-    this.authService.getUserByPassword(this.loginForm.value).subscribe(
+    //calling method from Authservice-Authorization and authentication
+   // this.authService.getUserByPassword(this.loginForm.value).subscribe(
+   // this.authService.loginVerify(this.loginForm.value).subscribe(
+    //this.authService.console.log();
+    this.authService.getTokenByPassword
+    (this.loginForm.value).subscribe(
       data=>{
         console.log(data);
-      
+         //token with roleid and name
+         this.jwtResponse=data;
+
+          localStorage.setItem("token",this.jwtResponse.token);// adding token to the local storage
+
+          sessionStorage.setItem("token",this.jwtResponse.token);
         //check the role -- based on it redirect our application
 
-        if(data.RoleId ===1){
+        if(this.jwtResponse.RoleId ===1){
 
           //logged as Admin
 
           console.log("Admin");
           //storing in localStorage/sessionstorage
-          localStorage.setItem("username",data.UserName);
-          localStorage.setItem("ACCESS_ROLE",data.RoleId.toString());
-          sessionStorage.setItem("username",data.Username);
-         // this.router.navigateByUrl('/admin');
+          localStorage.setItem("username",this.jwtResponse.UserName);
+          localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
+          sessionStorage.setItem("username",this.jwtResponse.Username);
+          this.router.navigateByUrl('/admin');
 
         }
 
-        else if(data.RoleId ===2){
+        else if(this.jwtResponse.RoleId ===2){
 
           //logged as Admin
 
-          console.log("User");
-          localStorage.setItem("username",data.UserName);
-          localStorage.setItem("ACCESS_ROLE",data.RoleId.toString());
-          sessionStorage.setItem("username",data.Username);
-          this.router.navigateByUrl('/users');
+          console.log("Doctor");
+          localStorage.setItem("username",this.jwtResponse.UserName);
+          localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
+          sessionStorage.setItem("username",this.jwtResponse.Username);
+          this.router.navigateByUrl('/doctorlist');
 
         }
 
-        
+        else if(this.jwtResponse.roleId ===3){
+
+          //logged as user
+
+          console.log("User");
+          localStorage.setItem("username",this.jwtResponse.UserName);
+          localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
+          sessionStorage.setItem("username",this.jwtResponse.Username);
+          this.router.navigateByUrl('/employee');
+
+        }
 
         else{
 

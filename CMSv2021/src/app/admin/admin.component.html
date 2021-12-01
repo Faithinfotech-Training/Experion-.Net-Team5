@@ -1,1 +1,18 @@
-<p>admin works!</p>
+<header>
+    <div class="container">
+        <h5>Welcome:{{loggedUserName}}</h5>
+    </div>
+    <nav>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink='../attendance'>Attendance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink='../reports'>Reports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="logout()" router>Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
