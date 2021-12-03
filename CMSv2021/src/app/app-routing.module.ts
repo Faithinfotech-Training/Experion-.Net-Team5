@@ -10,6 +10,7 @@ import { PatientComponent } from './patients/patient/patient.component';
 import { HomeComponent } from './home/home.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { PatientListComponent } from './patients/patient-list/patient-list.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:"/login",pathMatch:'full'},
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path:'doctor',component:DoctorComponent},
   {path:'doctorlist',component:DoctorListComponent},
   {path:'doctor/:docId',component:DoctorComponent},
-  {path:'admin',component:AdminComponent},
+  {path:'admin',component:AdminComponent,canActivate:[AuthGuard],data:{role:'1'}},
   { path: 'staff', component: StaffComponent },
   { path: 'stafflist', component: StaffListComponent },
   { path: 'staff/:staffId', component: StaffComponent },

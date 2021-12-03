@@ -2,17 +2,19 @@
     <!--patient id-->
     <input type="hidden" name="PatientId" [ngModel]="patientService.formData.PatientId" />
 
-    <h1 align="center"><b> REGISTER HERE</b></h1>
+    <h1 align ="center"><b> REGISTER HERE</b></h1>
 
     <!--patient name-->
     <div class="form-group">
 
         <label><b>Full Name</b></label>
         <input name="PatientName" #PatientName="ngModel" [ngModel]="patientService.formData.PatientName"
-            class="form-control" placeholder="Enter full name" minlength="10" maxlength="25" required
+            class="form-control" placeholder="Enter full name" minlength="10" maxlength="25"[pattern]="namePattern" required
             [ngClass]="{'is-invalid':PatientName.touched && PatientName.invalid}" />
         <div class="validation-error" *ngIf="PatientName.touched && PatientName.invalid">
-
+            <div *ngIf="PatientName.errors.pattern">
+                 Name is not valid.
+           </div>
             <div *ngIf="PatientName.errors.required">
                 Full Name is required</div>
         </div>
@@ -23,10 +25,12 @@
 
         <label><b>Contact</b></label>
         <input name="Contact" #Contact="ngModel" [ngModel]="patientService.formData.Contact"
-            class="form-control" placeholder="Enter Contact" minlength="10" maxlength="25" required
+            class="form-control" placeholder="Enter Contact" minlength="8" maxlength="25" [pattern]="mobNumberPattern" required
             [ngClass]="{'is-invalid':Contact.touched && Contact.invalid}" />
         <div class="validation-error" *ngIf="Contact.touched && Contact.invalid">
-
+            <div *ngIf="Contact.errors.pattern">
+                Mobile number is not valid.
+            </div>
             <div *ngIf="Contact.errors.required">
                 Contact is required</div>
         </div>

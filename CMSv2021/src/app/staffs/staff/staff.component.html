@@ -8,14 +8,16 @@
 
         <label>Full Name</label>
         <input name="StaffName" #StaffName="ngModel" [ngModel]="staffService.formData.StaffName" class="form-control"
-            placeholder="Enter full name" minlength="10" maxlength="25" required
+            placeholder="Enter full name" minlength="10" maxlength="25" [pattern]="namePattern" required
             [ngClass]="{'is-invalid':StaffName.touched && StaffName.invalid}" />
 
     </div>
     <div class="validation-error" *ngIf="StaffName.touched && StaffName.invalid">
-
+        <div *ngIf="StaffName.errors.pattern">
+             Please enter a valid name
+       </div>
         <div *ngIf="StaffName.errors.required">
-            First Name is required</div>
+             Name is required</div>
     </div>
 
     <!--DateOfJoining-->
@@ -36,12 +38,14 @@
 
         <label>Experience</label>
         <input name="Experience" #Experience="ngModel" [ngModel]="staffService.formData.Experience" class="form-control"
-            minlength="1" maxlength="2" required placeholder="Add Years"
+            minlength="1" maxlength="2"[pattern]="decPattern" required placeholder="Add Years"
             [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
 
     </div>
     <div class="validation-error" *ngIf="Experience.touched && Experience.invalid">
-
+        <div *ngIf="Experience.errors.pattern">
+            Enter a valid number
+       </div>
         <div *ngIf="Experience.errors.required">
             Experience is required</div>
     </div>
@@ -99,12 +103,30 @@
         </div>
     </div>
 
-    <!--submit button-->
+<!--Submit-->
     <br>
-    <div class="form-group">
-        <button type="submit" [disabled]="!(form.valid && form.dirty)"
-            class="btn btn-lg btn-primary form-control">Submit</button>
-    </div>
+    <table>
+        <tr>
+            <td>
+                <div style="width:400px;" align="center">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-lg btn-primary ">
+                        Submit</button>
+                </div>
+            </td>
+            <td>
+                <div align="center">
+                    <button type="Cancel" routerLink="/admin" routerLinkActive="active"
+                        class="btn btn-lg  btn-danger">Cancel</button>
+                </div>
+            </td>
+            <td>
+                <div style="width:400px;"  align="center">
+                    <button type="Cancel" routerLink="/stafflist" routerLinkActive="active"
+                        class="btn btn-lg  btn-info">Staffs</button>
+                </div>
+            </td>
+        </tr>
+    </table>
 
 
 

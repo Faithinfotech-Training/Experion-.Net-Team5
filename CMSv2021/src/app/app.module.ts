@@ -27,6 +27,7 @@ import { PatientService } from './shared/patient.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StaffListComponent } from './staffs/staff-list/staff-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { StaffListComponent } from './staffs/staff-list/staff-list.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    RouterModule,
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,

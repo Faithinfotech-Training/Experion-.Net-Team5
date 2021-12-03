@@ -3,6 +3,7 @@ import {PatientService} from 'src/app/shared/patient.service';
 import { NgForm } from '@angular/forms';
 import { Patient } from 'src/app/shared/patient';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PatientComponent implements OnInit {
   patId:number;
   patient: Patient= new Patient();  
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+  namePattern="[a-zA-Z ]*";
   constructor(public patientService: PatientService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,9 +27,10 @@ export class PatientComponent implements OnInit {
       this.patientService.getPatient(this.patId).subscribe(
         data=>{
           console.log(data);
-          this,this.patientService.formData=data;
-           
-        this.patientService.formData=Object.assign({},data);
+          
+    
+              
+            
      
         },
         error=>
@@ -39,7 +43,7 @@ export class PatientComponent implements OnInit {
   onSubmit(form:NgForm){
     console.log(form.value);
     let addId =this.patientService.formData.PatientId;
-   
+    //console.log("addid",+addId);
     if(addId==0||addId==null){
        //insert
       this.insertPatients(form);

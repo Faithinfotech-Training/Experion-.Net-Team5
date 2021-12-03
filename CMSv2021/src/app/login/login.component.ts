@@ -80,7 +80,7 @@ if(this.loginForm.invalid)
 
         else if(this.jwtResponse.RoleId ===2){
 
-          //logged as Admin
+          //logged as Doctor
 
           console.log("Doctor");
           localStorage.setItem("username",this.jwtResponse.UserName);
@@ -90,15 +90,15 @@ if(this.loginForm.invalid)
 
         }
 
-        else if(this.jwtResponse.roleId ===3){
+        else if(this.jwtResponse.RoleId ===3){
 
-          //logged as user
+          //logged as staff
 
-          console.log("User");
+          console.log("Staff");
           localStorage.setItem("username",this.jwtResponse.UserName);
           localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
           sessionStorage.setItem("username",this.jwtResponse.Username);
-          this.router.navigateByUrl('/employee');
+          this.router.navigateByUrl('/home');
 
         }
 

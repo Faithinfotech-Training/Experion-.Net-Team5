@@ -7,7 +7,8 @@
             [(ngModel)]="filter"/>
         </div>
     </div>
-    <a [routerLink]="['staff']" class="btn btn-primary">Add staff</a>
+    <a [routerLink]="['/staff']" style="float :right;" class="btn btn-primary">Add staff</a>
+    <a [routerLink]="['/admin']" class="btn btn-primary" style="float :left;margin-bottom:10px">Home</a>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -15,6 +16,8 @@
                 <th>Full Name</th>
                 <th>Date Of Join</th>
                 <th>Experience(Years)</th>
+                <th>Is Active</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +27,11 @@
                 <td>{{staff.StaffName}}</td>
                 <td>{{staff.JoiningDate | date:'dd-MM-yyyy'}}</td>
                 <td>{{staff.Experience}}</td>
+                <td>{{staff.IsActive}}</td>
                 <td>
+                <button class="btn btn-sm btn-outline-danger" 
+                    (click)="deleteStaff(staff)">Delete</button>&nbsp;
+                
                     <button class="btn btn-sm btn-info" (click)="updateStaffRecord(staff.StaffId)">Edit</button>
                 </td>
             </tr>

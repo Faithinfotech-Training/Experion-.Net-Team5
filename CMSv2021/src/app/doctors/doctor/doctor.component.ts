@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Doctor } from 'src/app/shared/doctor';
+import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from 'src/app/shared/doctor.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class DoctorComponent implements OnInit {
 
   docId: number;
   doctor: Doctor = new Doctor();
-
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+  namePattern="[a-zA-Z ]*";
+  decPattern="[(0-9).]*";
   constructor(public docService: DoctorService,
     private router: Router, private route: ActivatedRoute) { }
 
@@ -89,7 +92,7 @@ export class DoctorComponent implements OnInit {
       (result) => {
         console.log("result" + result);
         this.resetform(form);
-        //this.toxterService.success('Employee details Inserted!', 'succes!');
+        //this.toxterService.success('Doctor Details Inserted!', 'succes!');
       }
     );
     window.alert("Doctor record has been inserted");
@@ -103,7 +106,7 @@ export class DoctorComponent implements OnInit {
         console.log("result" + result);
         this.resetform(form);
         this.docService.bindDoctor();
-        //this.toxterService.success('Employee details Updated!', 'succes!');
+        //this.toxterService.success('Doctor details Updated!', 'succes!');
       }
     );
     window.alert("Doctor record has been updated");

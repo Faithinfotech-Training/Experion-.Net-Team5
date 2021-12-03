@@ -41,11 +41,10 @@ export class DoctorService {
   }
 
   //get doctor by id
-getDoctorById(doctorId:number):Observable<any>
-{
-  
-  return this.httpClient.get(environment.apiUrl+"/api/doctor/GetDoctorById?id="+doctorId);
+  getDoctorById(doctorId: number): Observable<any> {
 
-}
+    return this.httpClient.get(environment.apiUrl + "/api/doctor/GetDoctorById?id=" + doctorId);
+
+  }
 
 }

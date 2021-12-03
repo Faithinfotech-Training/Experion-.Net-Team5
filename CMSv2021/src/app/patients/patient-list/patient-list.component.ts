@@ -40,6 +40,23 @@ export class PatientListComponent implements OnInit {
       );
 
     }*/
+
+    //delete employee
+  deletePatient(pat:Patient){
+    var value=confirm("Are you sure to delete  "+pat.PatientName+"?")
+    if(value){
+      console.log("deleting patient!");
+      pat.IsActive=false;
+      console.log(pat);
+      console.log("hello");
+      this.patientService.updatePatient(pat).subscribe(
+        (result)=>{
+          console.log(result);
+          this.patientService.bindPatient();
+        });
+    }
+
+    }
   //update an employee
 updatePatient(PatientId: number){
   console.log(PatientId);

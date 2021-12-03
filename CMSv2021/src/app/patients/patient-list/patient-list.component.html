@@ -30,12 +30,10 @@
                 <th>
                     GENDER
                 </th>
-                <!--<th>
-                        Department
-                    </th>
+               
                     <th>
-                        Status
-                    </th>-->
+                        IsActive
+                    </th>
                 <th>
                     Action
                 </th>
@@ -49,11 +47,12 @@
                 <td (click)="populateForm(pat)">{{pat.Address}}</td>
                 <td (click)="populateForm(pat)">{{pat.Contact}}</td>
                 <td (click)="populateForm(pat)">{{pat.Gender}}</td>
+                <td (click)="populateForm(pat)">{{pat.IsActive}}</td>
                 <!--<td>{{emp.DepartmentId}}</td>
                     <td >{{emp.IsActive}}</td>-->
                 <td>
                     <button class="btn btn-sm btn-outline-danger"
-                    (click)="deleteEmployee(pat.PatientId)">Delete</button>&nbsp;
+                    (click)="deletePatient(pat)">Delete</button>&nbsp;
                     <button (click)="updatePatient(pat.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
                 </td>
 

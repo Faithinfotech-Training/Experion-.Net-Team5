@@ -32,7 +32,22 @@ export class StaffListComponent implements OnInit {
     staff.JoiningDate = formatedDate
     this.staffService.formData = Object.assign({}, staff);
   }
+//delete staff
+deleteStaff(staff:Staff){
+  var value=confirm("Are you sure to delete  "+staff.StaffName+"?")
+  if(value){
+    console.log("deleting staff!");
+    staff.IsActive=false;
+    console.log(staff);
+    console.log("hello");
+    this.staffService.updateStaff(staff).subscribe(
+      (result)=>{
+        console.log(result);
+        this.staffService.bindStaff();
+      });
+  }
 
+  }
 
   //update staff
 

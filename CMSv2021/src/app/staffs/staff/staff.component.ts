@@ -16,6 +16,9 @@ export class StaffComponent implements OnInit {
 
   staffId: number;
   staff: Staff = new Staff();
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+  namePattern = "[a-zA-Z ]*";
+  decPattern = "[(0-9)*(.0-9)*]*";
 
   constructor(public staffService: StaffService,
     private router: Router, private route: ActivatedRoute, private tostrService: ToastrService) { }
@@ -100,6 +103,6 @@ export class StaffComponent implements OnInit {
         this.tostrService.success('Staff Details updated!', 'succes!');
       }
     );
-    
+
   }
 }
