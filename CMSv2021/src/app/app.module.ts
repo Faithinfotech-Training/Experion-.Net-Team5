@@ -17,9 +17,23 @@ import { AuthService } from './shared/auth.service';
 import {AuthGuard} from './shared/auth.guard';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentComponent } from './appointments/appointment/appointment.component';
 import { PatientService } from './shared/patient.service';
 import { StaffListComponent } from './staffs/staff-list/staff-list.component';
+import { BillComponent } from './bills/bill/bill.component';
+import { PaymentbillService } from './shared/paymentbill.service';
+import {AppointmentService} from './shared/appointment.service';
+import { BillsComponent } from './bills/bills.component';
+import { BillListComponent } from './bills/bill-list/bill-list.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentListComponent } from './appointments/appointment-list/appointment-list.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CmedicineComponent } from './cmedicine/cmedicine.component';
+import { MedicinesComponent } from './medicines/medicines.component';
+import { MedicineComponent } from './medicines/medicine/medicine.component';
+import { MedicinelistComponent } from './medicines/medicinelist/medicinelist.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,8 +46,17 @@ import { StaffListComponent } from './staffs/staff-list/staff-list.component';
     StaffsComponent,
     LoginComponent,
     HomeComponent,
+    StaffListComponent,
+    BillComponent,
+    BillsComponent,
+    BillListComponent,
     AppointmentComponent,
-    StaffListComponent
+    AppointmentsComponent,
+    AppointmentListComponent,
+    CmedicineComponent,
+    MedicinesComponent,
+    MedicineComponent,
+    MedicinelistComponent
     
   ],
   imports: [
@@ -43,11 +66,13 @@ import { StaffListComponent } from './staffs/staff-list/staff-list.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    Ng2SearchPipeModule
+    
 
   ],
   providers: [
-    StaffService,AuthService,AuthGuard,PatientService
+    StaffService,AuthService,AuthGuard,PatientService,PaymentbillService,AppointmentService
   ],
   bootstrap: [AppComponent]
 })

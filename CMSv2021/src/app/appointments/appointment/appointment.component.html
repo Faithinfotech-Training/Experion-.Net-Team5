@@ -1,0 +1,183 @@
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" method="post">
+    <h1 align="center"><b>NEW APPOINTMENT</b></h1>
+    <table align="center" class="table table-hover">
+        <tr>
+            <td><input type="hidden" name="AppointmentId" [(ngModel)]="appservice.formData.AppointmentId" /></td>
+        </tr>
+        <tr>
+            <td>
+                <!--appointment date-->
+
+                <div class="form-group">
+
+                    <label>Date</label>
+                    <input type="Date" name="AppointmentDate" id="AppointmentDate" #AppointmentDate="ngModel"
+                        [ngModel]="appservice.formData.AppointmentDate" class="form-control" required
+                        [ngClass]="{'is-invalid':AppointmentDate.touched && AppointmentDate.invalid}" />
+                    <div class="validation-error" *ngIf="AppointmentDate.touched && AppointmentDate.invalid">
+
+                        <div *ngIf="AppointmentDate.errors.required">
+                            Date is required</div>
+                    </div>
+                </div>
+
+
+            </td>
+        </tr>
+
+        <!--patient id-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>PATIENT ID</label>
+                    <input name="PatientId" #PatientId="ngModel" [ngModel]="appservice.formData.PatientId" [pattern]="decPattern"
+                        class="form-control" placeholder="Enter id" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
+                    <div *ngIf="PatientId.errors.pattern">
+                        <span style="color:red" >PatientId not valid.</span>
+                    </div>
+
+                    <div *ngIf="PatientId.errors.required">
+                        <span style="color:red" >PatientId is required</span></div>
+                        
+                </div>
+
+            </td>
+        </tr>
+
+        <!--patient name-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>PATIENT NAME</label>
+                    <input name="PatientName" #PatientName="ngModel" [ngModel]="appservice.formData.PatientName" [pattern]="namePattern"
+                        class="form-control" placeholder="Enter name" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':PatientName.touched && PatientName.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="PatientName.touched && PatientName.invalid">
+                    <div *ngIf="PatientName.errors.pattern">
+                        <span style="color:red" >Patient Name not valid.</span>
+                   </div>
+
+                    <div *ngIf="PatientName.errors.required">
+                        <span style="color:red" >PatientName is required</span></div>
+                </div>
+
+            </td>
+        </tr>
+
+        <!--doctor id-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>DOCTOR ID</label>
+                    <input name="DoctorId" #DoctorId="ngModel" [ngModel]="appservice.formData.DoctorId" [pattern]="decPattern"
+                        class="form-control" placeholder="Enter id" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':DoctorId.touched && DoctorId.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
+                    <div *ngIf="DoctorId.errors.pattern">
+                        <span style="color:red" >DoctorId not valid.</span>
+                    </div>
+
+                    <div *ngIf="DoctorId.errors.required">
+                        <span style="color:red" >DoctorId is required</span></div>
+                </div>
+
+            </td>
+        </tr>
+
+        <!--doctor name-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>DOCTOR NAME</label>
+                    <input name="DoctorName" #DoctorName="ngModel" [ngModel]="appservice.formData.DoctorName" [pattern]="namePattern"
+                        class="form-control" placeholder="Enter name" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':DoctorName.touched && DoctorName.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="DoctorName.touched && DoctorName.invalid">
+                    <div *ngIf="DoctorName.errors.pattern">
+                        <span style="color:red" >DoctorName not valid.</span>
+                    </div>
+
+
+                    <div *ngIf="DoctorName.errors.required">
+                        <span style="color:red" >DoctorName is required</span></div>
+                </div>
+
+            </td>
+        </tr>
+
+        <!--contact-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>PATIENT CONTACT</label>
+                    <input name="Contact" #Contact="ngModel" [ngModel]="appservice.formData.Contact" [pattern]="mobNumberPattern"
+                        class="form-control" placeholder="Enter name" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':Contact.touched && Contact.invalid}" />
+                        
+                </div>
+                <div class="validation-error" *ngIf="Contact.touched && Contact.invalid">
+                    <div *ngIf="Contact.errors.pattern">
+                        <span style="color:red" >Mobile number not valid.</span>
+                    </div>
+
+                    <div *ngIf="Contact.errors.required">
+                        <span style="color:red" >Contact is required</span></div>
+                </div>
+
+            </td>
+        </tr>
+
+        
+        <!--Is Active-->
+        <tr>
+            <td>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label">Is active </label>
+                        <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
+                            [(ngModel)]="appservice.formData.IsActive" class="form-check-input">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <!--submit button-->
+
+        <tr>
+            <td>
+                <br>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                        class="btn btn-lg btn-primary form-control">Submit</button>
+                </div>
+            </td>
+        </tr>
+
+        <!--submit button-->
+
+        <tr>
+            <td>
+                <br>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                        class="btn btn-lg btn-primary form-control">Print</button>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</form>

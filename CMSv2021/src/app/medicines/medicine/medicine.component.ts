@@ -1,38 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientService} from 'src/app/shared/patient.service';
+import {MedicineService} from 'src/app/shared/medicine.service';
 import { NgForm } from '@angular/forms';
-import { Patient } from 'src/app/shared/patient';
+import { Medicine } from 'src/app/shared/medicine';
 import { ActivatedRoute, Router } from '@angular/router';
-
-
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.css']
+  selector: 'app-medicine',
+  templateUrl: './medicine.component.html',
+  styleUrls: ['./medicine.component.css']
 })
-export class PatientComponent implements OnInit {
+export class MedicineComponent implements OnInit {
+
   patId:number;
-  patient: Patient= new Patient(); 
+  medicine: Medicine= new Medicine(); 
   //filter:string;
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   namePattern="[a-zA-Z ]*";
   decPattern="[(0-9).]*";
 
-  constructor(public patientService: PatientService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public medicineService: MedicineService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.patientService.bindPatient();
+    this.medicineService.getMedicine();
 
-  this.patId=this.route.snapshot.params['PatientId'];
+  this.patId=this.route.snapshot.params['MedicineId'];
   console.log(this.patId);
+  console.log("hi");
  
     if(this.patId!=0||this.patId!=null){
-      this.patientService.getPatientbyid(this.patId).subscribe(
+      this.medicineService.getMedicineById(this.patId).subscribe(
         data=>{
           console.log(data);
-          this,this.patientService.formData=data;
+          this,this.medicineService.formData=data;
            
-        this.patientService.formData=Object.assign({},data);
+        this.medicineService.formData=Object.assign({},data);
      
         },
         error=>
@@ -44,37 +44,48 @@ export class PatientComponent implements OnInit {
   }
   onSubmit(form:NgForm){
     console.log(form.value);
-    let addId =this.patientService.formData.PatientId;
+    let addId =this.medicineService.formData.MedicineId;
    
     if(addId==0||addId==null){
        //insert
        console.log("insert");
-      this.insertPatients(form);
+      this.insertMedicineRecord(form);
     }
     else
     {
       //update
      console.log("update")
-     this.updatePatients(form);
+     this.updateMedicineRecord(form);
     }
   
   }
 
   //reset/clear all content from form  at initialization
+  /*resetform(m:MedicineName){
+    
+      MedicineName='';
+
+    }
+   
+
+  }*/
   resetform(form?:NgForm){
     if(form!=null){
+      //this.medicineService.formData.MedicineName='';
       form.resetForm();
 
     }
+   
 
+  
   }
 
 
   //insert
-  insertPatients(form?:NgForm){
+  insertMedicineRecord(form?:NgForm){
     console.log("inserting a record...");
     console.log(form.value);
-    this.patientService.insertPatient(form.value).subscribe
+    this.medicineService.insertMedicine(form.value).subscribe
     ((result)=>
     {
       console.log(result);
@@ -83,25 +94,25 @@ export class PatientComponent implements OnInit {
      
     }
     );
-    window.alert("Patient has been inserted");
+    window.alert("Medicine has been inserted");
     //window.location.reload();
   }
 
     //update
-    updatePatients(form?:NgForm)
+    updateMedicineRecord(form?:NgForm)
     {
       console.log("running");
       console.log("updating a record...");
-      this.patientService.updatePatient(form.value).subscribe
+      this.medicineService.updateMedicine(form.value).subscribe
       ((result)=>
       {
         console.log(result);
         this.resetform(form);
         //this.toastrService.success('Course record has been inserted','CRM appv2021');
-       this.patientService.bindPatient();
+       this.medicineService.getMedicine();
       }
       );
-     window.alert("Patient record has been updated");
+     window.alert("Medicine record has been updated");
       //window.location.reload();
 
     

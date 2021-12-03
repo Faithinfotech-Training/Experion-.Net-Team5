@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            BILL HISTORY
+        </h5>
+        <!--search functionality-->
+        <div class="form-group">
+            <input class="form-control" type="text"
+            placeholder ="Search here...."
+            [(ngModel)]="filter">
+
+        </div>
+        
+        <a [routerLink]="['../bill']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Bill</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    NUMBER
+                </th>
+                <th>
+                    DATE
+                </th>
+                <th>
+                    AMOUNT
+                </th>
+                <th>
+                    PATIENT ID
+                </th>
+                <th>
+                    IsActive
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bil of this.paymentservice.bills|filter: filter" >
+                <td (click)="populateForm(bil)">{{bil.BillId}}</td>
+                <td (click)="populateForm(bil)">{{bil.BillNumber}}</td>
+                <td (click)="populateForm(bil)">{{bil.BillDate | date:'dd-MM-yyyy'}}</td>
+                <td (click)="populateForm(bil)">{{bil.Amount}}</td>
+                <td (click)="populateForm(bil)">{{bil.PatientId}}</td>
+                <td (click)="populateForm(bil)">{{bil.IsActive}}</td>
+               
+                <td>
+                    <button class="btn btn-sm btn-outline-danger" 
+                    (click)="deleteBill(bil)">Delete</button>&nbsp;
+                    <button (click)="updateBillRecord(bil.BillId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+    
+</div>
+

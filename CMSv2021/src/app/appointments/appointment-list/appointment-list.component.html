@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+             APPOINTMENTS
+        </h5>
+        <!--search functionality-->
+        <div class="form-group">
+            <input class="form-control" type="text"
+            placeholder ="Search here...."
+            [(ngModel)]="filter">
+
+        </div>
+        
+        <a [routerLink]="['../appointment']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Appointment</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    DATE
+                </th>
+                <th>
+                    PATIENT ID
+                </th>
+                <th>
+                    PATIENT NAME
+                </th>
+                <th>
+                    DOCTOR ID
+                </th>
+                <th>
+                    DOCTOR NAME
+                </th>
+                <th>
+                    CONTACT
+                </th>
+                <th>
+                    IsActive
+                </th>
+                
+                <!--<th>
+                        Department
+                    </th>
+                    <th>
+                        Status
+                    </th>-->
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of this.appservice.appointments|filter: filter" >
+                <td (click)="populateForm(appointment)">{{appointment.AppointmentId}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.AppointmentDate | date:'dd-MM-yyyy'}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.PatientId}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.PatientName}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.DoctorId}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.DoctorName}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.Contact}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.IsActive}}</td>
+                <!--<td>{{emp.DepartmentId}}</td>
+                    <td >{{emp.IsActive}}</td>-->
+                <td>
+                    <button class="btn btn-sm btn-outline-danger" 
+                    (click)="deleteAppointment(appointment)">Delete</button>&nbsp;
+                    <button (click)="updateAppointmentRecord(appointment.AppointmentId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+    
+</div>
+

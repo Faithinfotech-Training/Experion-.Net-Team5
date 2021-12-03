@@ -4,5 +4,8 @@ export class Patient {
     Contact : number;
     Address : string='';
     Gender : string ='';
+    Age : number;
+    BloodGroup : string ='';
+    DoctorId : number;
     IsActive:boolean=false;
 }
