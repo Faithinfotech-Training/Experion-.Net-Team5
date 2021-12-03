@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PatientService {
+  
   formData: Patient = new Patient();
   patients:Patient[];
 
@@ -15,7 +16,7 @@ export class PatientService {
 
   
   bindPatient(){
-    this.httpClient.get(environment.apiUrl+"/api/patient/GetAllPatients")
+    this.httpClient.get(environment.apiUrl+"/api/patient/getpatients")
     .toPromise().then(response=>
       this.patients=response as Patient[])
   
@@ -39,11 +40,12 @@ export class PatientService {
   
   
   //get employee by id
-  getPatient(patientId:number):Observable<any>
+  getPatientbyid(patientId:number):Observable<any>
   {
-    return this.httpClient.get(environment.apiUrl+"/api/patient/getPatient?id="+patientId);
+    return this.httpClient.get(environment.apiUrl+"/api/patient/"+patientId);
   
   }
+  
   
   }
   

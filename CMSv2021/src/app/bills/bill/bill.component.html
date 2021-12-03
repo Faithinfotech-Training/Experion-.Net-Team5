@@ -1,0 +1,129 @@
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" method="post">
+    <h1 align="center"><b>GENERATE BILL</b></h1>
+    <table align="center" class="table table-hover">
+        <tr>
+            <td><input type="hidden" name="BillId" [(ngModel)]="paymentservice.formData.BillId" /></td>
+        </tr>
+        <tr>
+            <td>
+                <!--bill number-->
+                <div class="form-group">
+
+                    <label>BILL NUMBER</label>
+                    <input name="BillNumber" #BillNumber="ngModel" [ngModel]="paymentservice.formData.BillNumber" [pattern]="decPattern"
+                        class="form-control" placeholder="Enter bill number" minlength="1" maxlength="8" required
+                        [ngClass]="{'is-invalid':BillNumber.touched && BillNumber.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="BillNumber.touched && BillNumber.invalid">
+                    <div *ngIf="BillNumber.errors.pattern">
+                        <span style="color:red" >BillNumber not valid.</span>
+                    </div>
+
+                    <div *ngIf="BillNumber.errors.required">
+                        <span style="color:red" >Bill number is required</span></div>
+                </div>
+            </td>
+        </tr>
+
+        <!--bill date-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>Date</label>
+                    <input type="Date" name="BillDate" id="BillDate" #BillDate="ngModel" 
+                        [ngModel]="paymentservice.formData.BillDate" class="form-control" required
+                        [ngClass]="{'is-invalid':BillDate.touched && BillDate.invalid}" />
+                    <div class="validation-error" *ngIf="BillDate.touched && BillDate.invalid">
+                        
+
+                        <div *ngIf="BillDate.errors.required">
+                            Date is required</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <!--amount-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>TOTAL AMOUNT</label>
+                    <input name="Amount" #Amount="ngModel" [ngModel]="paymentservice.formData.Amount" [pattern]="decPattern"
+                        class="form-control" placeholder="Enter bill number" minlength="2" maxlength="25" required
+                        [ngClass]="{'is-invalid':Amount.touched && Amount.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="Amount.touched && Amount.invalid">
+                    <div *ngIf="Amount.errors.pattern">
+                        <span style="color:red" >Amount not valid.</span>
+                    </div>
+
+                    <div *ngIf="Amount.errors.required">
+                        <span style="color:red" >Amount is required</span></div>
+                </div>
+            </td>
+        </tr>
+
+        <!--patient id-->
+        <tr>
+            <td>
+                <div class="form-group">
+
+                    <label>PATIENT ID</label>
+                    <input name="PatientId" #PatientId="ngModel" [ngModel]="paymentservice.formData.PatientId" [pattern]="decPattern"
+                        class="form-control" placeholder="Enter patient id" minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
+
+                </div>
+                <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
+                    <div *ngIf="PatientId.errors.pattern">
+                        <span style="color:red" >PatientId not valid.</span>
+                    </div>
+
+                    <div *ngIf="PatientId.errors.required">
+                        <span style="color:red" > PatientId is required</span></div>
+                </div>
+
+            </td>
+        </tr>
+        <!--Is Active-->
+        <tr>
+            <td>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label">Is active </label>
+                        <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
+                            [(ngModel)]="paymentservice.formData.IsActive" class="form-check-input">
+                    </div>
+                </div>
+            </td>
+        </tr>
+         <!--submit button-->
+
+        <tr>
+            <td>
+                <br>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                        class="btn btn-lg btn-primary form-control">Submit</button>
+                </div>
+            </td>
+        </tr>
+
+        <!--submit button-->
+
+        <tr>
+            <td>
+                <br>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                        class="btn btn-lg btn-primary form-control">Print</button>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</form>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <h5 class="text-center">
-            Patient Details
+            Medicine Details
         </h5>
         <!--search functionality-->
         <div class="form-control">
@@ -10,36 +10,33 @@
             [(ngModel)]="filter">
 
         </div>
-        <a [routerLink]="['../patient']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Patient</a>
+        <a [routerLink]="['../medicine']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Medicine</a>
     </div>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>
-                    ID
+                   Medicine ID
                 </th>
                 <th>
-                    FULL NAME
+                    Patient ID
                 </th>
                 <th>
-                    ADDRESS
+                     Doctor ID
                 </th>
                 <th>
-                    CONTACT
+                    Medicine Name
                 </th>
                 <th>
-                    GENDER
+                   StartDate
                 </th>
                 <th>
-                    AGE
+                    End Date
                 </th>
                 <th>
-                    BLOOD GROUP
+                    Dosage
                 </th>
-
-                <th>
-                    DOCTOR ID
-                </th>
+                
                 <th>
                     IsActive
                 </th>
@@ -49,7 +46,7 @@
                         Department
                     </th>
                     <th>
-                        IsActive
+                        Status
                     </th>-->
                 <th>
                     Action
@@ -58,23 +55,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pat of this.patientService.patients | filter: filter" >
+            <tr *ngFor="let pat of this.medicineService.medicines | filter: filter" >
+                <td (click)="populateForm(pat)">{{pat.MedicineId}}</td>
                 <td (click)="populateForm(pat)">{{pat.PatientId}}</td>
-                <td (click)="populateForm(pat)">{{pat.PatientName}}</td>
-                <td (click)="populateForm(pat)">{{pat.Address}}</td>
-                <td (click)="populateForm(pat)">{{pat.Contact}}</td>
-                <td (click)="populateForm(pat)">{{pat.Gender}}</td>
-                <td (click)="populateForm(pat)">{{pat.Age}}</td>
-                <td (click)="populateForm(pat)">{{pat.BloodGroup}}</td>
                 <td (click)="populateForm(pat)">{{pat.DoctorId}}</td>
+                <td (click)="populateForm(pat)">{{pat.MedicineName}}</td>
+                <td (click)="populateForm(pat)">{{pat.StartDate}}</td>
+                <td (click)="populateForm(pat)">{{pat.EndDate}}</td>
+                <td (click)="populateForm(pat)">{{pat.Dosage}}</td>
                 <td (click)="populateForm(pat)">{{pat.IsActive}}</td>
 
                 <!--<td>{{emp.DepartmentId}}</td>
                     <td >{{emp.IsActive}}</td>-->
                 <td>
                     <button class="btn btn-sm btn-outline-danger" 
-                    (click)="deletePatient(pat)">Delete</button>&nbsp;
-                    <button class="btn btn-sm btn-outline-danger" (click)="updatePatients(pat.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                    (click)="deleteMedicine(pat)">Delete</button>&nbsp;
+                    <button class="btn btn-sm btn-outline-danger" (click)="updateMedicineRecord(pat.MedicineId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
                 </td>
 
             </tr>
@@ -85,3 +81,4 @@
     </table>
     
 </div>
+

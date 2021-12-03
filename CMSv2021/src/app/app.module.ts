@@ -22,11 +22,25 @@ import {AuthGuard} from './shared/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentComponent } from './appointments/appointment/appointment.component';
 import { PatientService } from './shared/patient.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StaffListComponent } from './staffs/staff-list/staff-list.component';
+import { BillComponent } from './bills/bill/bill.component';
+import { PaymentbillService } from './shared/paymentbill.service';
+import {AppointmentService} from './shared/appointment.service';
+import { BillsComponent } from './bills/bills.component';
+import { BillListComponent } from './bills/bill-list/bill-list.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentListComponent } from './appointments/appointment-list/appointment-list.component';
+
+import { CmedicineComponent } from './cmedicine/cmedicine.component';
+import { MedicinesComponent } from './medicines/medicines.component';
+import { MedicineComponent } from './medicines/medicine/medicine.component';
+import { MedicinelistComponent } from './medicines/medicinelist/medicinelist.component';
+
+
 import { RouterModule } from '@angular/router';
 
 import { LabTechnitionComponent } from './lab-technition/lab-technition.component';
@@ -45,6 +59,18 @@ import { DetailedReportComponent } from './view-report/detailed-report/detailed-
     PatientListComponent,
     StaffsComponent,
     LoginComponent,
+    HomeComponent,
+    StaffListComponent,
+    BillComponent,
+    BillsComponent,
+    BillListComponent,
+    AppointmentComponent,
+    AppointmentsComponent,
+    AppointmentListComponent,
+    CmedicineComponent,
+    MedicinesComponent,
+    MedicineComponent,
+    MedicinelistComponent,
     DoctorsComponent,
     DoctorComponent,
     DoctorListComponent,
@@ -66,10 +92,14 @@ import { DetailedReportComponent } from './view-report/detailed-report/detailed-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule,
     Ng2SearchPipeModule,
+    NgxPaginationModule
+
   ],
-  providers: [DoctorService,StaffService,AuthService,AuthGuard,{
+  
+    
+ 
+  providers: [DoctorService,StaffService,AuthService,AuthGuard, PatientService,PaymentbillService,AppointmentService{
 
     provide:HTTP_INTERCEPTORS,
 

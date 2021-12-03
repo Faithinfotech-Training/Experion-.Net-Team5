@@ -22,26 +22,7 @@ export class PatientListComponent implements OnInit {
      console.log(pat);
      this.patientService.formData=Object.assign({} ,pat);
   }
-  /*//delete employee
-  deleteEmployee(id:number){
-    console.log("deleting employee...");
-    if(confirm('Are you sure to delete')){
-      this.empService.deleteEmployee(id).subscribe(
-        (result)=>
-        {
-          console.log("result"+result);
-          this.empService.bindEmployee();
-          this.toastrService.error('Employee details deleted!', 'success!');
-         
-        },
-        (error)=>{
-          console.log("error");
-        }
-      );
-
-    }*/
-
-    //delete employee
+  //delete employee
   deletePatient(pat:Patient){
     var value=confirm("Are you sure to delete  "+pat.PatientName+"?")
     if(value){
@@ -58,7 +39,8 @@ export class PatientListComponent implements OnInit {
 
     }
   //update an employee
-updatePatient(PatientId: number){
+updatePatients(PatientId: number){
+  console.log("hello");
   console.log(PatientId);
   this.router.navigate(['patient', PatientId]);
   
