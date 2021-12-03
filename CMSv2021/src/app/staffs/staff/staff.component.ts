@@ -16,7 +16,8 @@ export class StaffComponent implements OnInit {
 
   staffId: number;
   staff: Staff = new Staff();
-
+  decPattern="[(0-9).]*";
+   namePattern="[a-zA-Z ]*";
   constructor(public staffService: StaffService,
     private router: Router, private route: ActivatedRoute, private tostrService: ToastrService) { }
 

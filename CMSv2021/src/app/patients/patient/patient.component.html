@@ -23,7 +23,7 @@
 
         <label><b>Contact</b></label>
         <input name="Contact" #Contact="ngModel" [ngModel]="patientService.formData.Contact"
-            class="form-control" placeholder="Enter Contact" minlength="10" maxlength="25" required
+            class="form-control" placeholder="Enter Contact" minlength="8" maxlength="25" required
             [ngClass]="{'is-invalid':Contact.touched && Contact.invalid}" />
         <div class="validation-error" *ngIf="Contact.touched && Contact.invalid">
 
