@@ -11,22 +11,22 @@ namespace CMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PatientController : ControllerBase
+    public class MedicineController : ControllerBase
     {
-        //Constructor dependency Injection
-        IPatient patient;
-        public PatientController(IPatient _p)
+        IMedicineRepo medicinerepo;
+        public MedicineController(IMedicineRepo _p)
         {
-            patient = _p;
+            medicinerepo = _p;
         }
-
+        #region getmedicine
+        //get medicine
         [HttpGet]
-        [Route("GetPatients")]
-        public async Task<IActionResult> GetPatients()
+        [Route("GetMedicines")]
+        public async Task<IActionResult> GetMedicines()
         {
             try
             {
-                var staff = await patient.GetPatients();
+                var staff = await medicinerepo.GetMedicines();
                 if (staff == null)
                 {
                     return NotFound();
@@ -41,23 +41,25 @@ namespace CMSApi.Controllers
 
 
         }
+        #endregion
 
 
 
-        #region HttpPost
+
+        #region add medicine
         [HttpPost]
-        [Route("AddPatients")]
-        public async Task<IActionResult> AddPatients([FromBody] TblPatients model)
+        [Route("AddMedicine")]
+        public async Task<IActionResult> AddMedicine([FromBody] TbllMedicines model)
         {
             //check the validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var patientId = await patient.AddPatients(model);
-                    if (patientId != null)
+                    var appointmentId = await medicinerepo.AddMedicine(model);
+                    if (appointmentId > 0)
                     {
-                        return Ok(patientId);
+                        return Ok(appointmentId);
                     }
                     else
                     {
@@ -71,23 +73,20 @@ namespace CMSApi.Controllers
             }
             return BadRequest();
         }
-
-
         #endregion
-
-        #region HttpPut
-
+        #region Update medicine
         [HttpPut]
-        [Route("UpdatePatients")]
-        public async Task<IActionResult> UpdatePatients([FromBody]  TblPatients model)
+        // [Authorize]
+        [Route("UpdateMedicine")]
+        public async Task<IActionResult> UpdateMedicine([FromBody]  TbllMedicines staff)
         {
             //Check the validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await patient.UpdatePatients(model);
-                    return Ok(model);
+                    await medicinerepo.UpdateMedicine(staff);
+                    return Ok(staff);
                 }
                 catch (Exception)
                 {
@@ -97,16 +96,13 @@ namespace CMSApi.Controllers
             return BadRequest();
         }
         #endregion
-
-        
-
-        #region Get Patient By Id 
+        #region Get medicine By Id 
         [HttpGet("{id}")]
-        public Task<ActionResult<TblPatients>> GetPatientById(int id)
+        public Task<ActionResult<TbllMedicines>> GetMedicineById(int id)
         {
             try
             {
-                var patients = patient.GetPatientById(id);
+                var patients = medicinerepo.GetMedicineById(id);
                 if (patients == null)
                 {
                     return null;
@@ -121,7 +117,7 @@ namespace CMSApi.Controllers
             }
         }
         #endregion
-        
+
 
 
     }

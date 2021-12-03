@@ -21,11 +21,11 @@ namespace CMSApi.Repository
 
         //add appointment
         #region add appointment
-        public async Task<int> AddAppointment(TblAppointment appointment)
+        public async Task<int> AddAppointment(TbllAppointments appointment)
         {
             if (db != null)
             {
-                await db.TblAppointment.AddAsync(appointment);
+                await db.TbllAppointments.AddAsync(appointment);
                 await db.SaveChangesAsync();//commit the transaction
                 return appointment.AppointmentId;
             }
@@ -37,11 +37,11 @@ namespace CMSApi.Repository
 
         //update appointment
         #region update appointment
-        public async Task UpdateAppointment(TblAppointment appointment)
+        public async Task UpdateAppointment(TbllAppointments appointment)
         {
             if (db != null)
             {
-                db.TblAppointment.Update(appointment);
+                db.TbllAppointments.Update(appointment);
                 await db.SaveChangesAsync();//commit the transaction
 
             }
@@ -55,7 +55,7 @@ namespace CMSApi.Repository
             if (db != null)
             {
                 //LINQ
-                return await (from a in db.TblAppointment
+                return await (from a in db.TbllAppointments
                               from p in db.Patients
                               from d in db.Doctors
                               where a.PatientId == p.PatientId
@@ -86,7 +86,7 @@ namespace CMSApi.Repository
             {
                 //LINQ
                 //join payment bill and patient
-                return await (from a in db.TblAppointment
+                return await (from a in db.TbllAppointments
                               from p in db.Patients
                               from d in db.Doctors
                               where a.AppointmentId == id && a.PatientId == p.PatientId

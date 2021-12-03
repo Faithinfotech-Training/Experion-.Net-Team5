@@ -10,24 +10,24 @@ namespace CMSApi.Repository
 {
     public interface IPatient
     {
-        //get all patients
-        Task<List<Patients>> GetAllPatients();
+        //get patient
+      
+        Task<List<TblPatients>> GetPatients();
+       
 
-        //get patient by Id
 
 
         //add patient
-        Task<Patients> AddPatients(Patients patient);
+        Task<TblPatients> AddPatients(TblPatients patient);
+
+
 
         //update patient
-        Task<Patients> UpdatePatients(Patients patient);
-        //get patient list by doctor by Id
-        Task<PatientViewModel> GetPatient(int id);
+        Task<TblPatients> UpdatePatients(TblPatients patient);
+     
+        Task<ActionResult<TblPatients>> GetPatientById(int patientId);
+      
 
-        //get patientdetails
-        //Task<TestViewModel> GetPatientDetails(int id);
-
-        Task<ActionResult<Patients>> GetPatientById(int patientId);
 
 
 

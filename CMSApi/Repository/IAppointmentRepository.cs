@@ -11,12 +11,12 @@ namespace CMSApi.Repository
     {
         //add appointment
         #region add appointment
-        Task<int> AddAppointment(TblAppointment appointment);
+        Task<int> AddAppointment(TbllAppointments appointment);
         #endregion
 
         //update appointment
         #region update appointment
-        Task UpdateAppointment(TblAppointment appointment);
+        Task UpdateAppointment(TbllAppointments appointment);
         #endregion
 
         //get appointment

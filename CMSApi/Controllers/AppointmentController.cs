@@ -23,11 +23,14 @@ namespace CMSApi.Controllers
             appointmentRepository = _p;
         }
 
+
+        
+
         //add appointment
         #region add appointment
         [HttpPost]
         [Route("AddAppointment")]
-        public async Task<IActionResult> AddAppointment([FromBody] TblAppointment model)
+        public async Task<IActionResult> AddAppointment([FromBody] TbllAppointments model)
         {
             //check the validation of body
             if (ModelState.IsValid)
@@ -57,7 +60,7 @@ namespace CMSApi.Controllers
         #region update appointment
         [HttpPut]
         [Route("UpdateAppointment")]
-        public async Task<IActionResult> UpdateAppointment([FromBody] TblAppointment model)
+        public async Task<IActionResult> UpdateAppointment([FromBody] TbllAppointments model)
         {
             //check the validation of body
             if (ModelState.IsValid)

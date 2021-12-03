@@ -39,6 +39,8 @@ namespace CMSApi
             services.AddScoped<IPatient, Patient>();
             services.AddScoped<IPaymentBillRepository, PaymentBillRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IMedicineRepo, MedicineRepo>();
+
 
             services.AddScoped<IDoctorRepo, DoctorRepo>();
             services.AddDbContext<DBClinicContext>(item =>
