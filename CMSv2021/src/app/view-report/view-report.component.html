@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="header">
+        <h3 style="text-align:center;">Reports</h3>
+
+        <!--Search Functionality-->
+        <div class="form-group row">
+            
+            <input style="width: 25%;" class="form-control col-md-3" type="date" 
+             placeholder="Date" 
+            [(ngModel)]="dateFilter">
+            <input style="width: 25%;" class="form-control col-md-3" type="text" 
+            placeholder="Search Name " 
+           [(ngModel)]="tempFilter">
+            
+            <button class="btn btn-secondary col-md-1" style="margin-left :350px" (click)="filter=''">Reset</button>            
+        </div>
+        <br>
+    </div>
+    <table class="table table-bodered table-striped">
+        <thead>
+            <tr>
+                <th>Report Number</th>
+                <th>Staff Name</th>
+                <th>DoctorName</th>
+                <th>Report Date</th>
+                <th>Patient Id</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr
+                *ngFor="let report of labService.reports | filter:filter | filter : dateFilter | paginate: {itemsPerPage:5 , currentPage: page}">
+                <td>{{report.ReportNumber}}</td>
+                <td>{{report.StaffName}}</td>
+                <td>{{report.DoctorName }}</td>
+                <td>{{report.ReportDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{report.PatientId }}</td>
+                <td>
+                    <button (click)="viewTest(report.ReportId)" class=" btn btn-primary" style="margin-left:10px">View Full
+                        Report</button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+    <div class="footer">
+        <!--Pagination  : Page Change-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+
+</div>

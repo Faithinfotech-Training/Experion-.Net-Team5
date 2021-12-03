@@ -5,6 +5,7 @@ import { Staff } from 'src/app/shared/staff';
 import { StaffService } from 'src/app/shared/staff.service';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-staff',
@@ -15,12 +16,14 @@ export class StaffComponent implements OnInit {
 
   staffId: number;
   staff: Staff = new Staff();
-
+  decPattern="[(0-9).]*";
+   namePattern="[a-zA-Z ]*";
   constructor(public staffService: StaffService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute, private tostrService: ToastrService) { }
 
   ngOnInit(): void {
     this.staffId = this.route.snapshot.params['staffId'];
+    this.resetform();
     this.staffService.bindCmdDepartment();
     this.staffService.bindCmdDesignation();
     if (this.staffId != 0 || this.staffId != null) {
@@ -39,7 +42,7 @@ export class StaffComponent implements OnInit {
           console.log(error)
       );
     }
-    //this.resetform();
+    this.resetform();
 
 
   }
@@ -81,6 +84,7 @@ export class StaffComponent implements OnInit {
       (result) => {
         console.log("result" + result);
         this.resetform(form);
+        this.tostrService.success('Staff Details inserted!', 'succes!');
       }
     );
   }
@@ -94,9 +98,9 @@ export class StaffComponent implements OnInit {
         console.log("result" + result);
         this.resetform(form);
         this.staffService.bindStaff();
-
+        this.tostrService.success('Staff Details updated!', 'succes!');
       }
     );
-    window.location.reload();
+
   }
 }

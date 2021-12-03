@@ -1,0 +1,138 @@
+<form name="docform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <!--employee id-->
+    <input type="hidden" name="DoctorId" [ngModel]="docService.formData.DoctorId" />
+
+    <!--employee name-->
+    <div class="form-group">
+
+        <label>Doctor Name</label>
+        <input name="DoctorName" #DoctorName="ngModel" [ngModel]="docService.formData.DoctorName" [pattern]="namePattern"class="form-control"
+            placeholder="Enter full name" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid':DoctorName.touched && DoctorName.invalid}" />
+        <div class="validation-error" *ngIf="DoctorName.touched && DoctorName.invalid">
+            <div *ngIf="DoctorName.errors.pattern">
+                 Doctor Name not valid.
+            </div>
+
+            <div *ngIf="DoctorName.errors.required">
+                Name is required</div>
+        </div>
+    </div>
+    <!--Specilization-->
+    <div class="form-group">
+
+        <label>Specialization</label>
+        <input name="Specialization" #Specialization="ngModel" [ngModel]="docService.formData.Specialization"
+            class="form-control" [pattern]="namePattern" placeholder="Enter designation" minlength="4" maxlength="25" required
+            [ngClass]="{'is-invalid': Specialization.touched &&  Specialization.invalid}" />
+        <div class="validation-error" *ngIf=" Specialization.touched &&  Specialization.invalid">
+            <div *ngIf="Specialization.errors.pattern">
+                 Enter a valid Specilization.
+           </div>
+            <div *ngIf=" Specialization.errors.required">
+                Specialization is required</div>
+        </div>
+    </div>
+    <!--DateOfJoining-->
+    <div class="form-group">
+
+        <label>Joining Date</label>
+        <input type="date" name="JoiningDate" id="JoiningDate" #JoiningDate="ngModel"
+            [ngModel]="docService.formData.JoiningDate" class="form-control" required
+            [ngClass]="{'is-invalid':JoiningDate.touched && JoiningDate.invalid}" />
+        <div class="validation-error" *ngIf="JoiningDate.touched && JoiningDate.invalid">
+
+            <div *ngIf="JoiningDate.errors.required">
+                Date Of Joining is required</div>
+        </div>
+    </div>
+    <!--Department-->
+    <div class="form-group">
+
+        <label class="col-md-4">Department Name</label>
+
+        <select name="DepartmentId" id="DepartmentId" class="form-control" #DepartmentId="ngModel" required
+            [(ngModel)]="docService.formData.DepartmentId"
+            [ngClass]="{'is-invalid':DepartmentId.touched && DepartmentId.invalid}">
+            <option value=0 disabled>Choose Department</option>
+            <option *ngFor="let dept of docService.departments" value="{{dept.DepartmentId}}">{{dept.DepartmentName}}
+            </option>
+
+
+        </select>
+        <div class="validation-error" *ngIf="DepartmentId.touched && DepartmentId.invalid">
+
+            <div *ngIf="Department.errors.required">
+                Department is required</div>
+        </div>
+    </div>
+    <!--Experience-->
+    <div class="form-group">
+
+        <label>Experience</label>
+        <input name="Experience" #Experience="ngModel" [ngModel]="docService.formData.Experience" class="form-control"
+            placeholder="Enter Experience" [pattern]="decPattern" minlength="1" maxlength="4" required
+            [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
+        <div class="validation-error" *ngIf="Experience.touched && Experience.invalid">
+            <div *ngIf="Experience.errors.pattern">
+                Enter a valid number
+            </div>
+            <div *ngIf="Experience.errors.required">
+                Experience is required</div>
+        </div>
+    </div>
+    <!--Contact-->
+    <div class="form-group">
+
+        <label>Contact</label>
+        <input name="Contact" #Contact="ngModel" [ngModel]="docService.formData.Contact" [pattern]="mobNumberPattern"
+            class="form-control" placeholder="Enter Contact" minlength="10" maxlength="10" required
+            [ngClass]="{'is-invalid':Contact.touched && Contact.invalid}" />
+        <div class="validation-error" *ngIf="Contact.touched && Contact.invalid">
+            <div *ngIf="Contact.errors.pattern">
+                Mobile number not valid.
+            </div>
+
+            <div *ngIf="Contact.errors.required">
+                Contact is required</div>
+        </div>
+    </div>
+
+    <!--Is Active-->
+    <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">Is active </label>
+            <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
+                [(ngModel)]="docService.formData.IsActive" class="form-check-input">
+        </div>
+    </div>
+
+    <br>
+    <table>
+        <tr>
+            <td>
+                <div style="width:400px;" align="center">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-lg btn-primary ">
+                        Submit</button>
+                </div>
+            </td>
+            <td>
+                <div align="center">
+                    <button type="Cancel" routerLink="/admin" routerLinkActive="active"
+                        class="btn btn-lg  btn-danger">Cancel</button>
+                </div>
+            </td>
+            <td>
+                <div style="width:400px;"  align="center">
+                    <button type="Cancel" routerLink="/doctorlist" routerLinkActive="active"
+                        class="btn btn-lg  btn-info">Doctors</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+</form>

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="header">
+       
+        <h5>Detailed Report </h5><br> 
+        <p style="float: right;"> Date : {{report.ReportDate | date:'dd-MM-yyyy'}}</p>
+        <p>Report Number : {{report.ReportNumber}}  </p>        
+        <p>Patient ID : {{report.PatientId}}</p> 
+        <p>Staff Name : {{report.StaffName}}</p>
+        <p>Doctor Name : {{report.DoctorName}}</p>        
+        <br>        
+    </div>
+    <table class="table table-bodered table-striped">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Normal Range</th>
+                <th>Test Result</th>
+                             
+                
+            </tr>
+        </thead>
+        <tbody>
+                    
+                <tr *ngFor="let test of labService.tests">
+                    <td  >{{test.TestId}}</td>
+                    <td  >{{test.TestName}}</td>
+                    <td  >{{test.NormalRange}}</td>  
+                    <td  >{{test.TestResult}}</td>                           
+                </tr>            
+        </tbody>
+    </table>
+    <br>
+    <h5>Notes & Observations</h5>
+    <p>{{report.ReportNotes}}</p>
+    <br>
+    
+    
+
+</div>

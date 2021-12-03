@@ -1,1 +1,116 @@
-<p>admin works!</p>
+<header>
+    <div class="container">
+        <h5>Welcome:{{loggedUserName}}</h5>
+    </div>
+
+</header>
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">HOME</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">EVENTS</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        KNOW MORE
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">DEPARTMENTS</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">DOCTORS</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">CONTACT</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+<body>
+    <!--<div>
+    <img src = 'https://g.foolcdn.com/editorial/images/180925/gettyimages-949812160.jpg'>
+  </div>-->
+    <div>
+        <table align="center">
+            <tr><button routerLink="/doctor" routerLinkActive="active" type="button" class="btn btn-dark"
+                    style="width:200px;">ADD DOCTOR</button></tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <table align="center">
+            <tr><button routerLink="/doctorlist" routerLinkActive="active" type="button" class="btn btn-dark"
+                    style="width:200px;">MANAGE DOCTOR</button></tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <table align="center">
+            <tr><button routerLink="/staff" routerLinkActive="active" class="btn btn-dark" style="width:200px;">ADD
+                    STAFF</button></tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <table align="center">
+            <tr><button routerLink="/stafflist" routerLinkActive="active" class="btn btn-dark"
+                    style="width:200px;">MANAGE STAFF</button></tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+
+    <div>
+        <table align="center">
+            <tr><button type="button" (click)="logout()" router class="btn btn-dark"
+                    style="width:200px;">LOGOUT</button></tr>
+        </table>
+    </div>
+    <br>
+    <br>
+
+
+    <footer align="center">
+        <span>All Rights reserved 2021 Health360<a href="">@Health360</a></span>
+    </footer>
+
+
+</body>

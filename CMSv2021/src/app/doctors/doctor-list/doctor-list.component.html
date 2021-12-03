@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            Doctor Details
+        </h5>
+    </div>
+    <!--searching functionality-->
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="search here.." [(ngModel)]="filter" />
+    </div>
+    <div class="form-group">
+        <input style="width: 25%;" class="form-control col-md-3" type="date" 
+        placeholder="Date" 
+       [(ngModel)]="dateFilter">
+    </div>
+    <a [routerLink]="['/doctor']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Doctor</a>
+    <a [routerLink]="['/admin']" class="btn btn-primary" style="float :left;margin-bottom:10px">Home</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Doctor Name
+                </th>
+                <th>
+                    Specilization
+                </th>
+                <th>
+                    JoiningDate
+                </th>
+                <th>
+                    Experience
+                </th>
+                <th>
+                    Contact
+                </th>
+                <th>
+                    IsActive
+                </th>
+                <th>
+                    Action
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let doc of this.docService.doctors |filter:filter |filter:dateFilter |paginate :{itemsPerPage:5,currentPage:page}">
+                <td (click)="populateForm(doc)">{{doc.DoctorId}}</td>
+                <td (click)="populateForm(doc)">{{doc.DoctorName}}</td>
+                <td (click)="populateForm(doc)">{{doc.Specialization}}</td>
+                <td (click)="populateForm(doc)">{{doc.JoiningDate|date:'dd-MM-yyyy'}}</td>
+                <td (click)="populateForm(doc)">{{doc.Experience}}</td>
+                <td (click)="populateForm(doc)">{{doc.Contact}}</td>
+                <td (click)="populateForm(doc)">{{doc.IsActive}}</td>
+
+                <td>
+                    <button class="btn btn-sm btn-outline-danger"
+                        (click)="deleteDoctor(doc)">Delete</button>&nbsp;
+
+                    <button class="btn btn-sm btn-info" (click)="updateDoctor(doc.DoctorId)"
+                        style="margin-left:10px">Edit</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+
+</div>
