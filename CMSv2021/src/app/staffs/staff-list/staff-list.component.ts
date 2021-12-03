@@ -58,6 +58,22 @@ deleteStaff(staff:Staff){
     this.router.navigate(['staff', staffId]);
 
   }
+  //delete staff
+  deleteStaff(staff:Staff){
+  var value=confirm("Are you sure to delete  "+staff.StaffName+"?")
+  if(value){
+    console.log("deleting staff!");
+    staff.IsActive=false;
+    console.log(staff);
+    console.log("hello");
+    this.staffService.updateStaff(staff).subscribe(
+      (result)=>{
+        console.log(result);
+        this.staffService.bindStaff();
+      });
+  }
+
+  }
 
 }
 

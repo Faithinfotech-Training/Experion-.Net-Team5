@@ -1,11 +1,13 @@
-<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" >
-    <h2 class="text-center">Staff Registration</h2>
-    <!--staff id-->
-    <input type="hidden" name="StaffId" [ngModel]="staffService.formData.StaffId" />
+<div class="container py-5 h-100">
+    <form class="px-md-2" name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+        <h2 class="text-center">Staff Registration</h2>
+        <!--staff id-->
+        <input type="hidden" name="StaffId" [ngModel]="staffService.formData.StaffId" />
 
-    <!--staff name-->
-    <div class="form-group">
+        <!--staff name-->
+        <div class="form-group">
 
+<<<<<<< HEAD
         <label>Full Name</label>
         <input name="StaffName" #StaffName="ngModel" [ngModel]="staffService.formData.StaffName" class="form-control"
             placeholder="Enter full name" minlength="10" maxlength="25" [pattern]="namePattern" required
@@ -69,39 +71,44 @@
 
             <div *ngIf="Designation.errors.required">
                 Designation is required</div>
+=======
+            <label>Full Name</label>
+            <input name="StaffName" #StaffName="ngModel" [ngModel]="staffService.formData.StaffName"
+                class="form-control" placeholder="Enter full name" minlength="10" maxlength="25" required
+                [pattern]="namePattern" [ngClass]="{'is-invalid':StaffName.touched && StaffName.invalid}" />
+
         </div>
-    </div>
-
-    <!--Department-->
-    <div class="form-group">
-
-        <label class="col-md-4">Department</label>
-
-        <select name="DepartmentId" id="DepartmentId" class="form-control" #DepartmentId="ngModel" required
-            [(ngModel)]="staffService.formData.DepartmentId"
-            [ngClass]="{'is-invalid':DepartmentId.touched && DepartmentId.invalid}">
-
-            <option value=0 disabled>Choose Department</option>
-            <option *ngFor="let dept of staffService.departments" value="{{dept.DepartmentId}}">{{dept.DepartmentName}}
-            </option>
-
-
-        </select>
-        <div class="validation-error" *ngIf="DepartmentId.touched && DepartmentId.invalid">
-
-            <div *ngIf="Department.errors.required">
-                Department is required</div>
+        <div class="validation-error" *ngIf="StaffName.touched && StaffName.invalid">
+            <div *ngIf="StaffName.errors.pattern">
+                Name not valid.
+            </div>
+            <div *ngIf="StaffName.errors.required">
+                Name is required</div>
+>>>>>>> b1a6c5ccdb74c51583fcd25a926c5f3d279eaf1d
         </div>
-    </div>
 
-    <!--Is Active-->
-    <div class="form-group">
-        <div class="form-check">
-            <label class="form-check-label">Is active </label>
-            <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
-                [(ngModel)]="staffService.formData.IsActive" class="form-check-input">
+        <!--DateOfJoining-->
+        <div class="form-group">
+
+            <label>Date Of Joining</label>
+            <input type="date" name="JoiningDate" id="JoiningDate" #JoiningDate="ngModel"
+                [ngModel]="staffService.formData.JoiningDate" class="form-control" required
+                [ngClass]="{'is-invalid':JoiningDate.touched && JoiningDate.invalid}" />
+            <div class="validation-error" *ngIf="JoiningDate.touched && JoiningDate.invalid">
+
+                <div *ngIf="JoiningDate.errors.required">
+                    Date Of Joining is required</div>
+            </div>
         </div>
-    </div>
+        <!--Experience-->
+        <div class="form-group">
+
+            <label>Experience</label>
+            <input name="Experience" #Experience="ngModel" [ngModel]="staffService.formData.Experience"
+                class="form-control" minlength="1" maxlength="2" required placeholder="Add Years" [pattern]="decPattern"
+                [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
+
+        </div>
 
 <!--Submit-->
     <br>
@@ -131,4 +138,5 @@
 
 
 
-</form>
+    </form>
+</div>

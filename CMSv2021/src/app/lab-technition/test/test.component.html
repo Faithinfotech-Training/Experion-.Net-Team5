@@ -1,0 +1,39 @@
+<form name="TestForm" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <h2 align="center">Test Details</h2>
+    <!--Report Id-->
+    <div class="form-group">
+        <label>Report Id</label>
+        <input name="ReportId" #ReportId="ngModel" [ngModel]="labService.testFormData.ReportId" class="form-control"
+            placeholder="Report Id" minlength="1" maxlength="25" required
+            [ngClass]="{'is-invalid':ReportId.touched && ReportId.invalid}" />
+        <label>Test Name</label>
+        <input name="TestName" #TestName="ngModel" [ngModel]="labService.testFormData.TestName" class="form-control"
+            placeholder="Enter test name" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid':TestName.touched && TestName.invalid}" />
+
+        <label>Lab Staff</label>
+        <select name="StaffId" id="StaffId" class="form-control" #StaffId="ngModel" required
+            [(ngModel)]="labService.reportFormData.StaffId">
+            <option value=0 disabled>Choose Staff</option>
+            <option *ngFor="let staff of labService.staffs" value="{{staff.StaffId}}">{{staff.StaffName}}</option>
+        </select>
+
+        <label>Normal Range</label>
+        <input name="NormalRange" #NormalRange="ngModel" [ngModel]="labService.testFormData.NormalRange"
+            class="form-control" placeholder="Enter Normal Range" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid':NormalRange.touched && NormalRange.invalid}" />
+
+        <label>Test Result</label>
+        <input name="TestResult" #TestResult="ngModel" [ngModel]="labService.testFormData.TestResult"
+            class="form-control" placeholder="Enter Normal Range" minlength="1" maxlength="25" required
+            [ngClass]="{'is-invalid':TestResult.touched && TestResult.invalid}" />
+
+
+        <!--Add button-->
+        <br>
+        <div class="form-group">
+            <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-success btn-lg mb-1">Add
+                Test</button>
+        </div>
+</div>
+</form>

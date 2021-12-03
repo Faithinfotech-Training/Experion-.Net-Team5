@@ -29,6 +29,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StaffListComponent } from './staffs/staff-list/staff-list.component';
 import { RouterModule } from '@angular/router';
 
+import { LabTechnitionComponent } from './lab-technition/lab-technition.component';
+import { ReportComponent } from './lab-technition/report/report.component';
+import { TestComponent } from './lab-technition/test/test.component';
+import { ViewReportComponent } from './view-report/view-report.component';
+import { DetailedReportComponent } from './view-report/detailed-report/detailed-report.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +48,13 @@ import { RouterModule } from '@angular/router';
     DoctorsComponent,
     DoctorComponent,
     DoctorListComponent,
-    StaffListComponent
+    StaffListComponent,
+   
+    LabTechnitionComponent,
+    ReportComponent,
+    TestComponent,
+    ViewReportComponent,
+    DetailedReportComponent
     
   ],
   imports: [
