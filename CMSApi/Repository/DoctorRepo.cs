@@ -118,5 +118,29 @@ namespace CMSApi.Repository
             return null;
         }
         #endregion
+        #region GetDoctorsByDept
+        public async Task<List<DoctorViewModel>> GetDeptDoctor(int id)
+        {
+            if (db != null)
+            {
+                //LINQ
+                return await (from c in db.Departments
+                              from p in db.Doctors
+                              where c.DepartmentId == id && p.DepartmentId == c.DepartmentId
+                              select new DoctorViewModel
+                              {
+                                  DepartmentId = c.DepartmentId,
+                                  DepartmentName=c.DepartmentName,
+                                  IsActive=c.IsActive,
+                                  DoctorId = p.DoctorId,
+                                  DoctorName = p.DoctorName
+
+
+
+                              }).ToListAsync();
+            }
+            return null;
+        }
+        #endregion
     }
 }

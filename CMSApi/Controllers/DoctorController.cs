@@ -174,6 +174,31 @@ namespace CMSApi.Controllers
 
 
 
+        #endregion
+        #region
+        [HttpGet]
+        [Route("GetDeptDoctor")]
+        public async Task<IActionResult> GetDeptDoctor(int id)
+        {
+            try
+            {
+                var doctor = await doctorRepository.GetDeptDoctor(id);
+
+                if (doctor != null)
+                {
+                    return Ok(doctor);
+                }
+                
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
 #endregion
 
     }

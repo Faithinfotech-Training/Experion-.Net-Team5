@@ -24,5 +24,7 @@ namespace CMSApi.Repository
         Task<List<Departments>> GetDepartments();
 
         Task<DoctorViewModel> GetDoctor(int id);
+        Task<List<DoctorViewModel>> GetDeptDoctor(int id);
+
     }
 }
