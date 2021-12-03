@@ -43,8 +43,7 @@ const routes: Routes = [
   { path: 'patient/:PatientId', component: PatientComponent },
   { path: 'medicine', component: MedicineComponent },
   { path: 'medicinelist', component: MedicinelistComponent },
-  { path: 'medicine/:MedicineId', component: MedicineComponent }
-
+  { path: 'medicine/:MedicineId', component: MedicineComponent },
   { path: 'test', component: TestComponent },
   { path: 'viewreport', component: ViewReportComponent },
   { path: 'detailedreport/:rtId', component: DetailedReportComponent },

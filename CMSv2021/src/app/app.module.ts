@@ -99,7 +99,7 @@ import { DetailedReportComponent } from './view-report/detailed-report/detailed-
   
     
  
-  providers: [DoctorService,StaffService,AuthService,AuthGuard, PatientService,PaymentbillService,AppointmentService{
+  providers: [DoctorService,StaffService,AuthService,AuthGuard, PatientService,PaymentbillService,AppointmentService,{
 
     provide:HTTP_INTERCEPTORS,
 
