@@ -39,10 +39,9 @@ namespace CMSApi
             services.AddScoped<IPatient, Patient>();
             services.AddScoped<IPaymentBillRepository, PaymentBillRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
-            services.AddScoped<IMedicineRepo, MedicineRepo>();
-
-
+            services.AddScoped<ILabReport, LabReport>();
             services.AddScoped<IDoctorRepo, DoctorRepo>();
+            services.AddScoped<ITest, Test>();
             services.AddDbContext<DBClinicContext>(item =>
            item.UseSqlServer(Configuration.GetConnectionString("ClinicDBConnection")));
 
