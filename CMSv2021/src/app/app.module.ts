@@ -48,6 +48,7 @@ import { ReportComponent } from './lab-technition/report/report.component';
 import { TestComponent } from './lab-technition/test/test.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { DetailedReportComponent } from './view-report/detailed-report/detailed-report.component';
+import { LabTechnitionService } from './shared/lab-technition.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,6 @@ import { DetailedReportComponent } from './view-report/detailed-report/detailed-
     DoctorComponent,
     DoctorListComponent,
     StaffListComponent,
-   
     LabTechnitionComponent,
     ReportComponent,
     TestComponent,
@@ -99,7 +99,7 @@ import { DetailedReportComponent } from './view-report/detailed-report/detailed-
   
     
  
-  providers: [DoctorService,StaffService,AuthService,AuthGuard, PatientService,PaymentbillService,AppointmentService,{
+  providers: [DoctorService,StaffService,AuthService,AuthGuard, PatientService,PaymentbillService,AppointmentService,LabTechnitionService,{
 
     provide:HTTP_INTERCEPTORS,
 

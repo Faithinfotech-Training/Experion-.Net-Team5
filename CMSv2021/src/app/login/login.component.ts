@@ -90,7 +90,7 @@ if(this.loginForm.invalid)
 
         }
 
-        else if(this.jwtResponse.RoleId ===3){
+        else if(this.jwtResponse.RoleId ===1002){
 
           //logged as staff
 

@@ -31,11 +31,6 @@ export class PatientComponent implements OnInit {
       this.patientService.getPatientbyid(this.patId).subscribe(
         data=>{
           console.log(data);
-          
-    
-              
-            
-     
         },
         error=>
         console.log(error)

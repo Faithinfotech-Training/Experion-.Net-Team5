@@ -102,29 +102,8 @@
         </div>
     </div>
 
-        <!--DateOfJoining-->
-        <div class="form-group">
-
-            <label>Date Of Joining</label>
-            <input type="date" name="JoiningDate" id="JoiningDate" #JoiningDate="ngModel"
-                [ngModel]="staffService.formData.JoiningDate" class="form-control" required
-                [ngClass]="{'is-invalid':JoiningDate.touched && JoiningDate.invalid}" />
-            <div class="validation-error" *ngIf="JoiningDate.touched && JoiningDate.invalid">
-
-                <div *ngIf="JoiningDate.errors.required">
-                    Date Of Joining is required</div>
-            </div>
-        </div>
-        <!--Experience-->
-        <div class="form-group">
-
-            <label>Experience</label>
-            <input name="Experience" #Experience="ngModel" [ngModel]="staffService.formData.Experience"
-                class="form-control" minlength="1" maxlength="2" required placeholder="Add Years" [pattern]="decPattern"
-                [ngClass]="{'is-invalid':Experience.touched && Experience.invalid}" />
-
-        </div>
-
+       
+       
 <!--Submit-->
     <br>
     <table>
