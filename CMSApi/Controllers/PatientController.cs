@@ -74,8 +74,6 @@ namespace CMSApi.Controllers
         }
 
 
-
-
         #endregion
 
         #region HttpPut
@@ -122,7 +120,7 @@ namespace CMSApi.Controllers
         }
 
         #endregion
-        #region GetPatientDetails
+        /*#region GetPatientDetails
         [HttpGet]
         [Route("GetPatientDetails")]
         public async Task<IActionResult> GetPatientDetails(int id)
@@ -142,6 +140,27 @@ namespace CMSApi.Controllers
             }
         }
 
+        #endregion*/
+        #region Get Patient By Id 
+        [HttpGet]
+        public Task<ActionResult<Patients>> GetPatientById(int id)
+        {
+            try
+            {
+                var pat = patient.GetPatientById(id);
+                if (pat == null)
+                {
+                    return null;
+                }
+                return pat;
+            }
+
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
         #endregion
     }
 }
