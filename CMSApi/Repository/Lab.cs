@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CMSApi.ViewModel
+namespace CMSApi.Repository
 {
-    public class PrescribedTestViewModel
+    public class Lab
     {
     }
 }
