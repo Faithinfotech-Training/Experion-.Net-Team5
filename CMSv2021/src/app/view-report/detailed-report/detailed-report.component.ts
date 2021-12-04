@@ -16,7 +16,7 @@ export class DetailedReportComponent implements OnInit {
 
    //Variable to recieve prescription ID
    rtId:number;
-   report : Report =new Report() ;
+   report :any ;
    patientId : number;
    tests:  Test[];
   constructor(public labService: LabTechnitionService ,private router:Router , private route:ActivatedRoute) { }
@@ -24,10 +24,10 @@ export class DetailedReportComponent implements OnInit {
   ngOnInit(): void {
     //Get all Tests From Service
     this.rtId = this.route.snapshot.params['rtId'];
-    this.labService.bindListTest(this.rtId);
+    this.labService.bindListTest();
   
   //Get Report Details
-  this.labService.getReport(this.rtId).subscribe(
+  /*this.labService.getReport(this.rtId).subscribe(
     data => {
       //console.log(data);  
       var datePipe = new DatePipe("en-UK");
@@ -37,7 +37,7 @@ export class DetailedReportComponent implements OnInit {
           this.labService.reportFormData = data;
           this.report=data;
     }
-  );
+  );*/
 }
 //INSERT
 insertReportRecord(form?: NgForm){

@@ -18,10 +18,14 @@ import { MedicinelistComponent } from './medicines/medicinelist/medicinelist.com
 import { TestComponent } from './lab-technition/test/test.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { DetailedReportComponent } from './view-report/detailed-report/detailed-report.component';
+import { ReportComponent } from './lab-technition/report/report.component';
+import { MainhomeComponent } from './mainhome/mainhome.component';
+import { TestListComponent } from './lab-technition/test-list/test-list.component';
+import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
 
 
 const routes: Routes = [
-  {path:'',redirectTo:"/login",pathMatch:'full'},
+  {path:'',redirectTo:"/mainhome",pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'doctor',component:DoctorComponent},
   {path:'doctorlist',component:DoctorListComponent},
@@ -45,8 +49,12 @@ const routes: Routes = [
   { path: 'medicinelist', component: MedicinelistComponent },
   { path: 'medicine/:MedicineId', component: MedicineComponent },
   { path: 'test', component: TestComponent },
-  { path: 'viewreport', component: ViewReportComponent },
-  { path: 'detailedreport/:rtId', component: DetailedReportComponent },
+  //{ path: 'viewreport', component: ViewReportComponent },
+  //{ path: 'detailedreport/:rtId', component: DetailedReportComponent },
+    { path: 'report/:patientId', component: ReportComponent },
+    { path: 'mainhome', component:MainhomeComponent},
+    {path : 'testlist', component:TestListComponent},
+    {path : 'labtechnician', component:LabhomeComponent}
 
 ];
 

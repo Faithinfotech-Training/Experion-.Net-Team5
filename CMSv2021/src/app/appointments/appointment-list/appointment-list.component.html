@@ -69,6 +69,7 @@
                     <button class="btn btn-sm btn-outline-danger" 
                     (click)="deleteAppointment(appointment)">Delete</button>&nbsp;
                     <button (click)="updateAppointmentRecord(appointment.AppointmentId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                    <button [routerLink]="['../medicine']" class="btn btn-sm btn-info" style="margin-left:10px">ADD MEDICINE</button>
                 </td>
 
             </tr>

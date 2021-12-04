@@ -2,10 +2,10 @@
     <h2 align="center">Test Details</h2>
     <!--Report Id-->
     <div class="form-group">
-        <label>Report Id</label>
-        <input name="ReportId" #ReportId="ngModel" [ngModel]="labService.testFormData.ReportId" class="form-control"
-            placeholder="Report Id" minlength="1" maxlength="25" required
-            [ngClass]="{'is-invalid':ReportId.touched && ReportId.invalid}" />
+       <label>Patient Id</label>
+        <input name="PatientId" #PatientId="ngModel" [ngModel]="labService.testFormData.PatientId" class="form-control"
+            placeholder="PatientId" minlength="1" maxlength="25" required
+            [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
         <label>Test Name</label>
         <input name="TestName" #TestName="ngModel" [ngModel]="labService.testFormData.TestName" class="form-control"
             placeholder="Enter test name" minlength="2" maxlength="25" required
@@ -13,9 +13,30 @@
 
         <label>Lab Staff</label>
         <select name="StaffId" id="StaffId" class="form-control" #StaffId="ngModel" required
-            [(ngModel)]="labService.reportFormData.StaffId">
+            [(ngModel)]="labService.testFormData.StaffId">
             <option value=0 disabled>Choose Staff</option>
             <option *ngFor="let staff of labService.staffs" value="{{staff.StaffId}}">{{staff.StaffName}}</option>
+        </select>
+
+        <!--DateOfJoining-->
+        <div class="form-group">
+
+            <label>Test Date</label>
+            <input type="date" name="TestDate" id="TestDate" #TestDate="ngModel"
+                [ngModel]="labService.testFormData.TestDate" class="form-control" required
+                [ngClass]="{'is-invalid':TestDate.touched && TestDate.invalid}" />
+            <div class="validation-error" *ngIf="TestDate.touched && TestDate.invalid">
+
+                <div *ngIf="TestDate.errors.required">
+                    TestDate is required</div>
+            </div>
+        </div>
+        <!--Doctor drop down-->
+        <label>Doctor</label>
+        <select name="DoctorId" id="DoctorId" class="form-control" #DoctorId="ngModel" required
+            [(ngModel)]="labService.testFormData.DoctorId">
+            <option value=0 disabled>Choose Staff</option>
+            <option *ngFor="let doctor of labService.doctors" value="{{doctor.DoctorId}}">{{doctor.DoctorName}}</option>
         </select>
 
         <label>Normal Range</label>
@@ -35,5 +56,5 @@
             <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-success btn-lg mb-1">Add
                 Test</button>
         </div>
-</div>
+    </div>
 </form>

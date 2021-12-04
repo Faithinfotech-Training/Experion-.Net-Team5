@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Test } from './test';
 import { Observable } from 'rxjs';
 import { Report } from './reports';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Doctor } from './doctor';
 import { Staff } from './staff';
+import { Test } from './test';
+import { Patient } from './patient';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class LabTechnitionService {
   reportFormData: Report = new Report();
   reports: Report[];
   doctors: Doctor[];
+  patients: Patient[];
   staffs: Staff[];
   constructor(private httpClient: HttpClient) { }
 
@@ -52,8 +54,8 @@ export class LabTechnitionService {
       //console.log(this.staffs)
   }
   //Get All Test  in a Report
-  bindListTest(reportId: number) {
-    this.httpClient.get(environment.apiUrl + "/api/test/GetTestByReportId/" + reportId)
+  bindListTest() {
+    this.httpClient.get(environment.apiUrl + "/api/test/gettest")
       .toPromise().then(response =>
         this.tests = response as Test[]
         
@@ -62,9 +64,12 @@ export class LabTechnitionService {
   }
 
   //GET a particular Report By ID
-  getReport(reportId: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + "/api/labreport/" + reportId);
-
+  getReport(patientId: number){
+    this.httpClient.get(environment.apiUrl + "/api/test/GetTestByPatientId/" + patientId )
+      .toPromise().then(response =>
+      this.tests = response as Test[]
+      );
+      
   }
 
   //INSERT

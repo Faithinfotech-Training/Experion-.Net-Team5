@@ -67,18 +67,7 @@
 
 
         </select>
-        <div class="validation-error" *ngIf="DesignationId.touched && DesignationId.invalid">
-
-            <div *ngIf="Designation.errors.required">
-                Designation is required</div>
-
-            <label>Full Name</label>
-            <input name="StaffName" #StaffName="ngModel" [ngModel]="staffService.formData.StaffName"
-                class="form-control" placeholder="Enter full name" minlength="10" maxlength="25" required
-                [pattern]="namePattern" [ngClass]="{'is-invalid':StaffName.touched && StaffName.invalid}" />
-
         </div>
-    </div>
 
     <!--Department-->
     <div class="form-group">

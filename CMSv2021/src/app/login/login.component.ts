@@ -102,6 +102,18 @@ if(this.loginForm.invalid)
 
         }
 
+        else if(this.jwtResponse.RoleId ===1003){
+
+          //logged as Labtechnician
+
+          console.log("labtechnician");
+          localStorage.setItem("username",this.jwtResponse.UserName);
+          localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
+          sessionStorage.setItem("username",this.jwtResponse.Username);
+          this.router.navigateByUrl('/labtechnician');
+
+        }
+
         else{
 
           this.error ="sorry.. Invalid authorized role..This module is not authorized"

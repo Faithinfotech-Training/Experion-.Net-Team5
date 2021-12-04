@@ -1,3 +1,5 @@
+<h5 align="center">Doctor Registration</h5>
+
 <form name="docform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
     <!--employee id-->
     <input type="hidden" name="DoctorId" [ngModel]="docService.formData.DoctorId" />

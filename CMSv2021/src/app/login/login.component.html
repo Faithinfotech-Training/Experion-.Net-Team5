@@ -1,50 +1,59 @@
-<div class="container">
-   
-    <h3>Login Here</h3>
-    <hr>
+<section class="vh-100 bg-image"
+    style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/search-box/img4.jpg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-    <!--Reactive Form-->
-    <form [formGroup]="loginForm" (ngSubmit)="loginCredentials()">
-        <div>
-            <input type="text" placeholder="User Name"
-            formControlName="UserName"
-            autocomplete="off" 
-            required/>
-        </div>
-        <div *ngIf="isSubmitted && formControls.UserName.errors">
-            <div *ngIf="formControls.UserName.errors.required"
-            style="color: red; text-align:left;">
-            Name is Required
+                            <form [formGroup]="loginForm" (ngSubmit)="loginCredentials()">
+                                <div>
+                                    <input type="text" placeholder="User Name" class="form-control form-control-lg"
+                                        formControlName="UserName" autocomplete="off" required />
+                                </div>
+                                <div *ngIf="isSubmitted && formControls.UserName.errors">
+                                    <div *ngIf="formControls.UserName.errors.required"
+                                        style="color: red; text-align:left;">
+                                        Name is Required
+                                    </div>
+
+                                </div>
+                                <br>
+                                <!--Password-->
+                                <div>
+                                    <input type="password" placeholder="Enter Password"
+                                        class="form-control form-control-lg" formControlName="Password"
+                                        autocomplete="off" required />
+                                </div>
+                                <div *ngIf="isSubmitted && formControls.Password.errors">
+                                    <div *ngIf="formControls.Password.errors.required"
+                                        style="color: red; text-align:left;">
+                                        Password is required
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div>
+                                    <button class="btn btn-primary">
+                                        <i class="fa fa-sign-in"></i>
+                                        Login
+                                    </button>&nbsp;
+                                    <button class="btn btn-info"
+                                        routerLink="/mainhome" routerLinkActive="active">
+                                        <i class="fa fa-sign-in"></i>
+                                        Back
+                                    </button>&nbsp;
+                                </div>
+                                <div *ngIf="error" style="color: red; text-align:left;">{{error}}
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <br>
-        <!--Password-->
-        <div>
-            <input type="password" placeholder="Enter Password"
-            formControlName="Password"
-            autocomplete="off" 
-            required/>
-        </div>
-        <div *ngIf="isSubmitted && formControls.Password.errors">
-            <div *ngIf="formControls.Password.errors.required"
-            style="color: red; text-align:left;">
-            Password is required
-            </div>
-
-        </div>
-        <br>
-        <div>
-        <button class="btn btn-primary">
-            <i class="fa fa-sign-in"></i>
-            Login
-        </button>
     </div>
-    <div *ngIf="error"
-    style="color: red; text-align:left;"
-    >{{error}}
-    </div>
-
-    </form>
-
-</div>
+</section>

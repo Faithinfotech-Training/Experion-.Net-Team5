@@ -8,10 +8,11 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  loggedUserName: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.loggedUserName = localStorage.getItem("username");
   }
 
   //logout

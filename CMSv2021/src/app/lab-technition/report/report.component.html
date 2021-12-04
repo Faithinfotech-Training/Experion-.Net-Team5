@@ -1,1 +1,22 @@
-<p>report works!</p>
+<h3>Lab Report</h3>
+<table class="table table-bodered table-striped">
+    <thead>
+        <tr>
+            <th>Test ID</th>
+            <th>Test Name</th>
+            <th>Normal Range</th>
+            <th>Test Result</th>
+            <th>Test Date</th>  
+        </tr>
+    </thead>
+    <tbody>
+                
+            <tr *ngFor="let test of labService.tests">
+                <td  >{{test.TestId}}</td>
+                <td  >{{test.TestName}}</td>
+                <td  >{{test.NormalRange}}</td>  
+                <td  >{{test.TestResult}}</td>
+                <td  >{{test.TestDate |date:'dd-MM-yyyy'}}</td>                              
+            </tr>                       
+    </tbody>
+</table>

@@ -1,3 +1,7 @@
+<header>
+  <div class="container">
+      <h5>Welcome:{{loggedUserName}}</h5>
+  </div></header>
 <nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
 
@@ -45,6 +49,7 @@
 <br>
 
 <body>
+  
   <!--<div>
     <img src = 'https://g.foolcdn.com/editorial/images/180925/gettyimages-949812160.jpg'>
   </div>-->
@@ -116,7 +121,7 @@
 
   <div>
     <table align="center">
-      <tr><button type="button" class="btn btn-dark" style="width:200px;">AVAILABLE DOCTORS</button></tr>
+      <tr><button routerLink="/doctorlist" routerLinkActive="active" type="button" class="btn btn-dark" style="width:200px;">AVAILABLE DOCTORS</button></tr>
     </table>
   </div>
 

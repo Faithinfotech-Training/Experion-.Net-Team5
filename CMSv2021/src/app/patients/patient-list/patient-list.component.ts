@@ -45,7 +45,11 @@ updatePatients(PatientId: number){
   this.router.navigate(['patient', PatientId]);
   
 } 
+ viewTest(PatientId: number) {
+  console.log(PatientId);
+  this.router.navigate(['report', PatientId])
   
+}
 }
 
 

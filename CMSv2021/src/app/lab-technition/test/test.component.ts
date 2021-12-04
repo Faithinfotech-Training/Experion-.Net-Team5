@@ -14,7 +14,7 @@ export class TestComponent implements OnInit {
   //Declare Variables
 
   test: Test = new Test();
-  rptId: number;
+  patientId: number;
   isSubmitted = false;
 
   constructor(public labService: LabTechnitionService, private router: Router,private tostrService: ToastrService,
@@ -22,9 +22,11 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     //Get value from activated Route
-    //this.rptId = this.route.snapshot.params['ReportId'];
+    this.patientId = this.route.snapshot.params['PatientId'];
+    console.log(this.patientId)
     //console.log(this.rptId)
     this.labService.bindStaffByDepartment();
+    this.labService.bindListDoctor();
    
   }
   //clear all contents at Initialization  
@@ -48,6 +50,7 @@ export class TestComponent implements OnInit {
     console.log("Inserting a Record...");
     this.labService.insertTest(form.value).subscribe(
       (result)=>{
+        //form.value.PatientId = this.patientId;
         console.log(result);        
         this.resetForm(form); 
         this.tostrService.success('Test Details inserted!', 'succes!');       

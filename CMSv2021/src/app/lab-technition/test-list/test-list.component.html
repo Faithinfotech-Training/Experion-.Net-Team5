@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <h5 class="text-center">
-            Patient Details
+            Test Details
         </h5>
         <!--search functionality-->
         <div class="form-control">
@@ -72,10 +72,10 @@
                 <!--<td>{{emp.DepartmentId}}</td>
                     <td >{{emp.IsActive}}</td>-->
                 <td>
-                    <button class="btn btn-sm btn-outline-danger" 
-                    (click)="deletePatient(pat)">Delete</button>&nbsp;
-                    <button class="btn btn-sm btn-outline-danger" (click)="updatePatients(pat.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">Edit</button>
+                    
+                    
                     <button class="btn btn-sm btn-outline-danger" (click)="viewTest(pat.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">report</button>
+                    <button class="btn btn-sm btn-outline-danger"  routerLink= "/test" routerLinkActive="active"  class="btn btn-sm btn-info" style="margin-left:10px">Add Report </button>
                 </td>
 
             </tr>

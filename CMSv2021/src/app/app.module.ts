@@ -49,6 +49,10 @@ import { TestComponent } from './lab-technition/test/test.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { DetailedReportComponent } from './view-report/detailed-report/detailed-report.component';
 import { LabTechnitionService } from './shared/lab-technition.service';
+import { MainhomeComponent } from './mainhome/mainhome.component';
+import { TestListComponent } from './lab-technition/test-list/test-list.component';
+import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
+
 
 @NgModule({
   declarations: [
@@ -80,7 +84,11 @@ import { LabTechnitionService } from './shared/lab-technition.service';
     ReportComponent,
     TestComponent,
     ViewReportComponent,
-    DetailedReportComponent
+    DetailedReportComponent,
+    MainhomeComponent,
+    TestListComponent,
+    LabhomeComponent
+    
     
   ],
   imports: [
@@ -94,7 +102,7 @@ import { LabTechnitionService } from './shared/lab-technition.service';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule
-
+    
   ],
   
     

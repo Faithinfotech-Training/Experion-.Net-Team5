@@ -4,6 +4,8 @@ export class Test {
     NormalRange : string;
     TestResult : string;
     IsActive : boolean;
-    ReportId : number;
+    PatientId : number;
     StaffId : number;
+    TestDate:Date=new Date();
+    DoctorId : number;
 }

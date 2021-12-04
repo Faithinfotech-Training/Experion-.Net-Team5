@@ -31,6 +31,8 @@ export class PatientComponent implements OnInit {
       this.patientService.getPatientbyid(this.patId).subscribe(
         data=>{
           console.log(data);
+          this.patientService.formData = data;
+          this.patientService.formData = Object.assign({}, data);
         },
         error=>
         console.log(error)
