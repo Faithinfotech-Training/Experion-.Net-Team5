@@ -36,6 +36,7 @@ namespace CMSApi
             
             services.AddScoped<ILogin, Login>();
             services.AddScoped<IStaff, Staff>();
+            services.AddScoped<IDtest, DtestRepo>();
             services.AddScoped<IPatient, Patient>();
             services.AddScoped<IPaymentBillRepository, PaymentBillRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
