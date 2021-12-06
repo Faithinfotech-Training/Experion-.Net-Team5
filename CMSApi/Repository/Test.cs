@@ -18,14 +18,14 @@ namespace CMSApi.Repository
             db = _db;
         }
         #region Get Test By Patient Id        
-        public async Task<List<test>> GetTestByPatientId(int id)
+        public async Task<List<Tests>> GetTestByPatientId(int id)
         {
             if (db != null)
             {
                 //LINQ
                 return await (from t in db.Tests
                               where t.PatientId == id
-                              select new test
+                              select new Tests
                               {
                                   TestId = t.TestId,
                                   TestName = t.TestName,
@@ -42,7 +42,7 @@ namespace CMSApi.Repository
         #endregion
 
         #region Add Test
-        public async Task<int> AddTest(test test)
+        public async Task<int> AddTest(Tests test)
         {
             if (db != null)
             {
@@ -56,7 +56,7 @@ namespace CMSApi.Repository
 
         //Update test
         #region Update Test
-        public async Task UpdateTest(test test)
+        public async Task UpdateTest(Tests test)
         {
             if (db != null)
             {
@@ -84,7 +84,7 @@ namespace CMSApi.Repository
             return null;
         }
         #endregion
-        public async Task<List<test>> GetTest()
+        public async Task<List<Tests>> GetTest()
         {
             if (db != null)
             {

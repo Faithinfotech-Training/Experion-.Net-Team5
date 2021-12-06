@@ -15,7 +15,7 @@ namespace CMSApi.Models
         public decimal? Result { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual test Test { get; set; }
+        public virtual Tests Test { get; set; }
         public virtual ICollection<Reports> Reports { get; set; }
     }
 }

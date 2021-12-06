@@ -44,7 +44,7 @@ namespace CMSApi.Controllers
         #region Add Test
         [HttpPost]
   
-        public async Task<IActionResult> AddTest([FromBody] test model)
+        public async Task<IActionResult> AddTest([FromBody] Tests model)
         {
             //Check the validation of body
             if (ModelState.IsValid)
@@ -74,7 +74,7 @@ namespace CMSApi.Controllers
         #region Update Test
         [HttpPut]
         
-        public async Task<IActionResult> UpdatePrescription([FromBody] test model)
+        public async Task<IActionResult> UpdatePrescription([FromBody] Tests model)
         {
             //Check the validation of body
             if (ModelState.IsValid)

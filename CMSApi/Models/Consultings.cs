@@ -8,7 +8,7 @@ namespace CMSApi.Models
         public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
         public int ConsultingId { get; set; }
-        public DateTime ConsultingDate { get; set; }
+        public DateTime? ConsultingDate { get; set; }
         public bool IsActive { get; set; }
 
         public virtual Doctors Doctor { get; set; }

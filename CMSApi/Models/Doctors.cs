@@ -8,11 +8,12 @@ namespace CMSApi.Models
         public Doctors()
         {
             Consultings = new HashSet<Consultings>();
+            Dtests = new HashSet<Dtests>();
             TblLabReport = new HashSet<TblLabReport>();
-            TblPatients = new HashSet<TblPatients>();
             TbllAppointments = new HashSet<TbllAppointments>();
             TbllMedicines = new HashSet<TbllMedicines>();
-            Tests = new HashSet<test>();
+            TbllPrescription = new HashSet<TbllPrescription>();
+            Tests = new HashSet<Tests>();
         }
 
         public int DoctorId { get; set; }
@@ -26,10 +27,11 @@ namespace CMSApi.Models
 
         public virtual Departments Department { get; set; }
         public virtual ICollection<Consultings> Consultings { get; set; }
+        public virtual ICollection<Dtests> Dtests { get; set; }
         public virtual ICollection<TblLabReport> TblLabReport { get; set; }
-        public virtual ICollection<TblPatients> TblPatients { get; set; }
         public virtual ICollection<TbllAppointments> TbllAppointments { get; set; }
         public virtual ICollection<TbllMedicines> TbllMedicines { get; set; }
-        public virtual ICollection<test> Tests { get; set; }
+        public virtual ICollection<TbllPrescription> TbllPrescription { get; set; }
+        public virtual ICollection<Tests> Tests { get; set; }
     }
 }

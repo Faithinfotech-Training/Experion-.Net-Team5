@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CMSApi.Models
 {
-    public partial class test
+    public partial class Tests
     {
         public int TestId { get; set; }
         public string TestName { get; set; }

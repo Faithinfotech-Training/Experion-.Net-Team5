@@ -9,7 +9,7 @@ namespace CMSApi.Models
         {
             TblLabReport = new HashSet<TblLabReport>();
             TblTest = new HashSet<TblTest>();
-            Tests = new HashSet<test>();
+            Tests = new HashSet<Tests>();
         }
 
         public int StaffId { get; set; }
@@ -24,6 +24,6 @@ namespace CMSApi.Models
         public virtual Designations Designation { get; set; }
         public virtual ICollection<TblLabReport> TblLabReport { get; set; }
         public virtual ICollection<TblTest> TblTest { get; set; }
-        public virtual ICollection<test> Tests { get; set; }
+        public virtual ICollection<Tests> Tests { get; set; }
     }
 }

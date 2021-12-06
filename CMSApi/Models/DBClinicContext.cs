@@ -19,6 +19,8 @@ namespace CMSApi.Models
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Designations> Designations { get; set; }
         public virtual DbSet<Doctors> Doctors { get; set; }
+        public virtual DbSet<Dtests> Dtests { get; set; }
+        public virtual DbSet<Ntests> Ntests { get; set; }
         public virtual DbSet<Patients> Patients { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Staffs> Staffs { get; set; }
@@ -28,17 +30,18 @@ namespace CMSApi.Models
         public virtual DbSet<TblTest> TblTest { get; set; }
         public virtual DbSet<TbllAppointments> TbllAppointments { get; set; }
         public virtual DbSet<TbllMedicines> TbllMedicines { get; set; }
-        public virtual DbSet<test> Tests { get; set; }
+        public virtual DbSet<TbllPrescription> TbllPrescription { get; set; }
+        public virtual DbSet<Tests> Tests { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=ROHITDEEPAK\\SQLEXPRESS; Initial Catalog=DBClinic; Integrated security=True");
             }
-        }*/
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -111,6 +114,47 @@ namespace CMSApi.Models
                     .WithMany(p => p.Doctors)
                     .HasForeignKey(d => d.DepartmentId)
                     .HasConstraintName("FK__Doctors__Departm__6383C8BA");
+            });
+
+            modelBuilder.Entity<Dtests>(entity =>
+            {
+                entity.HasKey(e => e.TestId)
+                    .HasName("PK__DTests__8CC33160BCEA1225");
+
+                entity.ToTable("DTests");
+
+                entity.Property(e => e.TestDate).HasColumnType("date");
+
+                entity.HasOne(d => d.Doctor)
+                    .WithMany(p => p.Dtests)
+                    .HasForeignKey(d => d.DoctorId)
+                    .HasConstraintName("FK__DTests__DoctorId__0D7A0286");
+
+                entity.HasOne(d => d.Patient)
+                    .WithMany(p => p.Dtests)
+                    .HasForeignKey(d => d.PatientId)
+                    .HasConstraintName("FK__DTests__PatientI__0E6E26BF");
+
+                entity.HasOne(d => d.TestName)
+                    .WithMany(p => p.Dtests)
+                    .HasForeignKey(d => d.TestNameId)
+                    .HasConstraintName("FK__DTests__TestName__114A936A");
+            });
+
+            modelBuilder.Entity<Ntests>(entity =>
+            {
+                entity.HasKey(e => e.TestId)
+                    .HasName("PK__NTESTS__8CC3316054EBEB30");
+
+                entity.ToTable("NTESTS");
+
+                entity.Property(e => e.NormalRange)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TestName)
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Patients>(entity =>
@@ -217,11 +261,6 @@ namespace CMSApi.Models
                 entity.Property(e => e.PatientName)
                     .HasMaxLength(30)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Doctor)
-                    .WithMany(p => p.TblPatients)
-                    .HasForeignKey(d => d.DoctorId)
-                    .HasConstraintName("FK__TblPatien__Docto__6B24EA82");
             });
 
             modelBuilder.Entity<TblPaymentBill>(entity =>
@@ -309,7 +348,27 @@ namespace CMSApi.Models
                     .HasConstraintName("FK__TbllMedic__Patie__74AE54BC");
             });
 
-            modelBuilder.Entity<test>(entity =>
+            modelBuilder.Entity<TbllPrescription>(entity =>
+            {
+                entity.HasKey(e => e.PrescriptionId)
+                    .HasName("PK__TbllPres__401308320C205E35");
+
+                entity.Property(e => e.DoctorNotes)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Doctor)
+                    .WithMany(p => p.TbllPrescription)
+                    .HasForeignKey(d => d.DoctorId)
+                    .HasConstraintName("FK__TbllPresc__Docto__09A971A2");
+
+                entity.HasOne(d => d.Patient)
+                    .WithMany(p => p.TbllPrescription)
+                    .HasForeignKey(d => d.PatientId)
+                    .HasConstraintName("FK__TbllPresc__Patie__08B54D69");
+            });
+
+            modelBuilder.Entity<Tests>(entity =>
             {
                 entity.HasKey(e => e.TestId)
                     .HasName("PK__Tests__8CC3316046747876");

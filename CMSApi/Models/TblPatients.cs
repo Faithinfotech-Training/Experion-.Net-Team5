@@ -7,9 +7,11 @@ namespace CMSApi.Models
     {
         public TblPatients()
         {
+            Dtests = new HashSet<Dtests>();
             TblPaymentBill = new HashSet<TblPaymentBill>();
             TbllAppointments = new HashSet<TbllAppointments>();
             TbllMedicines = new HashSet<TbllMedicines>();
+            TbllPrescription = new HashSet<TbllPrescription>();
         }
 
         public int PatientId { get; set; }
@@ -20,11 +22,11 @@ namespace CMSApi.Models
         public int? Age { get; set; }
         public string BloodGroup { get; set; }
         public bool? IsActive { get; set; }
-        public int? DoctorId { get; set; }
 
-        public virtual Doctors Doctor { get; set; }
+        public virtual ICollection<Dtests> Dtests { get; set; }
         public virtual ICollection<TblPaymentBill> TblPaymentBill { get; set; }
         public virtual ICollection<TbllAppointments> TbllAppointments { get; set; }
         public virtual ICollection<TbllMedicines> TbllMedicines { get; set; }
+        public virtual ICollection<TbllPrescription> TbllPrescription { get; set; }
     }
 }

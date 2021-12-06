@@ -50,7 +50,7 @@ namespace CMSApi.Repository
                                   PatientId = b.PatientId,
                                   PatientName = p.PatientName,
                                   BillId = b.BillId,
-                                  BillNumber = b.BillNumber,
+                                  
                                   BillDate = b.BillDate,
                                   Amount = b.Amount,
                                   IsActive = b.IsActive
@@ -91,7 +91,7 @@ namespace CMSApi.Repository
                                   PatientName = p.PatientName,
                                   Contact = p.Contact,
                                   BillId = b.BillId,
-                                  BillNumber = b.BillNumber,
+                                  
                                   BillDate = b.BillDate,
                                   Amount = b.Amount,
                                   IsActive = b.IsActive

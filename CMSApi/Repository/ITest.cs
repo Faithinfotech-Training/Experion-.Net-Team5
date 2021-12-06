@@ -8,13 +8,13 @@ namespace CMSApi.Repository
 {
     public interface ITest
     {
-        Task<List<test>> GetTestByPatientId(int id);
+        Task<List<Tests>> GetTestByPatientId(int id);
 
         Task<List<Staffs>> GetStaffbyId(int id);
-        Task<int> AddTest(test test);
+        Task<int> AddTest(Tests test);
 
-        Task UpdateTest(test test);
+        Task UpdateTest(Tests test);
 
-        Task<List<test>> GetTest();
+        Task<List<Tests>> GetTest();
     }
 }
