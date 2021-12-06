@@ -121,8 +121,10 @@ namespace CMSApi.Repository
                               select new AppointmentViewModel
                               {
                                   AppointmentId = a.AppointmentId,
+                                  PatientId=p.PatientId,
                                   AppointmentDate = a.AppointmentDate,
                                   DoctorName = d.DoctorName,
+                                  DoctorId=d.DoctorId,
                                   PatientName = p.PatientName,
                                   IsActive = a.IsActive
                               }).ToListAsync();
