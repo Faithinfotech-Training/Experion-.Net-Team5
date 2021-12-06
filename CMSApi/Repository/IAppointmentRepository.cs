@@ -28,5 +28,7 @@ namespace CMSApi.Repository
         #region get appointment by id
         Task<AppointmentViewModel> GetAppointmentById(int id);
         #endregion
+
+        Task<List<AppointmentViewModel>> GetAppointmentByDoctorIdAndDate(int id, DateTime date);
     }
 }

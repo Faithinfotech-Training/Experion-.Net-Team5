@@ -7,8 +7,8 @@ namespace CMSApi.Models
     {
         public int MedicineId { get; set; }
         public string MedicineName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public decimal? Dosage { get; set; }
         public bool? IsActive { get; set; }
         public int? PatientId { get; set; }

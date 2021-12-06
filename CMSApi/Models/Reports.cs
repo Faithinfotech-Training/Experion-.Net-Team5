@@ -14,6 +14,6 @@ namespace CMSApi.Models
 
         public virtual Patients Patient { get; set; }
         public virtual Results Result { get; set; }
-        public virtual Tests Test { get; set; }
+        public virtual test Test { get; set; }
     }
 }

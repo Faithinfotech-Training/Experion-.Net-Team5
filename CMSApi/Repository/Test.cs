@@ -17,22 +17,23 @@ namespace CMSApi.Repository
         {
             db = _db;
         }
-        #region Get Test By Report Id        
-        public async Task<List<TblTest>> GetTestByReportId(int id)
+        #region Get Test By Patient Id        
+        public async Task<List<test>> GetTestByPatientId(int id)
         {
             if (db != null)
             {
                 //LINQ
-                return await (from t in db.TblTest
-                              where t.ReportId == id
-                              select new TblTest
+                return await (from t in db.Tests
+                              where t.PatientId == id
+                              select new test
                               {
                                   TestId = t.TestId,
                                   TestName = t.TestName,
                                   NormalRange = t.NormalRange,
                                   TestResult = t.TestResult,
                                   IsActive = t.IsActive,
-                                  ReportId = t.ReportId,
+                                  PatientId = t.PatientId,
+                                  DoctorId =t.DoctorId,
                                   StaffId = t.StaffId
                               }).ToListAsync();
             }
@@ -41,11 +42,11 @@ namespace CMSApi.Repository
         #endregion
 
         #region Add Test
-        public async Task<int> AddTest(TblTest test)
+        public async Task<int> AddTest(test test)
         {
             if (db != null)
             {
-                await db.TblTest.AddAsync(test);
+                await db.Tests.AddAsync(test);
                 await db.SaveChangesAsync();
                 return test.TestId;
             }
@@ -55,11 +56,11 @@ namespace CMSApi.Repository
 
         //Update test
         #region Update Test
-        public async Task UpdateTest(TblTest test)
+        public async Task UpdateTest(test test)
         {
             if (db != null)
             {
-                db.TblTest.Update(test);
+                db.Tests.Update(test);
                 await db.SaveChangesAsync();    //Commit the transaction
             }
         }
@@ -83,6 +84,18 @@ namespace CMSApi.Repository
             return null;
         }
         #endregion
+        public async Task<List<test>> GetTest()
+        {
+            if (db != null)
+            {
+                return await db.Tests.ToListAsync();
+            }
+            return null;
 
+
+
+        }
     }
+    
+
 }

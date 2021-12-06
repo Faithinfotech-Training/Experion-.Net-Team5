@@ -12,6 +12,6 @@ namespace CMSApi.Models
         public bool IsActive { get; set; }
 
         public virtual Consultings Consulting { get; set; }
-        public virtual Tests Test { get; set; }
+        public virtual test Test { get; set; }
     }
 }

@@ -106,5 +106,29 @@ namespace CMSApi.Repository
             return null;
         }
         #endregion
+
+        #region GetAppointmentByDoctorIdAndDate()
+        public async Task<List<AppointmentViewModel>> GetAppointmentByDoctorIdAndDate(int id, DateTime date)
+        {
+            if (db != null)
+            {
+                //LINQ
+                //join appointment, staff, patient
+                return await (from a in db.TbllAppointments
+                              from p in db.Patients
+                              from d in db.Doctors
+                              where d.DoctorId == id && a.AppointmentDate == date && a.DoctorId == d.DoctorId && a.PatientId == p.PatientId
+                              select new AppointmentViewModel
+                              {
+                                  AppointmentId = a.AppointmentId,
+                                  AppointmentDate = a.AppointmentDate,
+                                  DoctorName = d.DoctorName,
+                                  PatientName = p.PatientName,
+                                  IsActive = a.IsActive
+                              }).ToListAsync();
+            }
+            return null;
+        }
+        #endregion
     }
 }

@@ -12,6 +12,6 @@ namespace CMSApi.Models
         public bool? IsActive { get; set; }
         public int? PatientId { get; set; }
 
-        public virtual Patients Patient { get; set; }
+        public virtual TblPatients Patient { get; set; }
     }
 }

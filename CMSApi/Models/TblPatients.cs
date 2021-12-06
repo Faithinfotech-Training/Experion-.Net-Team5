@@ -7,6 +7,7 @@ namespace CMSApi.Models
     {
         public TblPatients()
         {
+            TblPaymentBill = new HashSet<TblPaymentBill>();
             TbllAppointments = new HashSet<TbllAppointments>();
             TbllMedicines = new HashSet<TbllMedicines>();
         }
@@ -22,6 +23,7 @@ namespace CMSApi.Models
         public int? DoctorId { get; set; }
 
         public virtual Doctors Doctor { get; set; }
+        public virtual ICollection<TblPaymentBill> TblPaymentBill { get; set; }
         public virtual ICollection<TbllAppointments> TbllAppointments { get; set; }
         public virtual ICollection<TbllMedicines> TbllMedicines { get; set; }
     }

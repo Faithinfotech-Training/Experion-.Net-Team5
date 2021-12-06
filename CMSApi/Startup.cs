@@ -41,6 +41,7 @@ namespace CMSApi
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<ILabReport, LabReport>();
             services.AddScoped<IDoctorRepo, DoctorRepo>();
+            services.AddScoped<IMedicineRepo, MedicineRepo>();
             services.AddScoped<ITest, Test>();
             services.AddDbContext<DBClinicContext>(item =>
            item.UseSqlServer(Configuration.GetConnectionString("ClinicDBConnection")));
@@ -60,9 +61,6 @@ namespace CMSApi
                         ValidAudience = Configuration["Jwt:Issuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                     };
-
-
-
                 });
             services.AddMvc();
             services.AddCors();

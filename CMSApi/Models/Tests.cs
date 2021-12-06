@@ -3,26 +3,20 @@ using System.Collections.Generic;
 
 namespace CMSApi.Models
 {
-    public partial class Tests
+    public partial class test
     {
-        public Tests()
-        {
-            Prescriptions = new HashSet<Prescriptions>();
-            TestBills = new HashSet<TestBills>();
-        }
-
         public int TestId { get; set; }
+        public string TestName { get; set; }
+        public string NormalRange { get; set; }
+        public string TestResult { get; set; }
+        public int? StaffId { get; set; }
         public int? PatientId { get; set; }
-        public int? ConsultingId { get; set; }
-        public DateTime? TestDate { get; set; }
-        public string TestNames { get; set; }
+        public int? DoctorId { get; set; }
+        public DateTime TestDate { get; set; }
         public bool IsActive { get; set; }
-        public int? NormalRange { get; set; }
-        public int? TestResult { get; set; }
 
-        public virtual Consultings Consulting { get; set; }
+        public virtual Doctors Doctor { get; set; }
         public virtual Patients Patient { get; set; }
-        public virtual ICollection<Prescriptions> Prescriptions { get; set; }
-        public virtual ICollection<TestBills> TestBills { get; set; }
+        public virtual Staffs Staff { get; set; }
     }
 }

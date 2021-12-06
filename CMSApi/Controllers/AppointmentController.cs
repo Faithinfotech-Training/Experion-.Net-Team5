@@ -124,5 +124,27 @@ namespace CMSApi.Controllers
 
         }
         #endregion
+
+        #region GetAppointmentByDoctorId
+        [HttpGet]
+        [Route("GetAppointmentByDoctorIdAndDate/{id}/{date}")]
+        public async Task<IActionResult> GetAppointmentByDoctorIdAndDate(int id, DateTime date)
+        {
+            try
+            {
+                var app
+                  = await appointmentRepository.GetAppointmentByDoctorIdAndDate(id, date);
+                if (app == null)
+                {
+                    return NotFound();
+                }
+                return Ok(app);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
     }
 }

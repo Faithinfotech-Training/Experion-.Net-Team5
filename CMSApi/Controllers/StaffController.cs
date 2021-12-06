@@ -23,7 +23,7 @@ namespace CMSApi.Controllers
 
 
         //get staff
-        #region get All staff
+        #region get staff by id
 
         [HttpGet]
         [Route("GetStaffbyId")]

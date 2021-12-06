@@ -19,13 +19,13 @@ namespace CMSApi.Controllers
         {
             testRepository = _p;
         }
-        #region Get Test By Report Id 
-        [HttpGet("GetTestByReportId/{id}")]
-        public async Task<IActionResult> GetTestByReportId(int id)
+        #region Get Test By PatientId
+        [HttpGet("GetTestByPatientId/{id}")]
+        public async Task<IActionResult> GetTestByPatientId(int id)
         {
             try
             {
-                var report = await testRepository.GetTestByReportId(id);
+                var report = await testRepository.GetTestByPatientId(id);
                 if (report == null)
                 {
                     return NotFound();
@@ -44,7 +44,7 @@ namespace CMSApi.Controllers
         #region Add Test
         [HttpPost]
   
-        public async Task<IActionResult> AddTest([FromBody] TblTest model)
+        public async Task<IActionResult> AddTest([FromBody] test model)
         {
             //Check the validation of body
             if (ModelState.IsValid)
@@ -74,7 +74,7 @@ namespace CMSApi.Controllers
         #region Update Test
         [HttpPut]
         
-        public async Task<IActionResult> UpdatePrescription([FromBody] TblTest model)
+        public async Task<IActionResult> UpdatePrescription([FromBody] test model)
         {
             //Check the validation of body
             if (ModelState.IsValid)
@@ -114,6 +114,28 @@ namespace CMSApi.Controllers
 
         }
         #endregion
+        [HttpGet]
+        [Route("GetTest")]
+        public async Task<IActionResult> GetTest()
+        {
+            try
+            {
+                var staff = await testRepository.GetTest();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+
+
+        }
+
 
     }
 }
