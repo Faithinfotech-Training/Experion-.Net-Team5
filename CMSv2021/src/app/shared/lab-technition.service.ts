@@ -7,18 +7,22 @@ import { Doctor } from './doctor';
 import { Staff } from './staff';
 import { Test } from './test';
 import { Patient } from './patient';
+import { Result } from './result';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LabTechnitionService {
   tests: Test[];
-  testFormData : Test = new Test();
+  testFormData: Test = new Test();
+  resultFormData: Result= new Result();
   reportFormData: Report = new Report();
   reports: Report[];
   doctors: Doctor[];
   patients: Patient[];
   staffs: Staff[];
+  results: Result[];
+
   constructor(private httpClient: HttpClient) { }
 
   //Get All Reports
@@ -43,7 +47,7 @@ export class LabTechnitionService {
       .toPromise().then(response =>
         this.staffs = response as Staff[]
       );
-      //console.log(this.staffs)
+    //console.log(this.staffs)
   }
   //Get Staff by Department
   bindStaffByDepartment() {
@@ -51,25 +55,26 @@ export class LabTechnitionService {
       .toPromise().then(response =>
         this.staffs = response as Staff[]
       );
-      //console.log(this.staffs)
+    //console.log(this.staffs)
   }
   //Get All Test  in a Report
   bindListTest() {
-    this.httpClient.get(environment.apiUrl + "/api/test/gettest")
+    this.httpClient.get(environment.apiUrl + "/api/Dtest/getresult")
       .toPromise().then(response =>
         this.tests = response as Test[]
-        
+
       );
-      //console.log(reportId);
+    //console.log(reportId);
   }
+  
 
   //GET a particular Report By ID
-  getReport(patientId: number){
-    this.httpClient.get(environment.apiUrl + "/api/TestName/GetTestById/" + patientId )
+  getReport(patientId: number) {
+    this.httpClient.get(environment.apiUrl + "/api/TestName/GetTestById/" + patientId)
       .toPromise().then(response =>
-      this.tests = response as Test[]
+        this.tests = response as Test[]
       );
-      
+
   }
 
   //INSERT
@@ -81,4 +86,10 @@ export class LabTechnitionService {
   insertTest(test: Test): Observable<any> {
     return this.httpClient.post(environment.apiUrl + "/api/test", test);
   }
+  //INSERT
+  insertLabReport(results: Result): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + "/api/dtest", results);
+  }
+
+
 }

@@ -27,6 +27,9 @@ import { DtestComponent } from './dtest/dtest.component';
 import { PrescriptionhistoryComponent } from './prescriptionhistory/prescriptionhistory.component';
 import { DtestListComponent } from './dtest-list/dtest-list.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { LabappointmentComponent } from './labappointment/labappointment.component';
+import { LabtestlistsComponent } from './labtestlists/labtestlists.component';
+import { AddreportComponent } from './lab-technition/addreport/addreport.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/mainhome", pathMatch: 'full' },
@@ -67,7 +70,13 @@ const routes: Routes = [
   {path:'viewtest/:docId/:patientId',component:DtestListComponent},
   { path: 'prescription', component: PrescriptionComponent },
   { path: 'dappointment/:PatientId', component: PrescriptionComponent },
-  { path: 'addpres/:PatientId/:AppointmentDate', component: PrescriptionComponent }
+  { path: 'addpres/:PatientId/:AppointmentDate', component: PrescriptionComponent },
+  { path: 'lhapp', component: LabappointmentComponent},
+  {path:'labtest/:docId/:patientId',component:LabtestlistsComponent},
+  {path:'labresult/:TestId',component:AddreportComponent},
+  { path: 'addmed/:PatientId', component: MedicineComponent },
+  { path: 'dappointment/:PatientId', component: MedicineComponent },
+  { path: 'dappointment/:PatientId/:DoctorId', component: DappoinmentComponent }
 ];
 
 @NgModule({

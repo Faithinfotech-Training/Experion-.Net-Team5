@@ -15,15 +15,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>
-                   Medicine ID
-                </th>
-                <th>
-                    Patient ID
-                </th>
-                <th>
-                     Doctor ID
-                </th>
+                
                 <th>
                     Medicine Name
                 </th>
@@ -56,9 +48,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let pat of this.medicineService.medicines | filter: filter" >
-                <td (click)="populateForm(pat)">{{pat.MedicineId}}</td>
-                <td (click)="populateForm(pat)">{{pat.PatientId}}</td>
-                <td (click)="populateForm(pat)">{{pat.DoctorId}}</td>
+                
                 <td (click)="populateForm(pat)">{{pat.MedicineName}}</td>
                 <td (click)="populateForm(pat)">{{pat.StartDate}}</td>
                 <td (click)="populateForm(pat)">{{pat.EndDate}}</td>

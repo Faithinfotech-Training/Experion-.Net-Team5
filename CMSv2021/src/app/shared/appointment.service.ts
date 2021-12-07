@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Appointment } from './appointment';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Labhappointment } from './labhappointment';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AppointmentService {
   //parameter
   appointment:Appointment[];
   appdates:Appointment[];
-
+  labdates:Labhappointment[];
   constructor(private httpClient: HttpClient) { }
   //get bill
   getAppointment() {
@@ -45,5 +46,14 @@ export class AppointmentService {
     return this.httpClient.get(environment.apiUrl+"/api/appointment/getappointmentbyid?id="+bId);
   
   }
+  getLabAppointmentByDate(labdate:Date){
+    console.log("hello");
+    console.log(labdate);
+    return this.httpClient.get(environment.apiUrl+"/api/dtest/GetLabAppointmentByDate/"+labdate)
+    .toPromise().then(response =>
+      this.labdates = response as Labhappointment[])
+ 
+  }
+
 }
 

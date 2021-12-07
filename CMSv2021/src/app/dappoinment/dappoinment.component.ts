@@ -55,5 +55,11 @@ export class DappoinmentComponent implements OnInit {
     console.log("view");
     this.router.navigate(['addpres', PatientId, AppointmentDate]);
   }
+  AddMed(PatientId:number, DoctorId:number){
+    console.log(PatientId);
+    //console.log(AppointmentDate);
+    console.log("view");
+    this.router.navigate(['addmed', PatientId]);
+  }
  
 }

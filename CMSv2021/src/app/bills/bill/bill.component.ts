@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Bill } from '../../shared/bill';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bill',
@@ -18,7 +19,7 @@ export class BillComponent implements OnInit {
   namePattern="[a-zA-Z ]*";
   decPattern="[(0-9).]*";
   PatientId:number;
-  constructor(public paymentservice : PaymentbillService , private router: Router, private route: ActivatedRoute ) { }
+  constructor(public paymentservice : PaymentbillService , private router: Router, private route: ActivatedRoute,private tostrService: ToastrService ) { }
 
   ngOnInit(): void {
     this.paymentservice.getBill();
@@ -79,17 +80,18 @@ export class BillComponent implements OnInit {
     //form.value.PatientId = this.bId;
     console.log(this.bId)
     console.log(form.value);
+    form.value.IsActive="true";
     this.paymentservice.insertBill(form.value).subscribe
     ((result)=>
     {
       console.log("result" + result);
       this.resetform(form);
-      //this.toastrService.success('Course record has been inserted','CRM appv2021');
+      this.tostrService.success('bill Generated');
      
      
     }
     );
-    window.alert("Bill has been inserted");
+   
     //window.location.reload();
   }
 
@@ -102,7 +104,7 @@ export class BillComponent implements OnInit {
       {
         console.log("result" + result);
         this.resetform(form);
-        //this.toastrService.success('Course record has been updated','CRM appv2021');
+        this.tostrService.success('Bill Updated');
        this.paymentservice.getBill();
       }
       );

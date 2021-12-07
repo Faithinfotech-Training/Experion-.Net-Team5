@@ -4,57 +4,8 @@
         <tr>
             <td><input type="hidden" name="MedicineId" [(ngModel)]="medicineService.formData.MedicineId" /></td>
         </tr>
-        <tr>
-            <td>
-
-                <!--patient id-->
-        <tr>
-            <td>
-                <div class="form-group">
-
-                    <label>PATIENT ID</label>
-                    <input name="PatientId" #PatientId="ngModel" [ngModel]="medicineService.formData.PatientId"
-                        [pattern]="decPattern" class="form-control" placeholder="Enter id" minlength="1" maxlength="25"
-                        required [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
-
-                </div>
-                <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
-                    <div *ngIf="PatientId.errors.pattern">
-                        <span style="color:red">PatientId not valid.</span>
-                    </div>
-
-                    <div *ngIf="PatientId.errors.required">
-                        <span style="color:red">PatientId is required</span>
-                    </div>
-
-                </div>
-
-            </td>
-        </tr>
-        <!--doctor id-->
-        <tr>
-            <td>
-                <div class="form-group">
-
-                    <label>DOCTOR ID</label>
-                    <input name="DoctorId" #DoctorId="ngModel" [ngModel]="medicineService.formData.DoctorId"
-                        [pattern]="decPattern" class="form-control" placeholder="Enter id" minlength="1" maxlength="25"
-                        required [ngClass]="{'is-invalid':DoctorId.touched && DoctorId.invalid}" />
-
-                </div>
-                <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
-                    <div *ngIf="DoctorId.errors.pattern">
-                        <span style="color:red">DoctorId not valid.</span>
-                    </div>
-
-                    <div *ngIf="DoctorId.errors.required">
-                        <span style="color:red">DoctorId is required</span>
-                    </div>
-                </div>
-
-            </td>
-        </tr>
-
+        
+        
         <!--patient name-->
         <tr>
             <td>
@@ -82,11 +33,11 @@
 
         <!--appointment date-->
 
-        <div class="form-group col-md-2">
+        <div class="form-group">
 
             <label>START DATE</label>
             <input type="Date" name="StartDate" id="StartDate" #StartDate="ngModel"
-                [ngModel]="medicineService.formData.StartDate" class="form-control"  required
+                [ngModel]="medicineService.formData.StartDate" class="form-control" required
                 [ngClass]="{'is-invalid':StartDate.touched && StartDate.invalid}" />
             <div class="validation-error" *ngIf="StartDate.touched && StartDate.invalid">
 
@@ -96,11 +47,11 @@
         </div>
 
 
-        
+
 
         <!--appointment date-->
 
-        <div class="form-group col-md-2">
+        <div class="form-group">
 
             <label>END DATE</label>
             <input type="Date" name="EndDate" id="EndDate" #EndDate="ngModel"
@@ -114,7 +65,7 @@
         </div>
 
 
-        
+
 
         <!--doctor id-->
         <tr>
@@ -122,12 +73,13 @@
                 <div class="form-group">
 
                     <label>DOSAGE</label>
-                    <input name="Dosage" #Dosage="ngModel" [ngModel]="medicineService.formData.Dosage" class="form-control"
-                        [pattern]="decPattern" class="form-control" placeholder="Enter dosage" minlength="1"
-                        maxlength="25" required [ngClass]="{'is-invalid':Dosage.touched && Dosage.invalid}" />
+                    <input name="Dosage" #Dosage="ngModel" [ngModel]="medicineService.formData.Dosage"
+                        class="form-control" [pattern]="decPattern" class="form-control" placeholder="Enter dosage"
+                        minlength="1" maxlength="25" required
+                        [ngClass]="{'is-invalid':Dosage.touched && Dosage.invalid}" />
 
                 </div>
-                <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
+                <div class="validation-error" *ngIf="Dosage.touched && Dosage.invalid">
                     <div *ngIf="Dosage.errors.pattern">
                         <span style="color:red">Dosage not valid.</span>
                     </div>
@@ -139,18 +91,24 @@
 
             </td>
         </tr>
-       <!--<tr>
-            <td>
-            <label >Doctor Notes</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </td>
-        </tr>-->
+
 
 
 
 
 
         <!--Is Active-->
+        <tr>
+            <td>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label">Is active </label>
+                        <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
+                            [(ngModel)]="medicineService.formData.IsActive" class="form-check-input">
+                    </div>
+                </div>
+            </td>
+        </tr>
         <!--submit button-->
 
         <tr>
@@ -163,7 +121,7 @@
             </td>
         </tr>
 
-       
+
 
         <tr>
             <td>
@@ -171,19 +129,24 @@
                 <div>
                     <button type="button" (click)="resetform(form)" class="btn btn-lg btn-primary form-control">ADD
                         NEW</button>
+
+
                 </div>
             </td>
         </tr>
+
         <tr>
             <td>
                 <br>
                 <div>
-                    <button type="button" [routerLink]="['../medicinelist']" class="btn btn-lg btn-primary form-control">VIEW
+                    <button type="button" routerLink="/medicinelist" class="btn btn-lg btn-primary form-control">VIEW
                     </button>
 
                 </div>
             </td>
         </tr>
+
+        
 
     </table>
 </form>

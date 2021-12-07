@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Prescription } from '../shared/prescription';
 import { PrescriptionService } from '../shared/prescription.service';
 
@@ -14,12 +15,13 @@ export class PrescriptionComponent implements OnInit {
 
   prescription: Prescription = new Prescription();
   patId: number;
-  tostrService: any;
+  
   bId:number;
   addId:number;
   PrescriptionDate:Date;
+  toastr: any;
 
-  constructor(public pservice: PrescriptionService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public pservice: PrescriptionService, private router: Router, private route: ActivatedRoute,private tostrService: ToastrService) { }
 
   ngOnInit(): void {
     this.pservice.getPrescription();
@@ -78,10 +80,10 @@ export class PrescriptionComponent implements OnInit {
       ((result) => {
         console.log(result);
         this.resetform(form);
-
+        this.tostrService.success('Prescription Added');
       }
       );
-    window.alert("Prescription has been inserted");
+    //window.alert("Prescription has been inserted");
   }
 
   //update

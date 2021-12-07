@@ -1,0 +1,76 @@
+<form name="lhappform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+ 
+    <!--Appointment Date-->
+    <div class="form-group">
+ 
+        <label>Choose an Appointment Date</label>
+        <input type="date" name="TestDate" id="TestDate" #TestDate="ngModel"
+            [ngModel]="dtestService.dtestForm.TestDate" class="form-control" required
+            [ngClass]="{'is-invalid':TestDate.touched && TestDate.invalid}" />
+        <div class="validation-error" *ngIf="TestDate.touched && TestDate.invalid">
+ 
+            <div *ngIf="TestDate.errors.required">
+                Test Date is required</div>
+        </div>
+    </div>
+    <!--submit button-->
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">Submit</button>
+    </div>
+ 
+</form>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+           <!-- <th>
+                APPOINTMENT ID
+            </th>-->
+            <th>
+                TestId
+            </th>
+ 
+            <th>
+                PATIENT NAME
+            </th>
+            <th>
+                TestName
+            </th>
+            <th>
+                DATE
+            </th>
+ 
+            <th>
+                DOCTOR NAME
+            </th>
+ 
+           
+ 
+            <!--<th>
+                    Department
+                </th>
+                <th>
+                    Status
+                </th>-->
+            <th>
+                Action
+            </th>
+ 
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let appointment of this.appservice.labdates">
+            <td (click)="populateForm(appointment)">{{appointment.TestId}}</td>
+            <td (click)="populateForm(appointment)">{{appointment.PatientName}}</td>
+            <td (click)="populateForm(appointment)">{{appointment.TestName}}</td>
+            <td (click)="populateForm(appointment)">{{appointment.TestDate | date:'dd-MM-yyyy'}}</td>
+            <td (click)="populateForm(appointment)">{{appointment.DoctorName}}</td>
+           <!-- <td (click)="populateForm(appointment)">{{appointment.IsActive}}</td>-->
+           <td>
+            <button (click)="ViewLabTest(appointment.DoctorId,appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">ViewTest</button>&nbsp;&nbsp;
+           
+           
+        </tr>
+    </tbody>
+

@@ -1,10 +1,13 @@
 import { Dtest } from "./dtest";
 
 export class Ntestlist {
-    //TestId:number=0;
+    //TestId:number;
     TestName:string='';
+    TestDate:Date =new Date();
     NormalRange:string='';
-    Dtest :Dtest;
-    TestId:number=0;
+
+    //object oriented model
+    Dtest:Dtest;
+    TestId:number;
     TestNameId:number;
 }

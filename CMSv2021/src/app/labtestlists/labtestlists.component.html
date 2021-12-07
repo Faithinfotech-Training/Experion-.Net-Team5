@@ -16,6 +16,9 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th>
+                    Test Id
+                </th>
                
                 <th>
                     Test Name
@@ -25,7 +28,10 @@
                     TestDate
                 </th>
                
-               
+                <th>
+                    NormalRange
+                </th>
+                
                
                 <th>
                     Action
@@ -37,10 +43,14 @@
         <tbody>
             <tr
                 *ngFor="let doc of this.dtestService.ntestList |paginate :{itemsPerPage:5,currentPage:page}">
+                <td (click)="populateForm(doc)">{{doc.TestId}}</td>
                 <td (click)="populateForm(doc)">{{doc.TestName}}</td>
                 <td (click)="populateForm(doc)">{{doc.TestDate|date:'dd-MM-yyyy'}}</td>
+                <td (click)="populateForm(doc)">{{doc.NormalRange}}</td>
+                
                 <td>
-                    <button class="btn btn-sm btn-info" routerLink="/labtest/doc.PatientId/doc.DoctorId" >View Report</button></td>
+                    <button class="btn btn-sm btn-info" (click)="addTest(doc.TestId)"
+                        style="margin-left:10px">Add Report</button></td>
                
             </tr>
         </tbody>
@@ -52,3 +62,4 @@
     </div>-->
  
 </div>
+

@@ -73,8 +73,7 @@
                 <td (click)="populateForm(appointment)">{{appointment.IsActive}}</td>-->
     
                 <td>
-                    <button [routerLink]="['../medicine']" class="btn btn-sm btn-info" style="margin-left:10px">ADD
-                        MEDICINE</button>&nbsp;&nbsp;
+                    <button (click)="AddMed(appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">ADD MEDICINE</button>
                     <button (click)="AddTest(appointment.DoctorId,appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">AddTest</button>&nbsp;&nbsp;
                     <button (click)="ViewTests(appointment.DoctorId,appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">ViewTest</button>
                     <button (click)="AddPres(appointment.PatientId, appointment.AppointmentDate )" class="btn btn-sm btn-info" style="margin-left:10px">Add Prescription</button>

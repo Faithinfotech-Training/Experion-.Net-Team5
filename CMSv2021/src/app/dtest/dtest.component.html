@@ -21,19 +21,15 @@
         <label class="col-md-4">Test Name</label>
  
         <select name="TestNameId" id="TestNameId" class="form-control" #TestNameId="ngModel" required
-            [(ngModel)]="dtestService.dtestForm.TestNameId"
-            [ngClass]="{'is-invalid':TestNameId.touched && TestNameId.invalid}">
+            [(ngModel)]="dtestService.dtestForm.TestNameId">
+            
             <option value=0 disabled>Choose TestName</option>
-            <option *ngFor="let dept of dtestService.dtestnames" value="{{dept.TestId}}">{{dept.TestName}}
+            <option *ngFor="let dept of dtestService.dtestnames" value="{{dept.NtestId}}">{{dept.TestName}}
             </option>
  
  
         </select>
-        <div class="validation-error" *ngIf="TestNameId.touched && TestNameId.invalid">
- 
-            <div *ngIf="TestNameId.errors.required">
-                TestName is required</div>
-        </div>
+        
     </div>
  
     <!--Test Date-->
@@ -50,11 +46,11 @@
  
     </div>
     <div>
-        <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-success form-control">
+        <button type="submit"  class="btn btn-success form-control">
             Add Test
         </button>
     </div>
-   
+   <br>
             <div>
                 <button type="button" (click)="resetForm(form)" class="btn btn-lg btn-primary form-control">ADD
                     NEW</button>

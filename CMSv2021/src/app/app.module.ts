@@ -57,6 +57,9 @@ import { DtestComponent } from './dtest/dtest.component';
 import { PrescriptionhistoryComponent } from './prescriptionhistory/prescriptionhistory.component';
 import { DtestListComponent } from './dtest-list/dtest-list.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { LabappointmentComponent } from './labappointment/labappointment.component';
+import { LabtestlistsComponent } from './labtestlists/labtestlists.component';
+import { AddreportComponent } from './lab-technition/addreport/addreport.component';
 
 
 @NgModule({
@@ -97,7 +100,10 @@ import { PrescriptionComponent } from './prescription/prescription.component';
     DtestComponent,
     PrescriptionhistoryComponent,
     DtestListComponent,
-    PrescriptionComponent
+    PrescriptionComponent,
+    LabappointmentComponent,
+    LabtestlistsComponent,
+    AddreportComponent
     
     
   ],

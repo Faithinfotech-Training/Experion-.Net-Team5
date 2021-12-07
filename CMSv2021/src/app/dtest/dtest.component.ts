@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppointmentService } from '../shared/appointment.service';
 import { ActivatedRoute} from '@angular/router';
 import{DtestService} from 'src/app/shared/dtest.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-dtest',
   templateUrl: './dtest.component.html',
@@ -13,8 +14,9 @@ export class DtestComponent implements OnInit {
 
   docId: number;
   patientId: number;
+  
   constructor(public dtestService: DtestService,public appservice: AppointmentService,
-    private router: Router,
+    private router: Router,private tostrService: ToastrService,
     private route: ActivatedRoute) { }
  
  
@@ -52,7 +54,7 @@ export class DtestComponent implements OnInit {
       (result) => {
         console.log("result" + result);
         this.resetForm(form);
-        //this.toxterService.success('Employee details Inserted!', 'succes!');
+        this.tostrService.success('Test added');
       }
     );
     }

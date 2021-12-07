@@ -1,0 +1,38 @@
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)"  method="post">
+    <h1 align="center"><b>Add Test</b></h1>
+
+    <!--Patient ID-->
+<input type="hidden" name="ResultId" [(ngModel)]="labservice.resultFormData.ResultId" />
+
+
+    <table>
+                
+        <tr>
+            <td>
+                <!--Doctor notes-->
+                <div class="form-group">
+                    <label><b>Test Value</b></label>
+                    <textarea align="center" type="textarea"  rows="5" cols="100" name="Result" #Result="ngModel" [(ngModel)]="labservice.resultFormData.Result"
+                    class="form-control" placeholder=" Enter Result " minLength="1" maxLength="100" required
+                    [ngClass]="{'is invalid':Result.touched && Result.invalid}" ></textarea>
+                <div class="validation-error" *ngIf="Result.touched && Result.invalid">
+                   
+                    <div *ngIf="Result.errors.required"><span style="color:red" > Result is required </span></div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)" 
+                        class="btn btn-lg btn-primary form-control">Submit</button>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+</form>

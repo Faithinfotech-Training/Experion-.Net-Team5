@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DtestService } from '../shared/dtest.service';
 
 @Component({
-  selector: 'app-dtest-list',
-  templateUrl: './dtest-list.component.html',
-  styleUrls: ['./dtest-list.component.css']
+  selector: 'app-labtestlists',
+  templateUrl: './labtestlists.component.html',
+  styleUrls: ['./labtestlists.component.css']
 })
-export class DtestListComponent implements OnInit {
+export class LabtestlistsComponent implements OnInit {
   patientid:number;
   page: number = 1;
   constructor(public dtestService: DtestService,
@@ -17,11 +17,11 @@ export class DtestListComponent implements OnInit {
     this.patientid = this.route.snapshot.params['patientId'];
     this.dtestService.bindCmdPatientList(this.patientid)
   }
-  ViewLabTest(DoctorId:number){
-    //console.log(PatientId);
-    console.log(DoctorId);
-    this.router.navigate(['labtest', DoctorId]);
+  addTest(testId: number) {
+    console.log(testId);
+    this.router.navigate(['labresult', testId])
+ 
   }
-
-
+ 
 }
+
