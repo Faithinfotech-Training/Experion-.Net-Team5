@@ -16,7 +16,7 @@ namespace CMSApi.Models
 
         public int PatientId { get; set; }
         public string PatientName { get; set; }
-        public decimal? Contact { get; set; }
+        public decimal Contact { get; set; }
         public string Address { get; set; }
         public string Gender { get; set; }
         public int? Age { get; set; }

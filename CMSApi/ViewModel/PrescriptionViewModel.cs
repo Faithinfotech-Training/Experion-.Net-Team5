@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CMSApi.Models
+namespace CMSApi.ViewModel
 {
-    public partial class TbllPrescription
+    public class PrescriptionViewModel
     {
         public int PrescriptionId { get; set; }
         public string DoctorNotes { get; set; }
         public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
-        public bool? IsActive { get; set; }
         public DateTime PrescriptionDate { get; set; }
-
-        public virtual Doctors Doctor { get; set; }
-        public virtual TblPatients Patient { get; set; }
+        public string PatientName { get; set; }
+        public string DoctorName { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

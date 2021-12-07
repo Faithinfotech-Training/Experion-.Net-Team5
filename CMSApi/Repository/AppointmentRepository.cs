@@ -56,7 +56,7 @@ namespace CMSApi.Repository
             {
                 //LINQ
                 return await (from a in db.TbllAppointments
-                              from p in db.Patients
+                              from p in db.TblPatients
                               from d in db.Doctors
                               where a.PatientId == p.PatientId
                               where a.DoctorId == d.DoctorId
@@ -87,7 +87,7 @@ namespace CMSApi.Repository
                 //LINQ
                 //join payment bill and patient
                 return await (from a in db.TbllAppointments
-                              from p in db.Patients
+                              from p in db.TblPatients
                               from d in db.Doctors
                               where a.AppointmentId == id && a.PatientId == p.PatientId
                               where a.AppointmentId == id && a.DoctorId == d.DoctorId
@@ -115,7 +115,7 @@ namespace CMSApi.Repository
                 //LINQ
                 //join appointment, staff, patient
                 return await (from a in db.TbllAppointments
-                              from p in db.Patients
+                              from p in db.TblPatients
                               from d in db.Doctors
                               where d.DoctorId == id && a.AppointmentDate == date && a.DoctorId == d.DoctorId && a.PatientId == p.PatientId
                               select new AppointmentViewModel

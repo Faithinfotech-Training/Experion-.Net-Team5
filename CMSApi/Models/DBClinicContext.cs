@@ -357,6 +357,8 @@ namespace CMSApi.Models
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
+                entity.Property(e => e.PrescriptionDate).HasColumnType("date");
+
                 entity.HasOne(d => d.Doctor)
                     .WithMany(p => p.TbllPrescription)
                     .HasForeignKey(d => d.DoctorId)

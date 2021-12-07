@@ -14,6 +14,6 @@ namespace CMSApi.ViewModel
         public int? DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string PatientName { get; set; }
-        public int Contact { get; set; }
+        public decimal Contact { get; set; }
     }
 }

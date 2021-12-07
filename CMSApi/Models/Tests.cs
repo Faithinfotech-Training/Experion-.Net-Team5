@@ -12,7 +12,7 @@ namespace CMSApi.Models
         public int? StaffId { get; set; }
         public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
-        public DateTime TestDate { get; set; }
+        public DateTime? TestDate { get; set; }
         public bool IsActive { get; set; }
 
         public virtual Doctors Doctor { get; set; }
