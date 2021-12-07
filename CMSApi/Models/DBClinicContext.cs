@@ -31,6 +31,7 @@ namespace CMSApi.Models
         public virtual DbSet<TbllAppointments> TbllAppointments { get; set; }
         public virtual DbSet<TbllMedicines> TbllMedicines { get; set; }
         public virtual DbSet<TbllPrescription> TbllPrescription { get; set; }
+        public virtual DbSet<TestResult> TestResult { get; set; }
         public virtual DbSet<Tests> Tests { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -143,10 +144,12 @@ namespace CMSApi.Models
 
             modelBuilder.Entity<Ntests>(entity =>
             {
-                entity.HasKey(e => e.TestId)
+                entity.HasKey(e => e.NtestId)
                     .HasName("PK__NTESTS__8CC3316054EBEB30");
 
                 entity.ToTable("NTESTS");
+
+                entity.Property(e => e.NtestId).HasColumnName("NTestId");
 
                 entity.Property(e => e.NormalRange)
                     .HasMaxLength(30)
@@ -368,6 +371,19 @@ namespace CMSApi.Models
                     .WithMany(p => p.TbllPrescription)
                     .HasForeignKey(d => d.PatientId)
                     .HasConstraintName("FK__TbllPresc__Patie__08B54D69");
+            });
+
+            modelBuilder.Entity<TestResult>(entity =>
+            {
+                entity.HasKey(e => e.ResultId)
+                    .HasName("PK__TestResu__97690208DEDFB003");
+
+                entity.Property(e => e.Result).HasColumnType("decimal(18, 0)");
+
+                entity.HasOne(d => d.Test)
+                    .WithMany(p => p.TestResult)
+                    .HasForeignKey(d => d.TestId)
+                    .HasConstraintName("FK__TestResul__TestI__14270015");
             });
 
             modelBuilder.Entity<Tests>(entity =>

@@ -36,7 +36,7 @@ namespace CMSApi.Controllers
 
                 if (doctors == null)
                 {
-                   
+
                     return NotFound();
                 }
                 return Ok(doctors);
@@ -108,5 +108,95 @@ namespace CMSApi.Controllers
 
         }
         #endregion
+
+        #region GetLabAppointmentByDate
+        [HttpGet]
+        [Route("GetLabAppointmentByDate/{date}")]
+        public async Task<IActionResult> GetLabAppointmentByDate(DateTime date)
+        {
+            try
+            {
+                var app
+                = await doctorRepository.GetLabAppointmentByDate(date);
+                if (app == null)
+                {
+                    return NotFound();
+                }
+                return Ok(app);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
+
+        #region Add Test Report
+        [HttpPost]
+
+        public async Task<IActionResult> AddTestReport([FromBody] TestResult model)
+        {
+            //Check the validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var testId = await doctorRepository.AddTestReport(model);
+                    if (testId > 0)
+                    {
+                        return Ok(testId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        [HttpGet]
+        [Route("Gettest")]
+        public async Task<IActionResult> Gettest()
+        {
+            try
+            {
+                var staff = await doctorRepository.Gettest();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("Getresult")]
+        public async Task<IActionResult> Getresult()
+        {
+            try
+            {
+                var staff = await doctorRepository.Getresult();
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+                return Ok(staff);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

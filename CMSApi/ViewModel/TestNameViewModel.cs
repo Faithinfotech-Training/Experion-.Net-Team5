@@ -15,5 +15,7 @@ namespace CMSApi.ViewModel
         public bool? IsActive { get; set; }
         public int? DoctorId { get; set; }
         public int? PatientId { get; set; }
+        public int NtestId { get; set; }
+        public decimal Result { get; set; }
     }
 }

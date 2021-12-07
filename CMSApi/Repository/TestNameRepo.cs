@@ -32,14 +32,21 @@ namespace CMSApi.Repository
                 //LINQ
                 //join payment bill and patient
                 return await (from n in db.Ntests
-                              from d in db.Dtests
-                              where n.TestId == d.TestNameId && d.PatientId == id
+                              join d in db.Dtests
+                              on n.NtestId equals d.TestNameId 
+                              join r in db.TestResult
+                              on d.TestId equals r.TestId
+                              where d.PatientId == id
 
                               select new TestNameViewModel
                               {
-                                  TestId =n.TestId,
+                                  TestId =n.NtestId,
                                   PatientId=d.PatientId,
+                                  TestNameId=d.TestNameId,
+                                  DoctorId=d.DoctorId,
+                                  IsActive=d.IsActive,
                                   TestName=n.TestName,
+                                  Result = r.Result,
                                   NormalRange=n.NormalRange,
                                   TestDate=d.TestDate,
                               }).ToListAsync();

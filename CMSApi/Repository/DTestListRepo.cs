@@ -29,18 +29,21 @@ namespace CMSApi.Repository
                               from p in db.Dtests
                               from d in db.TblPatients
 
-                              where d.PatientId == id && p.PatientId == d.PatientId && a.TestId == p.TestNameId
+                              where d.PatientId == id && p.PatientId == d.PatientId && a.NtestId == p.TestNameId
                               select new PatientTestViewModel
                               {
+                                  TestId = p.TestId,
                                   TestName = a.TestName,
                                   TestDate = p.TestDate,
-
-
+                                  NormalRange = a.NormalRange
                               }).ToListAsync();
             }
             return null;
         }
         #endregion
+
+
+        
 
     }
 }

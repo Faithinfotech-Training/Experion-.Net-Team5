@@ -10,7 +10,7 @@ namespace CMSApi.Models
             Dtests = new HashSet<Dtests>();
         }
 
-        public int TestId { get; set; }
+        public int NtestId { get; set; }
         public string TestName { get; set; }
         public string NormalRange { get; set; }
 

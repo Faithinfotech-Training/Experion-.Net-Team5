@@ -46,6 +46,7 @@ namespace CMSApi
             services.AddScoped<ITest, Test>();
             services.AddScoped<IPrescriptionRepo, PrescriptionRepo>();
             services.AddScoped<IDTestList, DTestListRepo>();
+            services.AddScoped<ITestNameRepo, TestNameRepo>();
             services.AddDbContext<DBClinicContext>(item =>
            item.UseSqlServer(Configuration.GetConnectionString("ClinicDBConnection")));
 
