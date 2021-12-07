@@ -4,8 +4,8 @@
         <tr>
             <th>Test ID</th>
             <th>Test Name</th>
-            <th>Normal Range</th>
             <th>Test Result</th>
+            <th>Normal Range</th>
             <th>Test Date</th>  
         </tr>
     </thead>
@@ -14,9 +14,9 @@
             <tr *ngFor="let test of labService.tests">
                 <td  >{{test.TestId}}</td>
                 <td  >{{test.TestName}}</td>
+                <td  >{{test.Result}}</td>
                 <td  >{{test.NormalRange}}</td>  
-                <td  >{{test.TestResult}}</td>
-                <td  >{{test.TestDate |date:'dd-MM-yyyy'}}</td>                              
+                <td  >{{test.TestDate | date:'dd-MM-yyyy'}}</td>                              
             </tr>                       
     </tbody>
 </table>

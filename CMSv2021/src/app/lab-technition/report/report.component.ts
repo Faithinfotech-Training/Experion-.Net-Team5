@@ -32,13 +32,13 @@ export class ReportComponent implements OnInit {
   this.labService.getReport(this.patientId);
   
 }
- /* populateForm(test: Test) {
+  populateForm(test: Test) {
     console.log(test);
     var datePipe = new DatePipe("en-UK");
-    let formatedDate: any = datePipe.transform(test.TestDate, 'yyyy-MM-dd');
+    let formatedDate: any = datePipe.transform(test.TestDate, 'yyyy-mm-dd');
     test.TestDate = formatedDate;
     this.labService.testFormData = Object.assign({}, test);
 
-  }*/
+  }
 }
 

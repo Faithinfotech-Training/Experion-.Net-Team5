@@ -85,6 +85,7 @@ export class MedicineComponent implements OnInit {
   insertMedicineRecord(form?:NgForm){
     console.log("inserting a record...");
     console.log(form.value);
+    form.value.IsActive='true';
     this.medicineService.insertMedicine(form.value).subscribe
     ((result)=>
     {

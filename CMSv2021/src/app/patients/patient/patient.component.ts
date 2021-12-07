@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Patient } from 'src/app/shared/patient';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { LabTechnitionService } from 'src/app/shared/lab-technition.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,10 +20,14 @@ export class PatientComponent implements OnInit {
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   namePattern="[a-zA-Z ]*";
   decPattern="[(0-9).]*";
+  
 
-  constructor(public patientService: PatientService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public labService: LabTechnitionService,public patientService: PatientService, private router: Router, private route: ActivatedRoute, private tostrService: ToastrService) { }
 
   ngOnInit(): void {
+    //this.staffService.bindDoctor();
+    this.labService.bindListDoctor();
+    
     this.patientService.bindPatient();
 
   this.patId=this.route.snapshot.params['PatientId'];
@@ -73,16 +79,17 @@ export class PatientComponent implements OnInit {
   insertPatients(form?:NgForm){
     console.log("inserting a record...");
     console.log(form.value);
+    form.value.IsActive="true";
     this.patientService.insertPatient(form.value).subscribe
     ((result)=>
     {
       console.log(result);
       this.resetform(form);
-     
-     
+      this.tostrService.success('Patient Has been Registered');
+      
     }
     );
-    window.alert("Patient has been inserted");
+    
     //window.location.reload();
   }
 

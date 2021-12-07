@@ -1,0 +1,64 @@
+<form name="dtestform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <!--employee id-->
+    <input type="hidden" name="TestId" [ngModel]="dtestService.dtestForm.TestId" />
+ 
+    <!--
+    <div class="form-group">
+ 
+        <label>Test Name</label>
+        <input name="TestName" #TestName="ngModel" [ngModel]="dtestService.dtestForm.TestName" class="form-control"
+            placeholder="Enter full name" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid':TestName.touched && TestName.invalid}" />
+        <div class="validation-error" *ngIf="TestName.touched && TestName.invalid">
+ 
+            <div *ngIf="TestName.errors.required">
+               Test Name is required</div>
+        </div>
+    </div>-->
+     <!--TestNames-->
+     <div class="form-group">
+ 
+        <label class="col-md-4">Test Name</label>
+ 
+        <select name="TestNameId" id="TestNameId" class="form-control" #TestNameId="ngModel" required
+            [(ngModel)]="dtestService.dtestForm.TestNameId"
+            [ngClass]="{'is-invalid':TestNameId.touched && TestNameId.invalid}">
+            <option value=0 disabled>Choose TestName</option>
+            <option *ngFor="let dept of dtestService.dtestnames" value="{{dept.TestId}}">{{dept.TestName}}
+            </option>
+ 
+ 
+        </select>
+        <div class="validation-error" *ngIf="TestNameId.touched && TestNameId.invalid">
+ 
+            <div *ngIf="TestNameId.errors.required">
+                TestName is required</div>
+        </div>
+    </div>
+ 
+    <!--Test Date-->
+    <div class="form-group">
+ 
+        <label>Test Date</label>
+        <input type="date" name="TestDate" id="TestDate" #TestDate="ngModel" [ngModel]="dtestService.dtestForm.TestDate"
+            class="form-control" required [ngClass]="{'is-invalid':TestDate.touched && TestDate.invalid}" />
+        <div class="validation-error" *ngIf="TestDate.touched && TestDate.invalid">
+ 
+            <div *ngIf="TestDate.errors.required">
+                Test Date is required</div>
+        </div>
+ 
+    </div>
+    <div>
+        <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-success form-control">
+            Add Test
+        </button>
+    </div>
+   
+            <div>
+                <button type="button" (click)="resetForm(form)" class="btn btn-lg btn-primary form-control">ADD
+                    NEW</button>
+            </div>
+       
+</form>
+

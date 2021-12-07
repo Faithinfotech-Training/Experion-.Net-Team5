@@ -82,11 +82,11 @@
 
         <!--appointment date-->
 
-        <div class="form-group">
+        <div class="form-group col-md-2">
 
             <label>START DATE</label>
             <input type="Date" name="StartDate" id="StartDate" #StartDate="ngModel"
-                [ngModel]="medicineService.formData.StartDate" class="form-control" required
+                [ngModel]="medicineService.formData.StartDate" class="form-control"  required
                 [ngClass]="{'is-invalid':StartDate.touched && StartDate.invalid}" />
             <div class="validation-error" *ngIf="StartDate.touched && StartDate.invalid">
 
@@ -100,7 +100,7 @@
 
         <!--appointment date-->
 
-        <div class="form-group">
+        <div class="form-group col-md-2">
 
             <label>END DATE</label>
             <input type="Date" name="EndDate" id="EndDate" #EndDate="ngModel"
@@ -139,24 +139,18 @@
 
             </td>
         </tr>
-
+       <!--<tr>
+            <td>
+            <label >Doctor Notes</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </td>
+        </tr>-->
 
 
 
 
 
         <!--Is Active-->
-        <tr>
-            <td>
-                <div class="form-group">
-                    <div class="form-check">
-                        <label class="form-check-label">Is active </label>
-                        <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel" required
-                            [(ngModel)]="medicineService.formData.IsActive" class="form-check-input">
-                    </div>
-                </div>
-            </td>
-        </tr>
         <!--submit button-->
 
         <tr>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Doctor } from './doctor';
 import { Department } from './department';
+import { Appointment } from './appointment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Department } from './department';
 export class DoctorService {
   //create an instance of doctor
   formData: Doctor = new Doctor();
+  appformData:Appointment=new Appointment();
   departments: Department[];
   doctors: Doctor[];
 

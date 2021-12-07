@@ -18,7 +18,7 @@ export class DoctorComponent implements OnInit {
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   namePattern="[a-zA-Z ]*";
   decPattern="[(0-9).]*";
-  constructor(public docService: DoctorService,
+  constructor(public docService: DoctorService, private tostrService: ToastrService,
     private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -88,14 +88,15 @@ export class DoctorComponent implements OnInit {
   //insert doctor
   insertDoctor(form?: NgForm) {
     console.log("inserting  doctor...")
+    form.value.IsActive="true";
     this.docService.insertDoctor(form.value).subscribe(
       (result) => {
         console.log("result" + result);
         this.resetform(form);
-        //this.toxterService.success('Doctor Details Inserted!', 'succes!');
+        this.tostrService.success('Doctor Registered');
       }
     );
-    window.alert("Doctor record has been inserted");
+    
     //window.location.reload();
   }
   //update doctor
@@ -106,11 +107,12 @@ export class DoctorComponent implements OnInit {
         console.log("result" + result);
         this.resetform(form);
         this.docService.bindDoctor();
-        //this.toxterService.success('Doctor details Updated!', 'succes!');
+        this.tostrService.success('Doctor Details updated!', );
+      
       }
     );
-    window.alert("Doctor record has been updated");
-    window.location.reload();
+    
+    //window.location.reload();
   }
 
 }

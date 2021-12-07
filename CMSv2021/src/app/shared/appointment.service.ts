@@ -12,6 +12,7 @@ export class AppointmentService {
   appointments : Appointment[];
   //parameter
   appointment:Appointment[];
+  appdates:Appointment[];
 
   constructor(private httpClient: HttpClient) { }
   //get bill
@@ -20,6 +21,15 @@ export class AppointmentService {
     .toPromise().then(response =>
       this.appointments = response as Appointment[])
 
+  }
+  getAppointmentByDate(docId:number, appdate:Date){
+    
+    console.log("hello");
+    console.log(docId);
+    return this.httpClient.get(environment.apiUrl+"/api/appointment/getappointmentbydoctoridanddate/" +docId +"/" +appdate)
+    .toPromise().then(response =>
+      this.appdates = response as Appointment[])
+      
   }
   //insert bill
   insertAppointment(appointment: Appointment) : Observable<any> {

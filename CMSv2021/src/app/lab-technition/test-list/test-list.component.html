@@ -6,11 +6,13 @@
         <!--search functionality-->
         <div class="form-control">
             <input class="form-control" type="text"
-            placeholder ="Search here...."
+            placeholder ="Search Name"
             [(ngModel)]="filter">
-
         </div>
-        <a [routerLink]="['../patient']" class="btn btn-primary" style="float :right;margin-bottom:10px">Add Patient</a>
+        <!--<input style="width: 25%;" class="form-control col-md-3" type="text" 
+            placeholder="Search Name " 
+           [(ngModel)]="tempFilter">-->
+        
     </div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -58,7 +60,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pat of this.patientService.patients | filter: filter" >
+            <tr *ngFor="let pat of this.patientService.patients | filter: filter | filter : dateFilter" >
                 <td (click)="populateForm(pat)">{{pat.PatientId}}</td>
                 <td (click)="populateForm(pat)">{{pat.PatientName}}</td>
                 <td (click)="populateForm(pat)">{{pat.Address}}</td>

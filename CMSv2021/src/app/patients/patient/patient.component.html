@@ -1,141 +1,164 @@
-<form name="patform" #form="ngForm" autocomplete="off" method="post"
-(ngSubmit)="onSubmit(form)">
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Registration </h3>
+                        <form name="patform" #form="ngForm" autocomplete="off" method="post"
+                            (ngSubmit)="onSubmit(form)">
 
-<h1 align="center"><b> REGISTER HERE</b></h1>
-<!--Patient ID-->
-<input type="hidden" name="PatientId" [(ngModel)]="patientService.formData.PatientId" />
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
 
-<!--Patient Name-->
-<div class="form-group">
-    <label><b>Name</b></label>
-    <input name="PatientName" #PatientName="ngModel" [(ngModel)]="patientService.formData.PatientName" [pattern]="namePattern"
-        class="form-control" placeholder="enter full name " minLength="4" maxLength="25" required
-        [ngClass]="{'is invalid':PatientName.touched && PatientName.invalid}" />
-    <div class="validation-error" *ngIf="PatientName.touched&&PatientName.invalid">
-        <div *ngIf="PatientName.errors.pattern">
-            <span style="color:red" >Patient Name not valid.</span>
-       </div>
-        <div *ngIf="PatientName.errors.required"><span style="color:red" >Patient Name is required</span></div>
-    </div>
-</div>
-<br>
-<!-- Address-->
-<div class="form-group">
-    <label><b>Address</b></label>
-    <input name="Address" #Address="ngModel" [(ngModel)]="patientService.formData.Address" [pattern]="namePattern"
-        class="form-control" placeholder="enter address " minLength="4" maxLength="25" required
-        [ngClass]="{'is invalid':Address.touched && Address.invalid}" />
-    <div class="validation-error" *ngIf="Address.touched&&Address.invalid">
-        <div *ngIf="Address.errors.pattern">
-            <span style="color:red" >Address not valid.</span>
-       </div>
-        <div *ngIf="Address.errors.required"><span style="color:red" > Address is required </span></div>
-    </div>
-</div>
-<br>
-<!--Patient Phone-->
-<div class="form-group">
-    <label><b>Contact number</b></label>
-    <input  name="Contact" #Contact="ngModel" [(ngModel)]="patientService.formData.Contact" [pattern]="mobNumberPattern"
-        class="form-control" placeholder="enter the contact number" minlength = "10" maxLength="10" required pattern="[0-9]+"
-        [ngClass]="{'is invalid':Contact.touched && Contact.invalid}" />
-    <div class="validation-error" *ngIf="Contact.touched&&Contact.invalid">
-        <div *ngIf="Contact.errors.pattern">
-            <span style="color:red" >Mobile number not valid.</span>
+                                    <div class="form-outline">
+                                        <label class="form-label" for="firstName"><b>Patient Name</b></label>
+                                        <input class="form-control form-control-lg" name="PatientName"
+                                            #PatientName="ngModel" [(ngModel)]="patientService.formData.PatientName"
+                                            [pattern]="namePattern" placeholder="Enter full name " minLength="4"
+                                            maxLength="25" required
+                                            [ngClass]="{'is invalid':PatientName.touched && PatientName.invalid}" />
+                                        <div class="validation-error" *ngIf="PatientName.touched&&PatientName.invalid">
+                                            <div *ngIf="PatientName.errors.pattern">
+                                                <span style="color:red">Patient Name not valid.</span>
+                                            </div>
+                                            <div *ngIf="PatientName.errors.required"><span style="color:red">Patient
+                                                    Name is
+                                                    required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-8 mb-4 d-flex align-items-center">
+
+                                    <div class="form-outline datepicker w-100">
+                                        <label for="birthdayDate" class="form-label"><b>Address</b></label>
+                                        <input name="Address" #Address="ngModel"
+                                            [(ngModel)]="patientService.formData.Address" [pattern]="namePattern"
+                                            class="form-control form-control-lg" placeholder="Enter address "
+                                            minLength="4" maxLength="25" required
+                                            [ngClass]="{'is invalid':Address.touched && Address.invalid}" />
+                                        <div class="validation-error" *ngIf="Address.touched&&Address.invalid">
+                                            <div *ngIf="Address.errors.pattern">
+                                                <span style="color:red">Address not valid.</span>
+                                            </div>
+                                            <div *ngIf="Address.errors.required"><span style="color:red"> Address is
+                                                    required
+                                                </span></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8 mb-4 pb-2">
+
+                                    <label><b>Contact number</b></label>
+                                    <input name="Contact" #Contact="ngModel"
+                                        [(ngModel)]="patientService.formData.Contact" [pattern]="mobNumberPattern"
+                                        class="form-control form-control-lg" placeholder="enter the contact number"
+                                        minlength="10" maxLength="10" required pattern="[0-9]+"
+                                        [ngClass]="{'is invalid':Contact.touched && Contact.invalid}" />
+                                    <div class="validation-error" *ngIf="Contact.touched&&Contact.invalid">
+                                        <div *ngIf="Contact.errors.pattern">
+                                            <span style="color:red">Mobile number not valid.</span>
+                                        </div>
+                                        <div *ngIf="Contact.errors.required"><span style="color:red">Patient contact
+                                                number
+                                                is required</span></div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="col-md-8 mb-4 pb-2">
+                                        <label><b>Age</b></label>
+                                        <input name="Age" #Age="ngModel" [(ngModel)]="patientService.formData.Age"
+                                            [pattern]="decPattern" class="form-control form-control-lg"
+                                            placeholder="enter the age" maxLength="8" required
+                                            [ngClass]="{'is invalid':Age.touched && Age.invalid}" />
+                                        <div class="validation-error" *ngIf="Age.touched && Age.invalid">
+                                            <div *ngIf="Contact.errors.pattern">
+                                                <span style="color:red">Age not valid.</span>
+                                            </div>
+
+                                            <div *ngIf="Age.errors.required"><span style="color:red">Age is
+                                                    required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="col-md-8 mb-4 pb-2">
+                                        <label class="form-label select-label"><b>Blood Group</b></label>
+
+                                        <select name="BloodGroup" id="BloodGroup" class="form-control"
+                                            #BloodGroup="ngModel" required
+                                            [(ngModel)]="patientService.formData.BloodGroup">
+                                            <option value="" disabled>Choose Blood Group</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                        </select>
+                                        <div class="validation-error" *ngIf="BloodGroup.touched&&BloodGroup.invalid">
+                                            <div *ngIf="BloodGroup.errors.required"><span style="color:red">Blood Group
+                                                    is
+                                                    required</span></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                <div class="col-md-8 mb-4 pb-2">
+
+                                    <label><b>Contact number</b></label>
+                                    <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required
+                                        [(ngModel)]="patientService.formData.Gender">
+                                        <option value="" disabled>Choose Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <div class="validation-error" *ngIf="Gender.touched&&Gender.invalid">
+                                        <div *ngIf="Gender.errors.required"><span style="color:red">Gender is
+                                                required</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            </div>
+
+                            <div class="mt-4 pt-2">
+                                <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-lg btn-primary ">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div *ngIf="Contact.errors.required"><span style="color:red" >Patient contact number is required</span></div>
     </div>
-</div>
-<br>
-<!--Age-->
-<div class="form-group">
-    <label><b>Age</b></label>
-    <input name="Age" #Age="ngModel" [(ngModel)]="patientService.formData.Age" [pattern]="decPattern"
-        class="form-control" placeholder="enter the age" maxLength="8" required
-        [ngClass]="{'is invalid':Age.touched && Age.invalid}" />
-    <div class="validation-error" *ngIf="Age.touched && Age.invalid">
-        <div *ngIf="Contact.errors.pattern">
-            <span style="color:red" >Age not valid.</span>
-        </div>
-        
-        <div *ngIf="Age.errors.required"><span style="color:red" >Age is required</span></div>
-    </div>
-</div>
-<br>
-<!--BloodGroup-->
-<div class="form-group">
-    <label class="col-md-4"><b>Blood Group</b></label>
-    <select name="BloodGroup" id="BloodGroup" class="form-control" #BloodGroup="ngModel" required
-        [(ngModel)]="patientService.formData.BloodGroup">
-        <option value="" disabled>Choose Blood Group</option>
-        <option value="A+">A+</option>
-        <option value="A-">A-</option>
-        <option value="B+">B+</option>
-        <option value="B-">B-</option>
-        <option value="O+">O+</option>
-        <option value="O-">O-</option>
-        <option value="AB+">AB+</option>
-        <option value="AB-">AB-</option>    
-    </select>
-    <div class="validation-error" *ngIf="BloodGroup.touched&&BloodGroup.invalid">
-        <div *ngIf="BloodGroup.errors.required"><span style="color:red" >Blood Group is required</span></div>
-    </div>
-</div>
-<br>
-<!--PatientGender-->
-<div class="form-group">
-    <label class="col-md-4"><b>Gender</b></label>
-    <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required
-        [(ngModel)]="patientService.formData.Gender">
-        <option value="" disabled>Choose Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>    
-    </select>
-    <div class="validation-error" *ngIf="Gender.touched&&Gender.invalid">
-        <div *ngIf="Gender.errors.required"><span style="color:red" >Gender is required</span></div>
-    </div>
-</div>
-<br>
-<!--Doctor id-->
-<div class="form-group">
-    <label><b>DoctorId</b></label>
-    <input name="DoctorId" #DoctorId="ngModel" [(ngModel)]="patientService.formData.DoctorId" [pattern]="decPattern"
-        class="form-control" placeholder="enter doctorid " minLength="4" maxLength="25" required
-        [ngClass]="{'is invalid':DoctorId.touched && DoctorId.invalid}" />
-    <div class="validation-error" *ngIf="DoctorId.touched&&DoctorId.invalid">
-        <div *ngIf="DoctorId.errors.pattern">
-            <span style="color:red" >Enter a valid number</span>
-        </div>
-        <div *ngIf="DoctorId.errors.required"><span style="color:red" >DoctorId is required</span></div>
-    </div>
-</div>
-<br>
-<!--is active-->
-<br>
-<div class="form-group">
-    <div class="form-check">
-        <label class="col-md-4"><b>Is Active</b></label>
-        <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel"
-            [(ngModel)]="patientService.formData.IsActive" class="form-check-input">
-    </div>
-</div>
-<br>
-<!--submit button-->
-<br>
-<div class="form-group">
-    <button type="submit"[disabled]="!(form.valid && form.dirty)"
-        class="btn btn-lg btn-primary form-control">SUBMIT
-    </button>
-
-</div>
-
-<!--submit button-->
-<br>
-<div class="form-group">
-    <button routerLink="/patientlist" routerLinkActive="active" type="submit"
-        class="btn btn-lg btn-primary form-control"> PATIENT LIST
-    </button>
-
-</div>
-
-</form>
+</section>

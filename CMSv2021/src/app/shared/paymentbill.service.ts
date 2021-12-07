@@ -3,6 +3,7 @@ import { Bill } from './bill';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Patient } from './patient';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,7 @@ export class PaymentbillService {
   bills : Bill[];
   //parameter
   bill:Bill[];
+  patients:Patient[];
 
   constructor(private httpClient: HttpClient) { }
   //get bill
@@ -20,6 +22,11 @@ export class PaymentbillService {
       this.bills = response as Bill[])
 
   }
+  getPatients() {
+    this.httpClient.get(environment.apiUrl + "/api/patient/GetPatients")
+      .toPromise().then(response =>
+        this.patients = response as Patient[])
+      }
   //insert bill
   insertBill(bill: Bill) : Observable<any> {
     return this.httpClient.post(environment.apiUrl + "/api/paymentbill/addpaymentbill", bill);

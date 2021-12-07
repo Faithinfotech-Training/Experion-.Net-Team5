@@ -4,6 +4,10 @@ import { AppointmentService } from 'src/app/shared/appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { PatientService } from 'src/app/shared/patient.service';
+import { Patient } from 'src/app/shared/patient';
+import { DoctorService } from 'src/app/shared/doctor.service';
+import { Doctor } from 'src/app/shared/doctor';
 
 
 
@@ -19,12 +23,18 @@ export class AppointmentComponent implements OnInit {
   decPattern="[(0-9).]*";
   bId: number;
   Pbill: Appointment = new Appointment();
+  patient : Patient = new Patient();
+  doctor:Doctor =new Doctor(); 
+  tostrService: any;
+  
   //filter:string;
 
 
-  constructor(public appservice: AppointmentService, private router: Router, private route: ActivatedRoute ) { }
+  constructor(public docService: DoctorService, public patService : PatientService ,public appservice: AppointmentService, private router: Router, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.patService.bindPatient();
+    this.docService.bindDoctor();
     this.appservice.getAppointment();
     this.bId = this.route.snapshot.params['AppointmentId'];
     console.log(this.bId);
@@ -77,16 +87,17 @@ export class AppointmentComponent implements OnInit {
   insertAppointmentRecord(form?: NgForm) {
     console.log("inserting a record...");
     console.log(form.value);
+    form.value.IsActive="true";
     this.appservice.insertAppointment(form.value).subscribe
       ((result) => {
         console.log(result);
         this.resetform(form);
-        //this.toastrService.success('Course record has been inserted','CRM appv2021');
+        this.tostrService.success('Appointment Added');
 
 
       }
       );
-    window.alert("Appointment has been inserted");
+    
     //window.location.reload();
   }
 

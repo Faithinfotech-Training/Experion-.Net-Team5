@@ -86,7 +86,7 @@ if(this.loginForm.invalid)
           localStorage.setItem("username",this.jwtResponse.UserName);
           localStorage.setItem("ACCESS_ROLE",this.jwtResponse.RoleId.toString());
           sessionStorage.setItem("username",this.jwtResponse.Username);
-          this.router.navigateByUrl('/doctorlist');
+          this.router.navigateByUrl('/dappointment');
 
         }
 

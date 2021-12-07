@@ -22,8 +22,8 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     //Get value from activated Route
-    this.patientId = this.route.snapshot.params['PatientId'];
-    console.log(this.patientId)
+    //this.patientId = this.route.snapshot.params['PatientId'];
+    //console.log(this.patientId)
     //console.log(this.rptId)
     this.labService.bindStaffByDepartment();
     this.labService.bindListDoctor();

@@ -22,15 +22,19 @@ import { ReportComponent } from './lab-technition/report/report.component';
 import { MainhomeComponent } from './mainhome/mainhome.component';
 import { TestListComponent } from './lab-technition/test-list/test-list.component';
 import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
-
+import { DappoinmentComponent } from './dappoinment/dappoinment.component';
+import { DtestComponent } from './dtest/dtest.component';
+import { PrescriptionhistoryComponent } from './prescriptionhistory/prescriptionhistory.component';
+import { DtestListComponent } from './dtest-list/dtest-list.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:"/mainhome",pathMatch:'full'},
-  {path:'login',component:LoginComponent},
-  {path:'doctor',component:DoctorComponent},
-  {path:'doctorlist',component:DoctorListComponent},
-  {path:'doctor/:docId',component:DoctorComponent},
-  {path:'admin',component:AdminComponent},
+  { path: '', redirectTo: "/mainhome", pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'doctor', component: DoctorComponent },
+  { path: 'doctorlist', component: DoctorListComponent },
+  { path: 'doctor/:docId', component: DoctorComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'staff', component: StaffComponent },
   { path: 'stafflist', component: StaffListComponent },
   { path: 'staff/:staffId', component: StaffComponent },
@@ -51,11 +55,19 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   //{ path: 'viewreport', component: ViewReportComponent },
   //{ path: 'detailedreport/:rtId', component: DetailedReportComponent },
-    { path: 'report/:patientId', component: ReportComponent },
-    { path: 'mainhome', component:MainhomeComponent},
-    {path : 'testlist', component:TestListComponent},
-    {path : 'labtechnician', component:LabhomeComponent}
-
+  { path: 'report/:patientId', component: ReportComponent },
+  { path: 'mainhome', component: MainhomeComponent },
+  { path: 'testlist', component: TestListComponent },
+  { path: 'labtechnician', component: LabhomeComponent },
+  { path: 'dappointment', component: DappoinmentComponent },
+  { path: 'dappointment/:bId/:bdate', component: DappoinmentComponent },
+  { path: 'dtest/:docId/:patientId', component: DtestComponent },
+  { path: 'viewtest/:PatientId', component: PrescriptionhistoryComponent },
+  { path: 'prescriptionhistory', component: PrescriptionhistoryComponent },
+  {path:'viewtest/:docId/:patientId',component:DtestListComponent},
+  { path: 'prescription', component: PrescriptionComponent },
+  { path: 'dappointment/:PatientId', component: PrescriptionComponent },
+  { path: 'addpres/:PatientId/:AppointmentDate', component: PrescriptionComponent }
 ];
 
 @NgModule({

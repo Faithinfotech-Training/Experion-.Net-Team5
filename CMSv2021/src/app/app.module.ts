@@ -52,6 +52,11 @@ import { LabTechnitionService } from './shared/lab-technition.service';
 import { MainhomeComponent } from './mainhome/mainhome.component';
 import { TestListComponent } from './lab-technition/test-list/test-list.component';
 import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
+import { DappoinmentComponent } from './dappoinment/dappoinment.component';
+import { DtestComponent } from './dtest/dtest.component';
+import { PrescriptionhistoryComponent } from './prescriptionhistory/prescriptionhistory.component';
+import { DtestListComponent } from './dtest-list/dtest-list.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 
 @NgModule({
@@ -87,7 +92,12 @@ import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
     DetailedReportComponent,
     MainhomeComponent,
     TestListComponent,
-    LabhomeComponent
+    LabhomeComponent,
+    DappoinmentComponent,
+    DtestComponent,
+    PrescriptionhistoryComponent,
+    DtestListComponent,
+    PrescriptionComponent
     
     
   ],
@@ -101,7 +111,8 @@ import { LabhomeComponent } from './lab-technition/labhome/labhome.component';
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
     
   ],
   

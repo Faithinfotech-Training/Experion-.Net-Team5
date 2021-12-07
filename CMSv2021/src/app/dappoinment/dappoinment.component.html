@@ -1,0 +1,85 @@
+<form name="dhappform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <!--doctor name-->
+    <div class="form-group">
+    
+        <label class="col-md-4">Doctor Name</label>
+    
+        <select name="DoctorId" id="DoctorId" class="form-control" #DoctorId="ngModel" required
+            [(ngModel)]="docService.formData.DoctorId" [ngClass]="{'is-invalid':DoctorId.touched && DoctorId.invalid}">
+            <option value=0 disabled>Choose Your Name</option>
+            <option *ngFor="let dept of docService.doctors" value="{{dept.DoctorId}}">{{dept.DoctorName}}
+            </option>
+        </select>
+        <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
+            <div *ngIf="DoctorId.errors.required">
+                DoctorName is required</div>
+        </div>
+    </div>
+    
+    <!--Appointment Date-->
+    <!--DateOfJoining-->
+    <div class="form-group">
+    
+        <label>Choose an Appointment Date</label>
+        <input type="date" name="AppointmentDate" id="AppointmentDate" #AppointmentDate="ngModel"
+            [ngModel]="docService.appformData.AppointmentDate" class="form-control" required
+            [ngClass]="{'is-invalid':AppointmentDate.touched && AppointmentDate.invalid}" />
+        <div class="validation-error" *ngIf="AppointmentDate.touched && AppointmentDate.invalid">
+    
+            <div *ngIf="AppointmentDate.errors.required">
+                Appointment Date is required</div>
+        </div>
+    </div>
+    <!--submit button-->
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">Submit</button>
+    </div>
+    
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+               <!-- <th>
+                    APPOINTMENT ID
+                </th>-->
+               
+    
+                <th>
+                    PATIENT NAME
+                </th>
+                <th>
+                    DATE
+                </th>
+                <!--<th>
+                        Department
+                    </th>
+                    <th>
+                        Status
+                    </th>-->
+                <th>
+                    Action
+                </th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of this.appservice.appdates">
+                <!--<td (click)="populateForm(appointment)">{{appointment.AppointmentId}}</td>-->
+                <td (click)="populateForm(appointment)">{{appointment.PatientName}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.AppointmentDate | date:'dd-MM-yyyy'}}</td>
+               <!--- <td (click)="populateForm(appointment)">{{appointment.DoctorId}}</td>
+                <td (click)="populateForm(appointment)">{{appointment.IsActive}}</td>-->
+    
+                <td>
+                    <button [routerLink]="['../medicine']" class="btn btn-sm btn-info" style="margin-left:10px">ADD
+                        MEDICINE</button>&nbsp;&nbsp;
+                    <button (click)="AddTest(appointment.DoctorId,appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">AddTest</button>&nbsp;&nbsp;
+                    <button (click)="ViewTests(appointment.DoctorId,appointment.PatientId)" class="btn btn-sm btn-info" style="margin-left:10px">ViewTest</button>
+                    <button (click)="AddPres(appointment.PatientId, appointment.AppointmentDate )" class="btn btn-sm btn-info" style="margin-left:10px">Add Prescription</button>
+                    <button (click)="ViewTest(appointment.PatientId)"  class="btn btn-sm btn-info" style="margin-left:10px">ViewPrescription</button>
+                </td>
+            </tr>
+        </tbody>
+    

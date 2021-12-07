@@ -65,7 +65,7 @@ export class LabTechnitionService {
 
   //GET a particular Report By ID
   getReport(patientId: number){
-    this.httpClient.get(environment.apiUrl + "/api/test/GetTestByPatientId/" + patientId )
+    this.httpClient.get(environment.apiUrl + "/api/TestName/GetTestById/" + patientId )
       .toPromise().then(response =>
       this.tests = response as Test[]
       );

@@ -17,12 +17,14 @@ export class BillComponent implements OnInit {
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   namePattern="[a-zA-Z ]*";
   decPattern="[(0-9).]*";
-
+  PatientId:number;
   constructor(public paymentservice : PaymentbillService , private router: Router, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.paymentservice.getBill();
+    this.paymentservice.getPatients();
     this.bId=this.route.snapshot.params['BillId'];
+    //this.PatientId=this.route.snapshot.params['PatientId'];
     console.log(this.bId);
 
     if(this.bId !=0 || this.bId != null){
@@ -32,6 +34,7 @@ export class BillComponent implements OnInit {
           var datePipe = new DatePipe("en-UK");
           let formatedDate: any = datePipe.transform(data.BillDate, 'yyyy-MM-dd');
           data.BillDate = formatedDate;
+          //data.PatientId=this.PatientId;
           this.paymentservice.formData = Object.assign({}, data);
           this.paymentservice.formData=data;
           
@@ -73,6 +76,8 @@ export class BillComponent implements OnInit {
   //insert
   insertBillRecord(form?:NgForm){
     console.log("inserting a record...");
+    //form.value.PatientId = this.bId;
+    console.log(this.bId)
     console.log(form.value);
     this.paymentservice.insertBill(form.value).subscribe
     ((result)=>

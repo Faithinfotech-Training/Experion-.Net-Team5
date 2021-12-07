@@ -11,6 +11,8 @@ import { PatientService } from 'src/app/shared/patient.service';
 })
 export class TestListComponent implements OnInit {
   filter: string;
+  tempFilter: string;
+  dateFilter : Date;
   constructor(public labService: LabTechnitionService, public patientService: PatientService,
     private router: Router) { }
 

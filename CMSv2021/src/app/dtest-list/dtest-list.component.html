@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            Patient Test Details
+        </h5>
+    </div>
+    <!--searching functionality-->
+  <!--  <div class="form-group">
+        <input class="form-control" type="text" placeholder="search here.." [(ngModel)]="filter" />
+    </div>
+    <div class="form-group">
+        <input style="width: 25%;" class="form-control col-md-3" type="date" placeholder="Date"
+            [(ngModel)]="dateFilter">
+    </div>-->
+   
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+               
+                <th>
+                    Test Name
+                </th>
+               
+                <th>
+                    TestDate
+                </th>
+               
+               
+               
+                <th>
+                    Action
+                </th>
+ 
+ 
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let doc of this.dtestService.ntestList |paginate :{itemsPerPage:5,currentPage:page}">
+                <td (click)="populateForm(doc)">{{doc.TestName}}</td>
+                <td (click)="populateForm(doc)">{{doc.TestDate|date:'dd-MM-yyyy'}}</td>
+                <td>
+                    <button class="btn btn-sm btn-info">View Report</button></td>
+               
+            </tr>
+        </tbody>
+    </table>
+    <!--pagination-->
+   <!-- <div class="footer">
+       
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>-->
+ 
+</div>

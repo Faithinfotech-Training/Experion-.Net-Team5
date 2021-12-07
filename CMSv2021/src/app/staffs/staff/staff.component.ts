@@ -80,6 +80,7 @@ export class StaffComponent implements OnInit {
   insertStaff(form?: NgForm) {
 
     console.log("inserting Staff...")
+    form.value.IsActive="true";
     this.staffService.insertStaff(form.value).subscribe(
       (result) => {
         console.log("result" + result);

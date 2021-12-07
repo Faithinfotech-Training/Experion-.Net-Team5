@@ -1,0 +1,44 @@
+<form name="staffform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)"  method="post">
+    <h1 align="center"><b>ADD PRESCRIPTION</b></h1>
+
+    <!--Patient ID-->
+<input type="hidden" name="PatientId" [(ngModel)]="pservice.formData.PatientId" />
+
+
+    <table>
+        
+                    
+
+
+                <input type="Date" type="hidden" name="PrescriptionDate" [ngModel]="pservice.formData.PrescriptionDate" />
+                    
+               
+        <tr>
+            <td>
+                <!--Doctor notes-->
+                <div class="form-group">
+                    <label><b>DOCTOR NOTES</b></label>
+                    <textarea align="center" type="textarea"  rows="5" cols="100" name="DoctorNotes" #DoctorNotes="ngModel" [(ngModel)]="pservice.formData.DoctorNotes"
+                    class="form-control" placeholder="enter DoctorNotes " minLength="4" maxLength="100" required
+                    [ngClass]="{'is invalid':DoctorNotes.touched && DoctorNotes.invalid}" ></textarea>
+                <div class="validation-error" *ngIf="DoctorNotes.touched && DoctorNotes.invalid">
+                   
+                    <div *ngIf="DoctorNotes.errors.required"><span style="color:red" > DoctorNotes is required </span></div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!(form.valid && form.dirty)" 
+                        class="btn btn-lg btn-primary form-control">Submit</button>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+</form>

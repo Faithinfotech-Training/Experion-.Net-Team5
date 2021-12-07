@@ -1,16 +1,33 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="/home">Health 360</a>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark" id="nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       
+      <a href="javascript:void(0)" class="navbar-brand " (click)="goBack()"><i class="fa fa-angle-left"></i>
+        Back </a>
+      </div>
+      <li>
+        <a class="navbar-brand " href="#" id="heading">Health360</a> 
+      </li>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a  routerLink="/login" class="navbar-brand fas fa-sign-in-alt"><i class="fa fa-sign-in alt"></i>Login</a>
+      
+        <a  href="javascript:void(0)" class="navbar-brand" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <div class="container">
   <div class="card">
     <div class="card-body">
       <!--<app-employees></app-employees>-->
-      
+
       <router-outlet></router-outlet>
     </div>
   </div>
- </div> 
-  <!--footer
+</div>
+<!--footer
 <div class="footer">
 
   <div class="container">
